@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Sadhana Dashboard | Nadam Veena Academy</title>
+  <meta name="description" content="Student Sadhana Portal at Nadam Veena Academy: manage class bookings, weekly schedule, swara practice notations, audio reference tracks, fee payments, and certificates.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Noto+Serif+Tamil:wght@500;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+  <link rel="stylesheet" href="../assets/css/dashboard.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to dashboard content</a>
+
+  <div class="dashboard-layout">
+    <!-- ======================================================================
+         COLLAPSIBLE SIDEBAR NAVIGATION
+         ====================================================================== -->
+    <aside class="dashboard-sidebar" aria-label="Student Dashboard Sidebar">
+      <div class="dashboard-sidebar__brand">
+        <a href="../index.html" class="brand-logo">
+          <span class="brand-logo__mark"><i class="fa-solid fa-music" aria-hidden="true"></i></span>
+          <span class="brand-logo__text">
+            <span class="brand-logo__name" style="color:var(--sandal);font-size:1.15rem;">Nadam Portal</span>
+            <span class="brand-logo__tagline" style="color:var(--turmeric-light);">Shishya Sadhana Desk</span>
+          </span>
+        </a>
+      </div>
+
+      <nav class="dashboard-nav" aria-label="Dashboard Sections">
+        <button type="button" class="dashboard-nav__btn is-active" data-dash-nav="overview" data-dash-title="Sadhana Overview">
+          <i class="fa-solid fa-compass" aria-hidden="true"></i> Overview
+        </button>
+        <button type="button" class="dashboard-nav__btn" data-dash-nav="book-classes" data-dash-title="Book &amp; Manage Classes">
+          <i class="fa-solid fa-calendar-plus" aria-hidden="true"></i> Book Classes
+        </button>
+        <button type="button" class="dashboard-nav__btn" data-dash-nav="schedule" data-dash-title="My Weekly &amp; Monthly Schedule">
+          <i class="fa-solid fa-calendar-days" aria-hidden="true"></i> My Schedule
+        </button>
+        <button type="button" class="dashboard-nav__btn" data-dash-nav="practice-notes" data-dash-title="Swara Notations &amp; Practice Tracks">
+          <i class="fa-solid fa-book-open-reader" aria-hidden="true"></i> Practice Notes
+        </button>
+        <button type="button" class="dashboard-nav__btn" data-dash-nav="fees" data-dash-title="Fees, Invoices &amp; Receipts">
+          <i class="fa-solid fa-indian-rupee-sign" aria-hidden="true"></i> Fees &amp; Payments
+        </button>
+        <button type="button" class="dashboard-nav__btn" data-dash-nav="progress" data-dash-title="Level Progress &amp; Certificates">
+          <i class="fa-solid fa-award" aria-hidden="true"></i> Progress &amp; Certificates
+        </button>
+        <button type="button" class="dashboard-nav__btn" data-dash-nav="messages" data-dash-title="Guru-Shishya Inbox">
+          <i class="fa-solid fa-comments" aria-hidden="true"></i> Messages <span class="tag tag--gold" style="margin-left:auto;padding:0.1rem 0.5rem;font-size:0.7rem;">2</span>
+        </button>
+        <button type="button" class="dashboard-nav__btn" data-dash-nav="settings" data-dash-title="Profile, Sruti &amp; Settings">
+          <i class="fa-solid fa-sliders" aria-hidden="true"></i> Profile &amp; Settings
+        </button>
+      </nav>
+
+      <div class="dashboard-sidebar__footer">
+        <a href="instructor-dashboard.html" class="dashboard-nav__btn" style="font-size:0.82rem;">
+          <i class="fa-solid fa-chalkboard-user" aria-hidden="true"></i> Switch to Acharya View
+        </a>
+        <a href="login.html" class="dashboard-nav__btn" data-action="logout" style="color:#FF9B9B;">
+          <i class="fa-solid fa-right-from-bracket" style="color:#FF9B9B;" aria-hidden="true"></i> Logout
+        </a>
+      </div>
+    </aside>
+
+    <!-- ======================================================================
+         MAIN DASHBOARD AREA (TOPBAR + 8 INTERACTIVE PANELS)
+         ====================================================================== -->
+    <div class="dashboard-main">
+      <!-- Top Bar -->
+      <header class="dashboard-topbar">
+        <div class="dashboard-topbar__left">
+          <button type="button" class="sidebar-toggle-btn" data-action="toggle-dash-sidebar" aria-label="Toggle sidebar menu">
+            <i class="fa-solid fa-bars" aria-hidden="true"></i>
+          </button>
+          <div>
+            <span class="tamil-accent" style="font-size:0.78rem;">ஸ்வர சாதகம் • மாணவர் தளம்</span>
+            <h1 id="dashTopbarTitle" style="font-size:1.45rem;line-height:1.15;">Sadhana Overview</h1>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:0.65rem;flex-wrap:wrap;">
+          <button type="button" class="icon-toggle-btn" data-action="toggle-rtl" title="Toggle RTL layout">RTL</button>
+          <button type="button" class="icon-toggle-btn" data-action="toggle-theme" title="Toggle Dark/Light mode" aria-label="Toggle theme">
+            <i class="fa-solid fa-moon" aria-hidden="true"></i>
+          </button>
+          <div class="dashboard-user-pill">
+            <img src="../assets/images/dashboard-student-avatar.webp" alt="Student avatar of Ananya Venkataraman" width="36" height="36">
+            <div style="text-align:left;line-height:1.2;">
+              <strong style="font-size:0.85rem;display:block;" data-user-name>Ananya Venkataraman</strong>
+              <small style="font-size:0.72rem;color:var(--text-muted);" data-user-level>Madhyama (Varnam Level)</small>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main id="main-content" class="dashboard-content">
+        <!-- ==================================================================
+             PANEL 1: OVERVIEW
+             ================================================================== -->
+        <section class="dash-panel is-active" data-dash-panel="overview" aria-label="Dashboard Overview">
+          <!-- Fee Due Alert Banner -->
+          <div class="fee-alert-banner" id="dashFeeAlertBanner">
+            <div style="display:flex;align-items:center;gap:1rem;">
+              <i class="fa-solid fa-bell" style="font-size:1.6rem;color:var(--kumkum);" aria-hidden="true"></i>
+              <div>
+                <strong style="display:block;font-size:1rem;">Tuition Reminder: November–December Sadhana 1-on-1 Plan (₹4,800)</strong>
+                <span style="font-size:0.85rem;color:var(--text-secondary);">Invoice #INV-2026-114 is due on 20 November 2026. Pay via zero-fee UPI, Stripe, or PayPal.</span>
+              </div>
+            </div>
+            <div class="btn-group">
+              <button type="button" class="btn btn--primary" data-modal-open="payNowModal">Pay ₹4,800 Now</button>
+              <button type="button" class="btn btn--outline" data-dash-jump="fees">View Invoices</button>
+            </div>
+          </div>
+
+          <!-- 4 Stat Cards -->
+          <div class="dash-stats-grid">
+            <div class="dash-stat-card">
+              <span class="tag tag--gold">Next Live Class</span>
+              <h2 style="font-size:1.35rem;margin-top:0.25rem;">Wed, 18 Nov • 6:30 PM</h2>
+              <p style="font-size:0.84rem;color:var(--text-secondary);">Bhairavi Ata Tala Varnam • Vidushi Dr. Meenakshi</p>
+            </div>
+
+            <div class="dash-stat-card">
+              <span class="tag tag--peacock">Sadhana Streak</span>
+              <h2 style="font-size:1.35rem;margin-top:0.25rem;"><i class="fa-solid fa-fire" style="color:var(--turmeric-dark);"></i> 14 Days Active</h2>
+              <div class="streak-days" aria-label="7-day practice streak">
+                <span class="streak-day is-done">M</span>
+                <span class="streak-day is-done">T</span>
+                <span class="streak-day is-done">W</span>
+                <span class="streak-day is-done">T</span>
+                <span class="streak-day is-done">F</span>
+                <span class="streak-day is-done">S</span>
+                <span class="streak-day is-done">S</span>
+              </div>
+            </div>
+
+            <div class="dash-stat-card">
+              <span class="tag">Assigned Sruti Pitch</span>
+              <h2 style="font-size:1.35rem;margin-top:0.25rem;">D# (2.5 Kattai)</h2>
+              <p style="font-size:0.84rem;color:var(--text-secondary);">Saraswati Veena • Ekantha Jackwood</p>
+            </div>
+
+            <div class="dash-stat-card">
+              <span class="tag tag--gold">Upcoming Sabha Event</span>
+              <h2 style="font-size:1.35rem;margin-top:0.25rem;">18 Dec • Margazhi</h2>
+              <p style="font-size:0.84rem;color:var(--text-secondary);">Pancharatna Goshti Ensemble Slot</p>
+            </div>
+          </div>
+
+          <!-- Progress Ring + Quick Actions -->
+          <div class="dash-grid-2">
+            <div class="dash-widget">
+              <div class="dash-widget__header">
+                <h3>Madhyama Syllabus Progress Ring</h3>
+                <span class="tag tag--peacock">72% Complete</span>
+              </div>
+              <div class="progress-ring-box">
+                <svg class="progress-ring-svg" viewBox="0 0 100 100" aria-label="72 percent course completion">
+                  <circle class="progress-ring-bg" cx="50" cy="50" r="45"></circle>
+                  <circle class="progress-ring-fill" cx="50" cy="50" r="45"></circle>
+                </svg>
+                <div style="flex:1;min-width:220px;">
+                  <h4 style="margin-bottom:0.4rem;">Current Lesson: Viriboni (Bhairavi Ata Tala Varnam)</h4>
+                  <p style="font-size:0.88rem;color:var(--text-secondary);margin-bottom:0.85rem;">
+                    You have completed 6 Adi Tala Varnams and 4 Trinity Kritis. Complete the Ettugada Swaras of Viriboni to unlock your Madhyama Practical Jury.
+                  </p>
+                  <div class="btn-group">
+                    <button type="button" class="btn btn--primary" data-dash-jump="practice-notes">Open Practice Notes</button>
+                    <button type="button" class="btn btn--outline" data-dash-jump="progress">View Exam Tracker</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="dash-widget">
+              <div class="dash-widget__header">
+                <h3>Quick Shishya Actions</h3>
+                <span class="tag tag--gold">Direct Shortcuts</span>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:0.75rem;">
+                <button type="button" class="btn btn--gold" style="width:100%;" data-dash-jump="book-classes">
+                  <i class="fa-solid fa-calendar-plus"></i> Book 1-on-1 Slot with Acharya
+                </button>
+                <button type="button" class="btn btn--outline" style="width:100%;" data-play-scale="261.63,392.00,523.25">
+                  <i class="fa-solid fa-volume-high"></i> Pluck Reference Sa–Pa–Sa Drone
+                </button>
+                <button type="button" class="btn btn--outline" style="width:100%;" data-dash-jump="messages">
+                  <i class="fa-solid fa-comments"></i> Message Vidushi Dr. Meenakshi
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             PANEL 2: BOOK CLASSES (MULTI-STEP BOOKING + RESCHEDULE/CANCEL)
+             ================================================================== -->
+        <section class="dash-panel" data-dash-panel="book-classes" aria-label="Book Classes">
+          <div class="booking-steps-bar">
+            <span class="booking-step-pill is-active" data-booking-step="1">1. Choose Guru &amp; Topic</span>
+            <span class="booking-step-pill" data-booking-step="2">2. Pick Date &amp; Time Slot</span>
+            <span class="booking-step-pill" data-booking-step="3">3. Confirm Booking</span>
+          </div>
+
+          <div class="dash-widget" style="margin-bottom:var(--space-4);">
+            <div class="dash-widget__header">
+              <h3>Schedule a New 1-on-1 or Accompaniment Session</h3>
+              <span class="tag tag--gold">Instant Confirmation</span>
+            </div>
+
+            <form id="dashBookingForm">
+              <div class="card-grid-2">
+                <div class="form-group">
+                  <label class="form-label" for="bookingCourseSelect">Lesson Module / Focus</label>
+                  <select id="bookingCourseSelect" class="form-control">
+                    <option value="Saraswati Veena — Tana Varnam (Bhairavi)">Saraswati Veena — Tana Varnam (Bhairavi)</option>
+                    <option value="Trinity Kriti — Sri Subrahmanyaya Namaste">Trinity Kriti — Sri Subrahmanyaya Namaste (Kambhoji)</option>
+                    <option value="Ghanaraga Tanam & Alapana Lab">Ghanaraga Tanam &amp; Alapana Lab</option>
+                    <option value="Veena Fret & String Tuning Check">Veena Fret &amp; String Tuning Check</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="bookingGuruSelect">Select Acharya / Guru</label>
+                  <select id="bookingGuruSelect" class="form-control">
+                    <option value="Vidushi Dr. Meenakshi Sundaram">Vidushi Dr. Meenakshi Sundaram (Principal Vainika)</option>
+                    <option value="Vidwan S. Raghavan Iyer">Vidwan S. Raghavan Iyer (Karaikudi Bani)</option>
+                    <option value="Vidushi Harini Rajagopalan">Vidushi Harini Rajagopalan (Global Online)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="card-grid-2">
+                <div class="form-group">
+                  <label class="form-label" for="bookingDateInput">Preferred Date</label>
+                  <input type="date" id="bookingDateInput" class="form-control" value="2026-11-24" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="bookingModeSelect">Session Mode</label>
+                  <select id="bookingModeSelect" class="form-control">
+                    <option value="Online (Dual-Cam Fret View)">Online (Dual-Cam Fret View)</option>
+                    <option value="Mylapore Campus — Studio 1">Mylapore Campus — Studio 1</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <span class="form-label">Select Available Time Slot (IST)</span>
+                <input type="hidden" id="bookingSelectedSlot" value="06:30 PM IST">
+                <div class="slot-grid">
+                  <button type="button" class="slot-btn" data-slot-time="07:00 AM IST">07:00 AM IST<br><small>US Evening</small></button>
+                  <button type="button" class="slot-btn" data-slot-time="10:00 AM IST">10:00 AM IST<br><small>Morning Sadhana</small></button>
+                  <button type="button" class="slot-btn" data-slot-time="05:00 PM IST">05:00 PM IST<br><small>Mylapore / UK</small></button>
+                  <button type="button" class="slot-btn is-selected" data-slot-time="06:30 PM IST">06:30 PM IST<br><small>Prime Sandhya</small></button>
+                  <button type="button" class="slot-btn" data-slot-time="08:00 PM IST">08:00 PM IST<br><small>Europe / IST</small></button>
+                </div>
+              </div>
+
+              <div id="bookingFeedbackMsg" class="tag tag--peacock" style="display:none;padding:0.85rem 1.25rem;width:100%;margin-bottom:1rem;"></div>
+
+              <button type="submit" class="btn btn--primary">
+                <i class="fa-solid fa-check-double"></i> Confirm Class Booking
+              </button>
+            </form>
+          </div>
+
+          <div class="dash-widget">
+            <div class="dash-widget__header">
+              <h3>My Upcoming Booked Classes (Reschedule or Cancel)</h3>
+              <span class="tag tag--peacock">Saved in Browser</span>
+            </div>
+            <div class="table-responsive">
+              <table class="academy-table" aria-label="Upcoming Booked Classes">
+                <thead>
+                  <tr>
+                    <th>Booking ID</th>
+                    <th>Course / Lesson</th>
+                    <th>Acharya</th>
+                    <th>Date &amp; Time</th>
+                    <th>Mode</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="studentBookingsBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             PANEL 3: MY SCHEDULE (WEEKLY / MONTHLY CALENDAR + JOIN LINKS)
+             ================================================================== -->
+        <section class="dash-panel" data-dash-panel="schedule" aria-label="My Schedule">
+          <div class="dash-widget">
+            <div class="dash-widget__header">
+              <div>
+                <h3>November 2026 Class &amp; Rehearsal Calendar</h3>
+                <p style="font-size:0.85rem;color:var(--text-secondary);">All online sessions open 10 minutes prior with Overhead Fret-Cam &amp; High-Bitrate Audio enabled.</p>
+              </div>
+              <a href="concerts.html" class="btn btn--outline">Sabha Concert Dates</a>
+            </div>
+
+            <div class="table-responsive">
+              <table class="academy-table" aria-label="Weekly Class Schedule">
+                <thead>
+                  <tr>
+                    <th>Day &amp; Date</th>
+                    <th>Time (IST)</th>
+                    <th>Session Type &amp; Raga Focus</th>
+                    <th>Guru / Studio</th>
+                    <th>Live Join Link</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Wed, 18 Nov 2026</strong></td>
+                    <td>06:30 PM – 07:30 PM</td>
+                    <td>1-on-1 Veena: <em>Viriboni (Bhairavi Ata Tala Varnam)</em></td>
+                    <td>Vidushi Dr. Meenakshi</td>
+                    <td><a href="#join-studio" class="btn btn--primary" onclick="alert('Launching Nadam Dual-Camera Studio Room #104...');return false;"><i class="fa-solid fa-video"></i> Join Studio</a></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Sat, 21 Nov 2026</strong></td>
+                    <td>10:00 AM – 11:00 AM</td>
+                    <td>Manodharma &amp; Kalpanaswaram Lab (Raga Kalyani)</td>
+                    <td>Vidwan S. Raghavan Iyer</td>
+                    <td><a href="#join-studio" class="btn btn--outline" onclick="alert('Mylapore Studio 2 Pass Confirmed.');return false;">Studio 2 Pass</a></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Wed, 25 Nov 2026</strong></td>
+                    <td>06:30 PM – 07:30 PM</td>
+                    <td>Trinity Kriti: <em>Sri Subrahmanyaya Namaste (Kambhoji)</em></td>
+                    <td>Vidushi Dr. Meenakshi</td>
+                    <td><a href="#join-studio" class="btn btn--primary" onclick="alert('Launching Nadam Dual-Camera Studio Room #104...');return false;"><i class="fa-solid fa-video"></i> Join Studio</a></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Sat, 28 Nov 2026</strong></td>
+                    <td>05:30 PM – 07:00 PM</td>
+                    <td>Monthly Laya Alignment with Live Mridangam</td>
+                    <td>Vidwan Mannargudi R. Vaidyanathan</td>
+                    <td><a href="#join-studio" class="btn btn--gold" onclick="alert('Joining Ensemble Rehearsal Stream...');return false;">Join Ensemble</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             PANEL 4: PRACTICE NOTES (SWARAS, AUDIO PLAYER, PDFS, DIARY)
+             ================================================================== -->
+        <section class="dash-panel" data-dash-panel="practice-notes" aria-label="Practice Notes and Audio Tracks">
+          <!-- Interactive Audio Practice Track Player -->
+          <div class="audio-player-card">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;">
+              <div>
+                <span class="tag tag--gold">Web Audio Reference Track Player</span>
+                <h3 id="practiceTrackTitle" style="color:var(--sandal);margin-top:0.35rem;">Ninnukori — Raga Mohanam Adi Tala Varnam (druta &amp; vilambita)</h3>
+              </div>
+              <span id="practiceTrackTime" style="font-family:monospace;color:var(--turmeric-light);">00:00 / 02:25</span>
+            </div>
+
+            <div class="audio-player-controls">
+              <button type="button" class="btn btn--gold" id="practiceTrackPlayBtn">
+                <i class="fa-solid fa-play"></i> Play Reference Track
+              </button>
+              <div class="audio-progress-track" aria-label="Audio track progress">
+                <div class="audio-progress-bar" id="practiceTrackProgress"></div>
+              </div>
+              <label for="practiceTempoSelect" class="sr-only">Playback Speed</label>
+              <select id="practiceTempoSelect" class="form-control" style="width:auto;background:rgba(255,249,240,0.12);color:var(--sandal);border-color:var(--turmeric);">
+                <option value="0.75" style="color:#000;">0.75x (Vilambita Practice)</option>
+                <option value="1" selected style="color:#000;">1.0x (Madhyama Kala)</option>
+                <option value="1.35" style="color:#000;">1.35x (Druta Second Speed)</option>
+              </select>
+            </div>
+
+            <!-- Quick Playable Swara Reference Strip -->
+            <div style="display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;padding-top:0.5rem;border-top:1px solid rgba(224,165,38,0.25);">
+              <span style="font-size:0.8rem;color:var(--text-on-dark-muted);">Quick Pitch Check (Click Swara):</span>
+              <button type="button" class="tag tag--gold swara-key" style="padding:0.35rem 0.85rem;" data-swara="Sa" data-freq="261.63">Sa (ஸ)</button>
+              <button type="button" class="tag tag--gold swara-key" style="padding:0.35rem 0.85rem;" data-swara="Ri" data-freq="293.66">Ri₂ (ரி)</button>
+              <button type="button" class="tag tag--gold swara-key" style="padding:0.35rem 0.85rem;" data-swara="Ga" data-freq="329.63">Ga₃ (க)</button>
+              <button type="button" class="tag tag--gold swara-key" style="padding:0.35rem 0.85rem;" data-swara="Ma" data-freq="349.23">Ma₁ (ம)</button>
+              <button type="button" class="tag tag--gold swara-key" style="padding:0.35rem 0.85rem;" data-swara="Pa" data-freq="392.00">Pa (ப)</button>
+              <button type="button" class="tag tag--gold swara-key" style="padding:0.35rem 0.85rem;" data-swara="Dha" data-freq="440.00">Dha₂ (த)</button>
+              <button type="button" class="tag tag--gold swara-key" style="padding:0.35rem 0.85rem;" data-swara="Ni" data-freq="493.88">Ni₃ (நி)</button>
+            </div>
+          </div>
+
+          <!-- Filter & Search Assigned Varnams / Kritis -->
+          <div class="dash-widget" style="margin-bottom:var(--space-4);" data-filter-bar="assignedNotesList">
+            <div class="dash-widget__header">
+              <h3>Assigned Varnams &amp; Kritis from Your Guru</h3>
+              <div style="display:flex;gap:0.65rem;flex-wrap:wrap;">
+                <button type="button" class="tab-btn is-active" data-filter-value="all">All Assigned (3)</button>
+                <button type="button" class="tab-btn" data-filter-value="varnam">Tana Varnams</button>
+                <button type="button" class="tab-btn" data-filter-value="kriti">Trinity Kritis</button>
+                <input type="search" class="form-control" placeholder="Filter by Raga..." data-filter-search style="width:200px;min-height:42px;">
+              </div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:var(--space-3);" id="assignedNotesList">
+              <!-- Note 1: Viriboni Varnam -->
+              <article class="academy-card" style="padding:var(--space-3);" data-filter-item data-category="varnam">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap;margin-bottom:0.75rem;">
+                  <div>
+                    <span class="tag tag--gold">Tana Varnam • Raga Bhairavi • Khanda Jati Ata Tala</span>
+                    <h4 style="font-size:1.3rem;margin-top:0.35rem;">1. Viriboni Ninne Kori (Pacchimiriam Adiyappayya)</h4>
+                  </div>
+                  <label style="display:inline-flex;align-items:center;gap:0.5rem;font-weight:600;font-size:0.86rem;cursor:pointer;color:var(--peacock);">
+                    <input type="checkbox" data-lesson-check="lesson-viriboni"> Mark as Practiced Today
+                  </label>
+                </div>
+                <div class="swara-notation-box" style="margin-bottom:1rem;">
+                  <strong>Pallavi (Laghu 1 — 5 Aksharas):</strong><br>
+                  || Ṡ , N2 D1 P , M1 G2 R2 S | N2 , S , R2 , G2 , M1 , ||<br>
+                  <em>Sahitya:</em> Vi - ri - bo - - - ni - - - | ni - nne - - - ko - - - ||<br>
+                  <em>Guru Meettu Note:</em> Pull Chatusruti Dhaivatam from Panchamam fret on "ri-bo".
+                </div>
+                <div class="btn-group">
+                  <button type="button" class="btn btn--primary" data-load-track="Viriboni — Raga Bhairavi Ata Tala Varnam">
+                    <i class="fa-solid fa-play"></i> Load Audio Track
+                  </button>
+                  <button type="button" class="btn btn--outline" data-download-notation="Viriboni_Bhairavi_Ata_Tala_Varnam">
+                    <i class="fa-solid fa-file-pdf"></i> Download Notation Sheet
+                  </button>
+                </div>
+              </article>
+
+              <!-- Note 2: Ninnukori Varnam -->
+              <article class="academy-card" style="padding:var(--space-3);" data-filter-item data-category="varnam">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap;margin-bottom:0.75rem;">
+                  <div>
+                    <span class="tag tag--peacock">Tana Varnam • Raga Mohanam • Adi Tala</span>
+                    <h4 style="font-size:1.3rem;margin-top:0.35rem;">2. Ninnukori Yunnanura (Poochi Srinivasa Iyengar)</h4>
+                  </div>
+                  <label style="display:inline-flex;align-items:center;gap:0.5rem;font-weight:600;font-size:0.86rem;cursor:pointer;color:var(--peacock);">
+                    <input type="checkbox" data-lesson-check="lesson-ninnukori" checked> Mark as Practiced Today
+                  </label>
+                </div>
+                <div class="swara-notation-box" style="margin-bottom:1rem;">
+                  <strong>Pallavi (Adi Tala — 8 Beats):</strong><br>
+                  || G3 , G3 , | R2 , , , | S R2 G3 R2 | S D2 S R2 || G3 P G3 D2 | P G3 D2 P | G3 D2 P G3 | R2 S R2 G3 ||<br>
+                  <em>Sahitya:</em> Ni - nnu - | ko - - - | ri - - - | yu - nna - || nu - ra - | - - - - | ని - ખિ - | ಲ - லோ - ||
+                </div>
+                <div class="btn-group">
+                  <button type="button" class="btn btn--primary" data-load-track="Ninnukori — Raga Mohanam Adi Tala Varnam">
+                    <i class="fa-solid fa-play"></i> Load Audio Track
+                  </button>
+                  <button type="button" class="btn btn--outline" data-download-notation="Ninnukori_Mohanam_Adi_Varnam">
+                    <i class="fa-solid fa-file-pdf"></i> Download Notation Sheet
+                  </button>
+                </div>
+              </article>
+
+              <!-- Note 3: Vatapi Ganapatim Kriti -->
+              <article class="academy-card" style="padding:var(--space-3);" data-filter-item data-category="kriti">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap;margin-bottom:0.75rem;">
+                  <div>
+                    <span class="tag">Trinity Kriti • Raga Hamsadhwani • Adi Tala</span>
+                    <h4 style="font-size:1.3rem;margin-top:0.35rem;">3. Vatapi Ganapatim Bhaje’ham (Muthuswami Dikshitar)</h4>
+                  </div>
+                  <label style="display:inline-flex;align-items:center;gap:0.5rem;font-weight:600;font-size:0.86rem;cursor:pointer;color:var(--peacock);">
+                    <input type="checkbox" data-lesson-check="lesson-vatapi"> Mark as Practiced Today
+                  </label>
+                </div>
+                <div class="swara-notation-box" style="margin-bottom:1rem;">
+                  <strong>Pallavi (Sangatisparsam I &amp; II):</strong><br>
+                  || G3 , R2 , | G3 , P , | N3 P G3 R2 | S N3 R2 S ||<br>
+                  <em>Sahitya:</em> Va - ta - | pi - Ga - | na - pa - | tim - Bha - je ||
+                </div>
+                <div class="btn-group">
+                  <button type="button" class="btn btn--primary" data-load-track="Vatapi Ganapatim — Raga Hamsadhwani Kriti">
+                    <i class="fa-solid fa-play"></i> Load Audio Track
+                  </button>
+                  <button type="button" class="btn btn--outline" data-download-notation="Vatapi_Ganapatim_Hamsadhwani_Kriti">
+                    <i class="fa-solid fa-file-pdf"></i> Download Notation Sheet
+                  </button>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <!-- Personal Sadhana Diary Notes Box -->
+          <div class="dash-widget">
+            <div class="dash-widget__header">
+              <h3>Personal Sadhana Diary &amp; Fret-Position Notes</h3>
+              <span class="tag tag--gold" id="sadhanaDiaryStatus">Auto-persisted in browser</span>
+            </div>
+            <div class="form-group">
+              <label for="sadhanaDiaryInput" class="form-label">Write your daily practice reflections, tempo targets, or questions for next class:</label>
+              <textarea id="sadhanaDiaryInput" class="form-control" rows="4">Practiced Viriboni 1st and 2nd speed at 64 BPM. Need to ask Meenakshi Amma about the left-hand finger change between Charanam swara 3 and 4.</textarea>
+            </div>
+            <button type="button" class="btn btn--gold" id="sadhanaDiarySaveBtn">
+              <i class="fa-solid fa-floppy-disk"></i> Save Diary Note
+            </button>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             PANEL 5: FEES & PAYMENTS
+             ================================================================== -->
+        <section class="dash-panel" data-dash-panel="fees" aria-label="Fees and Payments">
+          <div class="dash-widget" style="margin-bottom:var(--space-4);">
+            <div class="dash-widget__header">
+              <div>
+                <h3>Current Tuition Invoice (#INV-2026-114)</h3>
+                <p style="font-size:0.85rem;color:var(--text-secondary);">Plan: Sadhana 1-on-1 Individual Veena Mentorship (8 Sessions / Month)</p>
+              </div>
+              <span class="tag" id="pendingInvoiceStatus">Due 20 Nov 2026 — ₹4,800</span>
+            </div>
+            <div class="btn-group">
+              <button type="button" class="btn btn--primary" data-modal-open="payNowModal">
+                <i class="fa-solid fa-lock"></i> Pay Now (UPI / Stripe / PayPal)
+              </button>
+              <button type="button" class="btn btn--outline" data-download-notation="Invoice_INV_2026_114">
+                <i class="fa-solid fa-file-invoice"></i> Download Invoice PDF
+              </button>
+            </div>
+          </div>
+
+          <div class="dash-widget">
+            <div class="dash-widget__header">
+              <h3>Payment History &amp; Official Receipts</h3>
+              <span class="tag tag--peacock">All Prior Quarters Cleared</span>
+            </div>
+            <div class="table-responsive">
+              <table class="academy-table" aria-label="Payment History Table">
+                <thead>
+                  <tr>
+                    <th>Invoice #</th>
+                    <th>Date Paid</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>Method</th>
+                    <th>Status</th>
+                    <th>Receipt</th>
+                  </tr>
+                </thead>
+                <tbody id="paymentHistoryBody">
+                  <tr>
+                    <td><strong>#INV-2026-098</strong></td>
+                    <td>02 Oct 2026</td>
+                    <td>Sadhana 1-on-1 Veena Mentorship (Oct)</td>
+                    <td><strong>₹4,800</strong></td>
+                    <td>BHIM UPI</td>
+                    <td><span class="tag tag--peacock">Paid</span></td>
+                    <td><button type="button" class="icon-toggle-btn" style="width:auto;padding:0 0.75rem;height:36px;" data-download-notation="Receipt_INV_2026_098"><i class="fa-solid fa-file-arrow-down"></i>&nbsp;Receipt</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>#INV-2026-081</strong></td>
+                    <td>03 Sep 2026</td>
+                    <td>Sadhana 1-on-1 Veena Mentorship (Sep)</td>
+                    <td><strong>₹4,800</strong></td>
+                    <td>Stripe Card</td>
+                    <td><span class="tag tag--peacock">Paid</span></td>
+                    <td><button type="button" class="icon-toggle-btn" style="width:auto;padding:0 0.75rem;height:36px;" data-download-notation="Receipt_INV_2026_081"><i class="fa-solid fa-file-arrow-down"></i>&nbsp;Receipt</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             PANEL 6: PROGRESS & CERTIFICATES
+             ================================================================== -->
+        <section class="dash-panel" data-dash-panel="progress" aria-label="Progress and Certificates">
+          <div class="level-tracker">
+            <div class="level-stage is-completed">
+              <span class="tag tag--peacock">Completed (96%)</span>
+              <h3 style="margin-top:0.5rem;">1. Prarambha</h3>
+              <p style="font-size:0.82rem;color:var(--text-secondary);">Sarali, Janta, 7 Alankarams &amp; 6 Geethams</p>
+            </div>
+            <div class="level-stage is-current">
+              <span class="tag tag--gold">In Progress (72%)</span>
+              <h3 style="margin-top:0.5rem;">2. Madhyama</h3>
+              <p style="font-size:0.82rem;color:var(--text-secondary);">10 Tana Varnams &amp; 12 Kriti Repertoire</p>
+            </div>
+            <div class="level-stage">
+              <span class="tag">Upcoming</span>
+              <h3 style="margin-top:0.5rem;">3. Praveena</h3>
+              <p style="font-size:0.82rem;color:var(--text-secondary);">Pancharatna Kritis &amp; Manodharma Alapana</p>
+            </div>
+            <div class="level-stage">
+              <span class="tag">Diploma Goal</span>
+              <h3 style="margin-top:0.5rem;">4. Vidwat</h3>
+              <p style="font-size:0.82rem;color:var(--text-secondary);">Raga Tanam Pallavi &amp; Solo Arangetram</p>
+            </div>
+          </div>
+
+          <div class="dash-widget">
+            <div class="dash-widget__header">
+              <h3>Graded Jury Examination Results &amp; Certificates</h3>
+              <button type="button" class="btn btn--gold" data-modal-open="certificatePreviewModal">
+                <i class="fa-solid fa-certificate"></i> Preview Prarambha Certificate
+              </button>
+            </div>
+            <div class="table-responsive">
+              <table class="academy-table" aria-label="Exam Results Table">
+                <thead>
+                  <tr>
+                    <th>Exam Tier</th>
+                    <th>Jury Date</th>
+                    <th>Sruti &amp; Meettu (40)</th>
+                    <th>Laya &amp; Thala (30)</th>
+                    <th>Lakshana Viva (30)</th>
+                    <th>Total Grade</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Prarambha Level I</strong></td>
+                    <td>14 Apr 2025</td>
+                    <td>38 / 40</td>
+                    <td>29 / 30</td>
+                    <td>29 / 30</td>
+                    <td><span class="tag tag--peacock">96% — Distinction</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Madhyama Mid-Term</strong></td>
+                    <td>18 May 2026</td>
+                    <td>37 / 40</td>
+                    <td>28 / 30</td>
+                    <td>28 / 30</td>
+                    <td><span class="tag tag--gold">93% — First Class w/ Honours</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             PANEL 7: MESSAGES (GURU-SHISHYA CHAT INBOX)
+             ================================================================== -->
+        <section class="dash-panel" data-dash-panel="messages" aria-label="Messages Inbox">
+          <div class="chat-container">
+            <div class="chat-threads">
+              <button type="button" class="chat-thread-item is-active">
+                <strong>Vidushi Dr. Meenakshi Sundaram</strong>
+                <span style="font-size:0.78rem;color:var(--text-secondary);">Principal Vainika • Online</span>
+              </button>
+              <button type="button" class="chat-thread-item">
+                <strong>Vidwan S. Raghavan Iyer</strong>
+                <span style="font-size:0.78rem;color:var(--text-secondary);">Manodharma Faculty</span>
+              </button>
+              <button type="button" class="chat-thread-item">
+                <strong>Mylapore Luthier &amp; Office</strong>
+                <span style="font-size:0.78rem;color:var(--text-secondary);">String &amp; Melam Support</span>
+              </button>
+            </div>
+
+            <div class="chat-window">
+              <div class="chat-messages" id="dashChatMessages" aria-live="polite">
+                <div class="chat-bubble chat-bubble--guru">
+                  <strong>Vidushi Dr. Meenakshi Sundaram</strong>
+                  <p>Asirvatham Ananya! Your second-speed rendering of Ninnukori Varnam in yesterday’s class had lovely clarity on the Dhaivatam fret. For Wednesday, please practice the first two Ettugada Swaras of Viriboni in first speed.</p>
+                  <small style="color:var(--text-muted);font-size:0.72rem;">Yesterday, 7:45 PM IST</small>
+                </div>
+                <div class="chat-bubble chat-bubble--student">
+                  <p>Namaskaram Amma! Thank you so much. I have downloaded the Viriboni notation sheet and practiced with the 0.75x audio track today.</p>
+                  <small style="opacity:0.8;font-size:0.72rem;">Today, 8:15 AM IST</small>
+                </div>
+              </div>
+
+              <form class="chat-input-bar" id="dashChatForm">
+                <label for="dashChatInput" class="sr-only">Write a message to your Guru</label>
+                <input type="text" id="dashChatInput" class="form-control" placeholder="Write a message or raga question to Vidushi Dr. Meenakshi..." required>
+                <button type="submit" class="btn btn--primary" style="min-width:140px;">
+                  <i class="fa-solid fa-paper-plane"></i> Send
+                </button>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             PANEL 8: PROFILE & SETTINGS
+             ================================================================== -->
+        <section class="dash-panel" data-dash-panel="settings" aria-label="Profile and Settings">
+          <div class="dash-widget">
+            <div class="dash-widget__header">
+              <h3>Disciple Profile, Sruti Pitch &amp; Portal Preferences</h3>
+              <span class="tag tag--peacock" id="dashProfileFeedback" style="display:none;"></span>
+            </div>
+
+            <form id="dashProfileForm">
+              <div class="card-grid-2">
+                <div class="form-group">
+                  <label class="form-label" for="profileNameInput">Student Full Name</label>
+                  <input type="text" id="profileNameInput" class="form-control" value="Ananya Venkataraman" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="profileEmailInput">Registered Email</label>
+                  <input type="email" id="profileEmailInput" class="form-control" value="ananya.v@student.nadamveena.org" required>
+                </div>
+              </div>
+
+              <div class="card-grid-2">
+                <div class="form-group">
+                  <label class="form-label" for="profileSrutiInput">Assigned Veena / Vocal Sruti Pitch (Kattai)</label>
+                  <select id="profileSrutiInput" class="form-control">
+                    <option value="D (2 Kattai)">D (2 Kattai — 146.8 Hz)</option>
+                    <option value="D# (2.5 Kattai)" selected>D# (2.5 Kattai — 155.6 Hz)</option>
+                    <option value="E (3 Kattai)">E (3 Kattai — 164.8 Hz)</option>
+                    <option value="G (5 Kattai)">G (5 Kattai — 196.0 Hz)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="profilePasswordInput">Update Portal Password (Optional)</label>
+                  <input type="password" id="profilePasswordInput" class="form-control" placeholder="Leave blank to keep current password">
+                </div>
+              </div>
+
+              <div style="display:flex;flex-direction:column;gap:0.65rem;margin-block:1rem;font-size:0.9rem;">
+                <label style="display:flex;align-items:center;gap:0.6rem;cursor:pointer;">
+                  <input type="checkbox" checked> Send WhatsApp &amp; Email reminder 2 hours before my scheduled class
+                </label>
+                <label style="display:flex;align-items:center;gap:0.6rem;cursor:pointer;">
+                  <input type="checkbox" checked> Notify me when my Guru uploads a new Varnam or Kriti notation PDF
+                </label>
+              </div>
+
+              <div class="btn-group">
+                <button type="submit" class="btn btn--primary">Save Profile Changes</button>
+                <button type="button" class="btn btn--outline" data-action="toggle-theme">Toggle Dark / Light Theme</button>
+                <button type="button" class="btn btn--outline" data-action="toggle-rtl">Toggle RTL / LTR Layout</button>
+              </div>
+            </form>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MODAL 1: PAY NOW (STRIPE / PAYPAL / UPI)
+       ======================================================================== -->
+  <div class="modal-backdrop" id="payNowModal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="payModalHeading">
+    <div class="modal-dialog">
+      <button type="button" class="modal-close" data-modal-close aria-label="Close modal">
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
+      <span class="tag tag--gold">Invoice #INV-2026-114</span>
+      <h3 id="payModalHeading" style="margin-block:0.4rem;">Complete Tuition Payment — ₹4,800</h3>
+      <p style="font-size:0.88rem;color:var(--text-secondary);margin-bottom:1rem;">Select your preferred gateway below to clear your November–December Sadhana 1-on-1 invoice.</p>
+
+      <div style="background:var(--bg-surface);padding:1rem;border-radius:12px;border:1px solid var(--border-warm);margin-bottom:1.25rem;">
+        <label style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.6rem;font-weight:600;cursor:pointer;">
+          <input type="radio" name="dashPayMethod" checked> Instant BHIM UPI / GPay (`nadamveena@indianbank`)
+        </label>
+        <label style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.6rem;font-weight:600;cursor:pointer;">
+          <input type="radio" name="dashPayMethod"> Stripe Credit / Debit Card (Visa / Mastercard)
+        </label>
+        <label style="display:flex;align-items:center;gap:0.6rem;font-weight:600;cursor:pointer;">
+          <input type="radio" name="dashPayMethod"> PayPal International Express
+        </label>
+      </div>
+
+      <button type="button" class="btn btn--primary" id="confirmFeePaymentBtn" style="width:100%;">
+        <i class="fa-solid fa-circle-check"></i> Authorize ₹4,800 &amp; Generate Receipt
+      </button>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MODAL 2: CERTIFICATE PREVIEW
+       ======================================================================== -->
+  <div class="modal-backdrop" id="certificatePreviewModal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="certModalHeading">
+    <div class="modal-dialog" style="max-width:680px;text-align:center;border:4px double var(--turmeric);">
+      <button type="button" class="modal-close" data-modal-close aria-label="Close certificate preview">
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
+      <span class="tamil-accent">நாதம் வீணை அகாடமி • சான்றிதழ்</span>
+      <h3 id="certModalHeading" style="font-size:1.85rem;color:var(--kumkum);margin-top:0.25rem;">Nadam Veena Academy — Mylapore, Chennai</h3>
+      <p style="font-size:0.82rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:1.25rem;">Conservatory of Thanjavur Saraswati Veena &amp; Carnatic Music</p>
+      <p style="font-size:0.95rem;">This is to certify that</p>
+      <h4 style="font-family:var(--font-heading);font-size:2rem;color:var(--text-primary);margin-block:0.4rem;" data-user-name>Ananya Venkataraman</h4>
+      <p style="font-size:0.92rem;color:var(--text-secondary);max-width:520px;margin:0 auto 1.25rem;">
+        has satisfactorily completed the <strong>Prarambha (Foundation Saraswati Veena)</strong> Practical &amp; Lakshana Jury Examination with <strong>Distinction (96%)</strong> in the Thanjavur Gayaki Sampradaya.
+      </p>
+      <div style="display:flex;justify-content:space-around;align-items:center;padding-top:1rem;border-top:1px solid var(--border-warm);font-size:0.82rem;">
+        <div><strong>Vidushi Dr. Meenakshi Sundaram</strong><br>Principal Vainika</div>
+        <div><strong>Seal of the Academy</strong><br>Cert #NVA-2025-419</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/dashboard.js"></script>
+</body>
+</html>

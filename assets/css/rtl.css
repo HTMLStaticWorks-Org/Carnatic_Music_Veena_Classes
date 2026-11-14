@@ -1,0 +1,93 @@
+/* ==========================================================================
+   NADAM VEENA ACADEMY — RIGHT-TO-LEFT SUPPORT (rtl.css)
+   Activated via [dir="rtl"] on <html>
+   ========================================================================== */
+
+html[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+html[dir="rtl"] .dropdown-menu {
+  left: auto;
+  right: 0;
+}
+
+html[dir="rtl"] .mobile-drawer {
+  right: auto;
+  left: 0;
+  border-left: none;
+  border-right: 2px solid var(--turmeric);
+  transform: translateX(-100%);
+}
+html[dir="rtl"] .mobile-drawer.is-open {
+  transform: translateX(0);
+}
+
+html[dir="rtl"] .mobile-drawer__sub {
+  padding-left: 0;
+  padding-right: 1rem;
+  border-left: none;
+  border-right: 2px solid var(--border-gold);
+  margin-left: 0;
+  margin-right: 0.9rem;
+}
+
+html[dir="rtl"] .hero-finder-field {
+  border-right: none;
+  border-left: 1px solid var(--border-warm);
+}
+html[dir="rtl"] .hero-finder-field:last-of-type {
+  border-left: none;
+}
+
+html[dir="rtl"] .card-date-badge {
+  right: auto;
+  left: 14px;
+}
+
+html[dir="rtl"] .form-group,
+html[dir="rtl"] .accordion-trigger,
+html[dir="rtl"] .academy-table th,
+html[dir="rtl"] .academy-table td {
+  text-align: right;
+}
+
+html[dir="rtl"] .footer-links a:hover {
+  transform: translateX(-4px);
+}
+
+html[dir="rtl"] .floating-demo-widget {
+  right: auto;
+  left: 24px;
+  align-items: flex-start;
+}
+
+html[dir="rtl"] .modal-close {
+  right: auto;
+  left: 16px;
+}
+
+html[dir="rtl"] .fa-arrow-right,
+html[dir="rtl"] .fa-chevron-right,
+html[dir="rtl"] .fa-angle-right {
+  transform: scaleX(-1);
+}
+
+/* Preserve strict centering on Tablet & Mobile even in RTL */
+@media (max-width: 1024px) {
+  html[dir="rtl"] h1,
+  html[dir="rtl"] h2,
+  html[dir="rtl"] h3,
+  html[dir="rtl"] h4,
+  html[dir="rtl"] .tag,
+  html[dir="rtl"] .badge,
+  html[dir="rtl"] .section-header,
+  html[dir="rtl"] .card-body,
+  html[dir="rtl"] .card-title,
+  html[dir="rtl"] .card-text,
+  html[dir="rtl"] .card-meta,
+  html[dir="rtl"] .card-footer {
+    text-align: center !important;
+  }
+}

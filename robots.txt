@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /pages/student-dashboard.html
+Disallow: /pages/instructor-dashboard.html
+
+Sitemap: https://nadamveena.org/sitemap.xml

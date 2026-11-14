@@ -1,0 +1,104 @@
+/* ==========================================================================
+   NADAM VEENA ACADEMY — DARK MODE STYLESHEET (dark-mode.css)
+   Activated via [data-theme="dark"] on <html>
+   Warm Rosewood & Concert-Stage Nocturnal Palette (WCAG 2.1 AA Compliant)
+   ========================================================================== */
+
+html[data-theme="dark"] {
+  --bg-primary: #140905;
+  --bg-secondary: #1D0D08;
+  --bg-surface: #25110B;
+  --bg-surface-elevated: #2E150D;
+  --bg-glass: rgba(29, 13, 8, 0.88);
+  --bg-dark-section: #0F0603;
+
+  --text-primary: #F6EBD9;
+  --text-secondary: #DECAB0;
+  --text-muted: #B99E80;
+  --text-on-dark: #F6EBD9;
+  --text-on-dark-muted: #D7C2A3;
+
+  --border-warm: rgba(224, 165, 38, 0.22);
+  --border-gold: rgba(224, 165, 38, 0.45);
+
+  --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.42);
+  --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.68);
+}
+
+html[data-theme="dark"] body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+html[data-theme="dark"] .brand-logo__name {
+  color: var(--sandal);
+}
+html[data-theme="dark"] .brand-logo__tagline {
+  color: var(--turmeric-light);
+}
+
+html[data-theme="dark"] .nav-link:hover,
+html[data-theme="dark"] .nav-link.is-active {
+  color: var(--turmeric-light);
+  background: rgba(224, 165, 38, 0.14);
+}
+
+html[data-theme="dark"] .tag,
+html[data-theme="dark"] .badge {
+  background: rgba(224, 165, 38, 0.16);
+  color: var(--turmeric-light);
+  border-color: rgba(224, 165, 38, 0.4);
+}
+
+html[data-theme="dark"] .tag--peacock,
+html[data-theme="dark"] .badge--peacock {
+  background: rgba(22, 126, 123, 0.25);
+  color: #7CE3DF;
+  border-color: rgba(124, 227, 223, 0.35);
+}
+
+html[data-theme="dark"] .tamil-accent {
+  color: var(--turmeric-light);
+}
+
+html[data-theme="dark"] .btn--outline {
+  color: var(--turmeric-light);
+  border-color: var(--turmeric);
+}
+html[data-theme="dark"] .btn--outline:hover {
+  background: var(--turmeric);
+  color: var(--ink);
+}
+
+html[data-theme="dark"] .form-control {
+  background: #1A0B07;
+  color: var(--sandal);
+  border-color: rgba(224, 165, 38, 0.3);
+}
+html[data-theme="dark"] .form-control::placeholder {
+  color: #9A7E63;
+}
+
+html[data-theme="dark"] .icon-mandala-wrap {
+  background: rgba(224, 165, 38, 0.15);
+  color: var(--turmeric-light);
+}
+
+html[data-theme="dark"] .tab-btn {
+  background: var(--bg-surface);
+  color: var(--sandal);
+}
+html[data-theme="dark"] .tab-btn.is-active,
+html[data-theme="dark"] .tab-btn:hover {
+  background: var(--gold-gradient);
+  color: var(--ink);
+  border-color: var(--turmeric);
+}
+
+html[data-theme="dark"] .skeleton {
+  background: rgba(224, 165, 38, 0.08);
+}
+html[data-theme="dark"] .skeleton::after {
+  background: linear-gradient(90deg, transparent, rgba(224, 165, 38, 0.18), transparent);
+}

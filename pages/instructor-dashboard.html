@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acharya Faculty Portal | Nadam Veena Academy</title>
+  <meta name="description" content="Acharya Faculty & Guru Dashboard at Nadam Veena Academy: manage disciples, mark live class attendance, publish archival swara notations, and review monthly honorarium statements.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Noto+Serif+Tamil:wght@500;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+  <link rel="stylesheet" href="../assets/css/dashboard.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to Acharya portal content</a>
+
+  <div class="dashboard-layout">
+    <!-- ======================================================================
+         COLLAPSIBLE SIDEBAR NAVIGATION (ACHARYA DESK)
+         ====================================================================== -->
+    <aside class="dashboard-sidebar" aria-label="Instructor Dashboard Sidebar">
+      <div class="dashboard-sidebar__brand">
+        <a href="../index.html" class="brand-logo">
+          <span class="brand-logo__mark"><i class="fa-solid fa-music" aria-hidden="true"></i></span>
+          <span class="brand-logo__text">
+            <span class="brand-logo__name" style="color:var(--sandal);font-size:1.15rem;">Nadam Acharya</span>
+            <span class="brand-logo__tagline" style="color:var(--turmeric-light);">Guru Peetham Desk</span>
+          </span>
+        </a>
+      </div>
+
+      <nav class="dashboard-nav" aria-label="Instructor Sections">
+        <button type="button" class="dashboard-nav__btn is-active" data-dash-nav="inst-overview" data-dash-title="Acharya Peetham Overview">
+          <i class="fa-solid fa-compass" aria-hidden="true"></i> Overview
+        </button>
+        <button type="button" class="dashboard-nav__btn" data-dash-nav="inst-students" data-dash-title="My Disciples &amp; Sadhana Progress">
+          <i class="fa-solid fa-users-line" aria-hidden="true"></i> My Students <span class="tag tag--gold" style="margin-left:auto;padding:0.1rem 0.5rem;font-size:0.7rem;">42</span>
+        </button>
+        <button type="button" class="dashboard-nav__btn" data-dash-nav="inst-schedule" data-dash-title="Teaching Schedule &amp; Attendance">
+          <i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Schedule &amp; Attendance
+        </button>
+        <button type="button" class="dashboard-nav__btn" data-dash-nav="inst-notes" data-dash-title="Publish Swara Notations &amp; Varnams">
+          <i class="fa-solid fa-file-waveform" aria-hidden="true"></i> Upload Practice Notes
+        </button>
+        <button type="button" class="dashboard-nav__btn" data-dash-nav="inst-earnings" data-dash-title="Honorarium &amp; Guru Dakshina Statements">
+          <i class="fa-solid fa-indian-rupee-sign" aria-hidden="true"></i> Earnings &amp; Honorarium
+        </button>
+      </nav>
+
+      <div class="dashboard-sidebar__footer">
+        <a href="student-dashboard.html" class="dashboard-nav__btn" style="font-size:0.82rem;">
+          <i class="fa-solid fa-user-graduate" aria-hidden="true"></i> Switch to Student View
+        </a>
+        <a href="login.html" class="dashboard-nav__btn" data-action="logout" style="color:#FF9B9B;">
+          <i class="fa-solid fa-right-from-bracket" style="color:#FF9B9B;" aria-hidden="true"></i> Logout
+        </a>
+      </div>
+    </aside>
+
+    <!-- ======================================================================
+         MAIN ACHARYA DASHBOARD AREA
+         ====================================================================== -->
+    <div class="dashboard-main">
+      <!-- Top Bar -->
+      <header class="dashboard-topbar">
+        <div class="dashboard-topbar__left">
+          <button type="button" class="sidebar-toggle-btn" data-action="toggle-dash-sidebar" aria-label="Toggle sidebar menu">
+            <i class="fa-solid fa-bars" aria-hidden="true"></i>
+          </button>
+          <div>
+            <span class="tamil-accent" style="font-size:0.78rem;">ஆச்சார்ய பீடம் • குரு தளம்</span>
+            <h1 id="dashTopbarTitle" style="font-size:1.45rem;line-height:1.15;">Acharya Peetham Overview</h1>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:0.65rem;flex-wrap:wrap;">
+          <button type="button" class="sruti-pill" data-action="toggle-drone" aria-pressed="false" title="Toggle reference Tanpura drone">
+            <span class="sruti-pill__dot" aria-hidden="true"></span>
+            <span>Tanpura Sruti (D#)</span>
+          </button>
+          <button type="button" class="icon-toggle-btn" data-action="toggle-rtl" title="Toggle RTL layout">RTL</button>
+          <button type="button" class="icon-toggle-btn" data-action="toggle-theme" title="Toggle Dark/Light mode" aria-label="Toggle theme">
+            <i class="fa-solid fa-moon" aria-hidden="true"></i>
+          </button>
+          <div class="dashboard-user-pill">
+            <img src="../assets/images/dashboard-instructor-avatar.webp" alt="Portrait of Vidushi Dr. Meenakshi Sundaram" width="36" height="36">
+            <div style="text-align:left;line-height:1.2;">
+              <strong style="font-size:0.85rem;display:block;" data-instructor-name>Vidushi Dr. Meenakshi</strong>
+              <small style="font-size:0.72rem;color:var(--text-muted);">Principal Veena Acharya</small>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main id="main-content" class="dashboard-content">
+        <!-- ==================================================================
+             PANEL 1: ACHARYA OVERVIEW
+             ================================================================== -->
+        <section class="dash-panel is-active" data-dash-panel="inst-overview" aria-label="Instructor Overview">
+          <!-- Margazhi Jury Banner -->
+          <div class="fee-alert-banner" style="border-color:var(--turmeric);background:linear-gradient(135deg, rgba(224, 165, 38, 0.12), rgba(163, 23, 30, 0.08));">
+            <div style="display:flex;align-items:center;gap:1rem;">
+              <i class="fa-solid fa-award" style="font-size:1.6rem;color:var(--turmeric-dark);" aria-hidden="true"></i>
+              <div>
+                <strong style="display:block;font-size:1rem;">Margazhi Vidwat Utsavam — Pancharatna Goshti Rehearsal This Saturday</strong>
+                <span style="font-size:0.85rem;color:var(--text-secondary);">18 senior Veena &amp; Vocal disciples are confirmed for the 4:30 PM Sannidhi Hall rehearsal in Mylapore.</span>
+              </div>
+            </div>
+            <div class="btn-group">
+              <button type="button" class="btn btn--primary" data-dash-jump="inst-schedule">Mark Today's Attendance</button>
+              <button type="button" class="btn btn--outline" data-dash-jump="inst-notes">Publish Notation</button>
+            </div>
+          </div>
+
+          <!-- 4 Summary Stat Cards -->
+          <div class="dash-stats-grid">
+            <div class="dash-stat-card">
+              <span class="tag tag--gold">Today's Gurukulam Sessions</span>
+              <h2 style="font-size:1.35rem;margin-top:0.25rem;">5 Classes Scheduled</h2>
+              <p style="font-size:0.84rem;color:var(--text-secondary);">Next: Ananya Venkataraman (6:30 PM IST)</p>
+            </div>
+
+            <div class="dash-stat-card">
+              <span class="tag tag--peacock">Active Disciples</span>
+              <h2 style="font-size:1.35rem;margin-top:0.25rem;">42 Shishyas</h2>
+              <p style="font-size:0.84rem;color:var(--text-secondary);">16 Mylapore Campus • 26 Global Online</p>
+            </div>
+
+            <div class="dash-stat-card">
+              <span class="tag">Pending Jury Reviews</span>
+              <h2 style="font-size:1.35rem;margin-top:0.25rem;">4 Varnam Audits</h2>
+              <p style="font-size:0.84rem;color:var(--text-secondary);">Madhyama Phase II Practical Submissions</p>
+            </div>
+
+            <div class="dash-stat-card">
+              <span class="tag tag--gold">Nov Honorarium Accrued</span>
+              <h2 style="font-size:1.35rem;margin-top:0.25rem;">₹1,48,500</h2>
+              <p style="font-size:0.84rem;color:var(--text-secondary);">Disbursement scheduled for 30 Nov 2026</p>
+            </div>
+          </div>
+
+          <!-- Split Overview Grid: Today's Queue + Quick Note Publisher -->
+          <div class="grid-2">
+            <div class="dash-card">
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:1rem;">
+                <div>
+                  <span class="tag tag--gold">Live Teaching Desk</span>
+                  <h2 style="font-size:1.35rem;margin-top:0.25rem;">Today's Session Roster</h2>
+                </div>
+                <button type="button" class="btn btn--outline" data-dash-jump="inst-schedule">Full Schedule</button>
+              </div>
+
+              <div class="table-scroll">
+                <table class="comparison-table">
+                  <thead>
+                    <tr>
+                      <th>Time (IST)</th>
+                      <th>Disciple / Batch</th>
+                      <th>Focus Piece</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>05:00 PM</strong></td>
+                      <td>Prarambha Batch A (4 Students)</td>
+                      <td>Mayamalavagowla Janta Varisai</td>
+                      <td><span class="tag tag--peacock" data-attendance-toggle title="Click to cycle status" style="cursor:pointer;">Present</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>06:30 PM</strong></td>
+                      <td>Ananya Venkataraman (1-on-1)</td>
+                      <td>Viriboni — Bhairavi Ata Tala Varnam</td>
+                      <td><span class="tag tag--peacock" data-attendance-toggle title="Click to cycle status" style="cursor:pointer;">Present</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>07:45 PM</strong></td>
+                      <td>Raghavan S. (Toronto Online)</td>
+                      <td>Brochevarevarura — Khamas Kriti</td>
+                      <td><span class="tag tag--gold" data-attendance-toggle title="Click to cycle status" style="cursor:pointer;">Rescheduled</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>08:45 PM</strong></td>
+                      <td>Harini Sundar (Vidwat Track)</td>
+                      <td>Todi Ragam Tanam Pallavi</td>
+                      <td><span class="tag tag--peacock" data-attendance-toggle title="Click to cycle status" style="cursor:pointer;">Present</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p style="font-size:0.78rem;color:var(--text-muted);margin-top:0.75rem;">
+                <i class="fa-solid fa-hand-pointer"></i> Tip: Click any status badge above to toggle between <strong>Present</strong>, <strong>Rescheduled</strong>, and <strong>Absent</strong>.
+              </p>
+            </div>
+
+            <div class="dash-card">
+              <span class="tag tag--peacock">Recent Practical Submissions</span>
+              <h2 style="font-size:1.35rem;margin-top:0.25rem;margin-bottom:0.75rem;">Shishya Audio Check-Ins</h2>
+              <p style="font-size:0.88rem;color:var(--text-secondary);margin-bottom:1.15rem;">
+                Review recorded Sadhana excerpts submitted by 1-on-1 mentorship disciples before their next live class.
+              </p>
+
+              <div style="display:flex;flex-direction:column;gap:0.85rem;">
+                <div style="padding:0.95rem;border-radius:var(--radius-sm);background:var(--bg-elevated);border:1px solid var(--border-gold);display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;">
+                  <div>
+                    <strong style="display:block;font-size:0.92rem;">Ananya Venkataraman • Madhyama II</strong>
+                    <span style="font-size:0.8rem;color:var(--text-secondary);">Bhairavi Varnam — Charanam Chittaswaram (2nd Speed)</span>
+                  </div>
+                  <button type="button" class="btn btn--outline" data-action="play-raga-sample" data-raga="bhairavi" style="min-height:38px;padding:0.4rem 0.9rem;font-size:0.8rem;">
+                    <i class="fa-solid fa-volume-high"></i> Audition Scale
+                  </button>
+                </div>
+
+                <div style="padding:0.95rem;border-radius:var(--radius-sm);background:var(--bg-elevated);border:1px solid var(--border-gold);display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;">
+                  <div>
+                    <strong style="display:block;font-size:0.92rem;">Siddharth Narayanan • Uttama I</strong>
+                    <span style="font-size:0.8rem;color:var(--text-secondary);">Vatapi Ganapatim — Hamsadhwani Sangati 1 to 4</span>
+                  </div>
+                  <button type="button" class="btn btn--outline" data-action="play-raga-sample" data-raga="kalyani" style="min-height:38px;padding:0.4rem 0.9rem;font-size:0.8rem;">
+                    <i class="fa-solid fa-volume-high"></i> Audition Scale
+                  </button>
+                </div>
+
+                <div style="padding:0.95rem;border-radius:var(--radius-sm);background:var(--bg-elevated);border:1px solid var(--border-gold);display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;">
+                  <div>
+                    <strong style="display:block;font-size:0.92rem;">Meera Balasubramanian • Vidwat</strong>
+                    <span style="font-size:0.8rem;color:var(--text-secondary);">Shankarabharanam Ghanaraga Tanam (Ayitta &amp; Chakra)</span>
+                  </div>
+                  <button type="button" class="btn btn--outline" data-action="play-raga-sample" data-raga="shankarabharanam" style="min-height:38px;padding:0.4rem 0.9rem;font-size:0.8rem;">
+                    <i class="fa-solid fa-volume-high"></i> Audition Scale
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             PANEL 2: MY STUDENTS (DISCIPLE ROSTER)
+             ================================================================== -->
+        <section class="dash-panel" data-dash-panel="inst-students" aria-label="My Disciples Roster">
+          <div class="dash-card">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:1.25rem;">
+              <div>
+                <span class="tag tag--gold">Shishya Parampara Directory</span>
+                <h2 style="font-size:1.4rem;margin-top:0.25rem;">Active Disciples Under Your Guidance (42)</h2>
+              </div>
+              <button type="button" class="btn btn--primary" data-dash-jump="inst-notes">
+                <i class="fa-solid fa-plus"></i> Assign New Practice Note
+              </button>
+            </div>
+
+            <div class="table-scroll">
+              <table class="comparison-table">
+                <thead>
+                  <tr>
+                    <th>Student Name</th>
+                    <th>Grade Level</th>
+                    <th>Mode &amp; City</th>
+                    <th>Sruti Pitch</th>
+                    <th>Current Assigned Composition</th>
+                    <th>Sadhana Streak</th>
+                    <th>Notation Sheet</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Ananya Venkataraman</strong></td>
+                    <td><span class="tag tag--gold">Madhyama II</span></td>
+                    <td>Mylapore Campus</td>
+                    <td>D# (2.5 Kattai)</td>
+                    <td>Viriboni — Bhairavi Ata Tala Varnam</td>
+                    <td>14 Days</td>
+                    <td><button type="button" class="icon-toggle-btn" style="width:auto;padding:0 0.75rem;height:34px;" data-download-notation="Viriboni_Bhairavi_Varnam_Ananya"><i class="fa-solid fa-download"></i>&nbsp;Sheet</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Siddharth Narayanan</strong></td>
+                    <td><span class="tag tag--peacock">Uttama I</span></td>
+                    <td>Online (San Jose, USA)</td>
+                    <td>D (2 Kattai)</td>
+                    <td>Vatapi Ganapatim — Hamsadhwani Adi</td>
+                    <td>21 Days</td>
+                    <td><button type="button" class="icon-toggle-btn" style="width:auto;padding:0 0.75rem;height:34px;" data-download-notation="Vatapi_Ganapatim_Siddharth"><i class="fa-solid fa-download"></i>&nbsp;Sheet</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Harini Sundar</strong></td>
+                    <td><span class="tag">Vidwat (concert)</span></td>
+                    <td>Mylapore Campus</td>
+                    <td>E (3 Kattai)</td>
+                    <td>Kamalambam Bhajare — Kalyani Navavaranam</td>
+                    <td>38 Days</td>
+                    <td><button type="button" class="icon-toggle-btn" style="width:auto;padding:0 0.75rem;height:34px;" data-download-notation="Kamalambam_Bhajare_Harini"><i class="fa-solid fa-download"></i>&nbsp;Sheet</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Raghavan Subramanian</strong></td>
+                    <td><span class="tag tag--gold">Madhyama I</span></td>
+                    <td>Online (Toronto, Canada)</td>
+                    <td>C# (1.5 Kattai)</td>
+                    <td>Ninnukori — Mohanam Adi Tala Varnam</td>
+                    <td>9 Days</td>
+                    <td><button type="button" class="icon-toggle-btn" style="width:auto;padding:0 0.75rem;height:34px;" data-download-notation="Ninnukori_Mohanam_Raghavan"><i class="fa-solid fa-download"></i>&nbsp;Sheet</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Aarav &amp; Diya Krishnan</strong></td>
+                    <td><span class="tag tag--peacock">Prarambha II</span></td>
+                    <td>Online (London, UK)</td>
+                    <td>D# (2.5 Kattai)</td>
+                    <td>Sri Gananatha — Malahari Pillari Geetham</td>
+                    <td>12 Days</td>
+                    <td><button type="button" class="icon-toggle-btn" style="width:auto;padding:0 0.75rem;height:34px;" data-download-notation="Sri_Gananatha_Malahari_Geetham"><i class="fa-solid fa-download"></i>&nbsp;Sheet</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Meera Balasubramanian</strong></td>
+                    <td><span class="tag">Vidwat (Arangetram)</span></td>
+                    <td>Mylapore Campus</td>
+                    <td>D# (2.5 Kattai)</td>
+                    <td>Endaro Mahanubhavulu — Sri Raga Pancharatnam</td>
+                    <td>45 Days</td>
+                    <td><button type="button" class="icon-toggle-btn" style="width:auto;padding:0 0.75rem;height:34px;" data-download-notation="Endaro_Mahanubhavulu_Sri_Raga"><i class="fa-solid fa-download"></i>&nbsp;Sheet</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             PANEL 3: SCHEDULE & INTERACTIVE ATTENDANCE
+             ================================================================== -->
+        <section class="dash-panel" data-dash-panel="inst-schedule" aria-label="Schedule and Attendance">
+          <div class="dash-card">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:1.25rem;">
+              <div>
+                <span class="tag tag--peacock">Weekly Gurukulam Roster</span>
+                <h2 style="font-size:1.4rem;margin-top:0.25rem;">Class Schedule &amp; One-Click Attendance</h2>
+                <p style="font-size:0.86rem;color:var(--text-secondary);">Click any attendance badge to toggle status between <strong>Present</strong>, <strong>Rescheduled</strong>, and <strong>Absent</strong>.</p>
+              </div>
+            </div>
+
+            <div class="table-scroll">
+              <table class="comparison-table">
+                <thead>
+                  <tr>
+                    <th>Day &amp; Time (IST)</th>
+                    <th>Disciple / Batch</th>
+                    <th>Venue / Studio</th>
+                    <th>Syllabus Module</th>
+                    <th>Attendance Status (Click to Toggle)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Tue • 05:00 PM</strong></td>
+                    <td>Prarambha Batch A (4 Shishyas)</td>
+                    <td>Sannidhi Hall #1, Mylapore</td>
+                    <td>Sarali &amp; Janta Varisai (3rd Speed)</td>
+                    <td><span class="tag tag--peacock" data-attendance-toggle style="cursor:pointer;">Present</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Wed • 06:30 PM</strong></td>
+                    <td>Ananya Venkataraman</td>
+                    <td>1-on-1 Veena Chamber #2</td>
+                    <td>Bhairavi Ata Tala Varnam — Anupallavi</td>
+                    <td><span class="tag tag--peacock" data-attendance-toggle style="cursor:pointer;">Present</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Thu • 07:00 AM</strong></td>
+                    <td>Siddharth Narayanan (US Pacific)</td>
+                    <td>Dual-Cam HD Studio Link</td>
+                    <td>Vatapi Ganapatim — Neraval &amp; Kalpanaswaram</td>
+                    <td><span class="tag tag--peacock" data-attendance-toggle style="cursor:pointer;">Present</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Fri • 06:00 PM</strong></td>
+                    <td>Raghavan Subramanian (Toronto)</td>
+                    <td>Dual-Cam HD Studio Link</td>
+                    <td>Ninnukori Mohanam Varnam — Tisra Gati</td>
+                    <td><span class="tag tag--gold" data-attendance-toggle style="cursor:pointer;">Rescheduled</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Sat • 09:00 AM</strong></td>
+                    <td>Harini Sundar &amp; Meera B.</td>
+                    <td>Main Kalyana Mandapam</td>
+                    <td>Pancharatna Kriti &amp; Ghanaraga Tanam</td>
+                    <td><span class="tag tag--peacock" data-attendance-toggle style="cursor:pointer;">Present</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Sun • 04:30 PM</strong></td>
+                    <td>Aarav &amp; Diya Krishnan (UK)</td>
+                    <td>Dual-Cam HD Studio Link</td>
+                    <td>Malahari &amp; Kalyani Pillari Geethams</td>
+                    <td><span class="tag tag--peacock" data-attendance-toggle style="cursor:pointer;">Present</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             PANEL 4: UPLOAD PRACTICE NOTES
+             ================================================================== -->
+        <section class="dash-panel" data-dash-panel="inst-notes" aria-label="Publish Practice Notes">
+          <div class="grid-2">
+            <!-- Publish Form -->
+            <div class="dash-card">
+              <span class="tag tag--gold">Archival Swara Publisher</span>
+              <h2 style="font-size:1.35rem;margin-top:0.25rem;margin-bottom:0.5rem;">Upload Practice Notation for Disciples</h2>
+              <p style="font-size:0.86rem;color:var(--text-secondary);margin-bottom:1.25rem;">
+                Publish swara-sahitya manuscripts with right-hand meettu markings and gamaka annotations directly to student portals.
+              </p>
+
+              <form id="instructorUploadNoteForm" novalidate>
+                <div class="form-group">
+                  <label class="form-label" for="instNoteTitle">Composition Title &amp; Composer *</label>
+                  <input type="text" id="instNoteTitle" class="form-control" placeholder="e.g., Marivere Gati — Syama Sastri" required>
+                </div>
+
+                <div class="grid-2" style="gap:1rem;">
+                  <div class="form-group">
+                    <label class="form-label" for="instNoteRaga">Raga *</label>
+                    <input type="text" id="instNoteRaga" class="form-control" placeholder="e.g., Anandabhairavi" required>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="instNoteTala">Tala *</label>
+                    <select id="instNoteTala" class="form-select">
+                      <option value="Adi Tala (8 Beats)">Adi Tala (8 Beats)</option>
+                      <option value="Misra Chapu (3+4 Beats)">Misra Chapu (3+4 Beats)</option>
+                      <option value="Rupaka Tala (3 Beats)">Rupaka Tala (3 Beats)</option>
+                      <option value="Khanda Chapu (2+3 Beats)">Khanda Chapu (2+3 Beats)</option>
+                      <option value="Khanda Jati Ata Tala (14 Beats)">Khanda Jati Ata Tala (14 Beats)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="instNoteBatch">Assign to Student or Grade Batch *</label>
+                  <select id="instNoteBatch" class="form-select">
+                    <option value="Madhyama Batch (Varnam Level)">Madhyama Batch (Varnam Level)</option>
+                    <option value="Prarambha Batch (Foundational)">Prarambha Batch (Foundational)</option>
+                    <option value="Uttama Batch (Kriti &amp; Alapana)">Uttama Batch (Kriti &amp; Alapana)</option>
+                    <option value="Vidwat Concert Track">Vidwat Concert Track</option>
+                    <option value="Ananya Venkataraman (1-on-1)">Ananya Venkataraman (1-on-1)</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="instNoteSwaras">Pallavi Swara &amp; Meettu Extract</label>
+                  <textarea id="instNoteSwaras" class="form-textarea" rows="3" placeholder="| P , D P | M G R S | N S G R | G M P , || (Use underscore for Mandra Sthayi)"></textarea>
+                </div>
+
+                <div id="instructorUploadFeedback" class="tag tag--peacock" style="display:none;margin-bottom:1rem;padding:0.6rem 1rem;"></div>
+
+                <button type="submit" class="btn btn--primary" style="width:100%;">
+                  <i class="fa-solid fa-cloud-arrow-up"></i> Publish Notation to Student Portals
+                </button>
+              </form>
+            </div>
+
+            <!-- Recently Published Notations Table -->
+            <div class="dash-card">
+              <span class="tag tag--peacock">Published Library</span>
+              <h2 style="font-size:1.35rem;margin-top:0.25rem;margin-bottom:1rem;">Active Manuscripts in Student Portals</h2>
+
+              <div class="table-scroll">
+                <table class="comparison-table">
+                  <thead>
+                    <tr>
+                      <th>Composition</th>
+                      <th>Raga</th>
+                      <th>Tala</th>
+                      <th>Assigned To</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="instructorUploadedNotesBody">
+                    <tr>
+                      <td><strong>Viriboni (Ata Tala Varnam)</strong></td>
+                      <td>Bhairavi</td>
+                      <td>Khanda Jati Ata</td>
+                      <td>Madhyama Batch</td>
+                      <td><span class="tag tag--peacock">Live</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Ninnukori Varnam</strong></td>
+                      <td>Mohanam</td>
+                      <td>Adi Tala</td>
+                      <td>Prarambha &amp; Madhyama</td>
+                      <td><span class="tag tag--peacock">Live</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Vatapi Ganapatim Bhaje</strong></td>
+                      <td>Hamsadhwani</td>
+                      <td>Adi Tala</td>
+                      <td>Uttama Batch</td>
+                      <td><span class="tag tag--peacock">Live</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Endaro Mahanubhavulu</strong></td>
+                      <td>Sri Raga</td>
+                      <td>Adi Tala</td>
+                      <td>Vidwat Goshti</td>
+                      <td><span class="tag tag--peacock">Live</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             PANEL 5: EARNINGS & HONORARIUM
+             ================================================================== -->
+        <section class="dash-panel" data-dash-panel="inst-earnings" aria-label="Honorarium and Earnings">
+          <div class="dash-stats-grid" style="margin-bottom:1.5rem;">
+            <div class="dash-stat-card">
+              <span class="tag tag--gold">November 2026 Accrued</span>
+              <h2 style="font-size:1.5rem;margin-top:0.25rem;">₹1,48,500</h2>
+              <p style="font-size:0.82rem;color:var(--text-secondary);">34 One-on-One + 8 Group Sessions</p>
+            </div>
+            <div class="dash-stat-card">
+              <span class="tag tag--peacock">October 2026 Disbursed</span>
+              <h2 style="font-size:1.5rem;margin-top:0.25rem;">₹1,52,000</h2>
+              <p style="font-size:0.82rem;color:var(--text-secondary);">NEFT Ref #HDFC2610319842</p>
+            </div>
+            <div class="dash-stat-card">
+              <span class="tag">Sabha Lecture-Dem Stipend</span>
+              <h2 style="font-size:1.5rem;margin-top:0.25rem;">₹25,000</h2>
+              <p style="font-size:0.82rem;color:var(--text-secondary);">Margazhi Academic Chair Grant</p>
+            </div>
+            <div class="dash-stat-card">
+              <span class="tag tag--gold">FY 2026–27 Cumulative</span>
+              <h2 style="font-size:1.5rem;margin-top:0.25rem;">₹11,84,000</h2>
+              <p style="font-size:0.82rem;color:var(--text-secondary);">Form 16A TDS Certificates Ready</p>
+            </div>
+          </div>
+
+          <div class="dash-card">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:1.25rem;">
+              <div>
+                <span class="tag tag--gold">Guru Dakshina &amp; Faculty Ledger</span>
+                <h2 style="font-size:1.35rem;margin-top:0.25rem;">Monthly Honorarium Statements</h2>
+              </div>
+            </div>
+
+            <div class="table-scroll">
+              <table class="comparison-table">
+                <thead>
+                  <tr>
+                    <th>Statement ID</th>
+                    <th>Period</th>
+                    <th>Sessions Conducted</th>
+                    <th>Gross Honorarium</th>
+                    <th>Status</th>
+                    <th>Voucher</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>#HON-2026-11</strong></td>
+                    <td>November 2026</td>
+                    <td>76 Hours (1-on-1 &amp; Vidwat)</td>
+                    <td><strong>₹1,48,500</strong></td>
+                    <td><span class="tag tag--gold">Accruing (Payout 30 Nov)</span></td>
+                    <td><button type="button" class="icon-toggle-btn" style="width:auto;padding:0 0.75rem;height:34px;" data-download-notation="Honorarium_Statement_Nov_2026"><i class="fa-solid fa-file-arrow-down"></i>&nbsp;Statement</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>#HON-2026-10</strong></td>
+                    <td>October 2026</td>
+                    <td>78 Hours + Vijayadashami Diksha</td>
+                    <td><strong>₹1,52,000</strong></td>
+                    <td><span class="tag tag--peacock">Disbursed (31 Oct 2026)</span></td>
+                    <td><button type="button" class="icon-toggle-btn" style="width:auto;padding:0 0.75rem;height:34px;" data-download-notation="Honorarium_Statement_Oct_2026"><i class="fa-solid fa-file-arrow-down"></i>&nbsp;Statement</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>#HON-2026-09</strong></td>
+                    <td>September 2026</td>
+                    <td>74 Hours + Jury Evaluation</td>
+                    <td><strong>₹1,44,000</strong></td>
+                    <td><span class="tag tag--peacock">Disbursed (30 Sep 2026)</span></td>
+                    <td><button type="button" class="icon-toggle-btn" style="width:auto;padding:0 0.75rem;height:34px;" data-download-notation="Honorarium_Statement_Sep_2026"><i class="fa-solid fa-file-arrow-down"></i>&nbsp;Statement</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/dashboard.js"></script>
+</body>
+</html>
