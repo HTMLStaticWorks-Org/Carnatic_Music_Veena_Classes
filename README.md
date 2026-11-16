@@ -1,6 +1,6 @@
 # Nadam Veena Academy — Carnatic Music & Saraswati Veena Conservatory
 
-> *"Where every string finds its raga."* (`நாதம் வீணை வித்யாலயம்`)
+> *"Carnatic Music & Veena."* (`நாதம் வீணை வித்யாலயம்`)
 
 A complete, production-quality, multi-page HTML5, CSS3, and vanilla ES6+ JavaScript website for a **Carnatic Music & Saraswati Veena Academy** rooted in the South Indian temple and Sabha concert-hall tradition.
 

@@ -98,6 +98,28 @@ html[dir="rtl"] .dashboard-nav__btn {
   gap: 0.5rem;
 }
 
+.dashboard-sidebar__utilities {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid rgba(224, 165, 38, 0.2);
+  margin-bottom: 0.25rem;
+}
+
+.dashboard-sidebar .icon-toggle-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(224, 165, 38, 0.35);
+  color: var(--sandal);
+}
+
+.dashboard-sidebar .icon-toggle-btn:hover {
+  background: rgba(224, 165, 38, 0.24);
+  border-color: var(--turmeric);
+  color: #FFFFFF;
+}
+
 /* Main Workspace */
 .dashboard-main {
   display: flex;
@@ -112,23 +134,55 @@ html[dir="rtl"] .dashboard-nav__btn {
   background: var(--bg-glass);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border-gold);
-  padding: 0.9rem var(--space-4);
+  padding: 0.85rem var(--space-4);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-2);
+  min-height: 64px;
 }
 
 .dashboard-topbar__left {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: 0.85rem;
+  min-width: 0;
+}
+
+.dashboard-topbar__title-box {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dashboard-topbar__title-box .tamil-accent {
+  font-size: 0.78rem;
+  line-height: 1.2;
+  color: var(--turmeric-dark);
+  display: block;
+}
+
+.dashboard-topbar__title-box h1 {
+  font-size: 1.45rem;
+  line-height: 1.15;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.dashboard-topbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-shrink: 0;
+  flex-wrap: nowrap;
 }
 
 .sidebar-toggle-btn {
   display: none;
-  width: 44px;
-  height: 44px;
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
   border-radius: 12px;
   border: 1px solid var(--border-gold);
   background: var(--bg-surface);
@@ -136,23 +190,105 @@ html[dir="rtl"] .dashboard-nav__btn {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+}
+
+.sidebar-toggle-btn:hover {
+  background: rgba(224, 165, 38, 0.15);
+  border-color: var(--turmeric);
+}
+
+/* Tanpura Sruti Drone Pill */
+.sruti-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-gold);
+  background: var(--bg-surface-elevated);
+  color: var(--text-primary);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+  line-height: 1;
+  height: 38px;
+  flex-shrink: 0;
+}
+
+.sruti-pill:hover {
+  background: rgba(224, 165, 38, 0.15);
+  border-color: var(--turmeric);
+  transform: translateY(-1px);
+}
+
+.sruti-pill.is-active {
+  background: rgba(224, 165, 38, 0.22);
+  border-color: var(--turmeric);
+  color: var(--text-primary);
+}
+
+.sruti-pill__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--turmeric);
+  display: inline-block;
+  box-shadow: 0 0 6px var(--turmeric);
+  flex-shrink: 0;
+}
+
+.sruti-pill.is-active .sruti-pill__dot {
+  background: #10B981;
+  box-shadow: 0 0 8px #10B981;
+  animation: pulse-dot 1.5s infinite;
+}
+
+.sruti-pill__short {
+  display: none;
+}
+
+@keyframes pulse-dot {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { transform: scale(1.15); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
 }
 
 .dashboard-user-pill {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 0.75rem;
   background: var(--bg-surface-elevated);
   border: 1px solid var(--border-warm);
-  padding: 0.35rem 0.85rem 0.35rem 0.35rem;
+  padding: 0.3rem 0.85rem 0.3rem 0.3rem;
   border-radius: var(--radius-pill);
+  flex-shrink: 0;
+  height: 42px;
 }
+
 .dashboard-user-pill img {
   width: 36px;
   height: 36px;
+  min-width: 36px;
   border-radius: 50%;
   object-fit: cover;
   border: 1.5px solid var(--turmeric);
+  display: block;
+}
+
+.dashboard-user-pill__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  line-height: 1.2;
+}
+
+html[dir="rtl"] .dashboard-user-pill__info {
+  text-align: right;
 }
 
 .dashboard-content {
@@ -170,12 +306,13 @@ html[dir="rtl"] .dashboard-nav__btn {
   display: block;
 }
 
-/* Overview Stats & Cards */
+/* Overview Stats & Cards: Guaranteed Equal Sizes & Component Heights */
 .dash-stats-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--space-3);
   margin-bottom: var(--space-4);
+  align-items: stretch;
 }
 
 .dash-stat-card {
@@ -185,9 +322,39 @@ html[dir="rtl"] .dashboard-nav__btn {
   border-radius: var(--radius-md);
   padding: var(--space-3);
   box-shadow: var(--shadow-sm);
-  display: flex;
-  flex-direction: column;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  height: 100% !important;
+  min-height: 145px !important;
+  box-sizing: border-box !important;
   gap: 0.45rem;
+}
+
+.dash-stat-card .tag {
+  align-self: flex-start !important;
+  margin: 0 0 0.35rem 0 !important;
+  flex-shrink: 0 !important;
+}
+
+.dash-stat-card h2 {
+  min-height: 2.2rem !important;
+  max-height: 2.2rem !important;
+  display: flex !important;
+  align-items: center !important;
+  font-size: 1.35rem !important;
+  margin: 0 !important;
+  flex-shrink: 0 !important;
+}
+
+.dash-stat-card p,
+.dash-stat-card .streak-days {
+  min-height: 2.2rem !important;
+  max-height: 2.2rem !important;
+  display: flex !important;
+  align-items: center !important;
+  margin: 0 !important;
+  flex-shrink: 0 !important;
 }
 
 .dash-grid-2 {
@@ -498,6 +665,100 @@ html[dir="rtl"] .dashboard-nav__btn {
   .dash-grid-2,
   .chat-container {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-topbar {
+    padding: 0.65rem 0.85rem;
+    min-height: 58px;
+    gap: 0.5rem;
+  }
+  .dashboard-topbar__left {
+    gap: 0.55rem;
+    flex: 1;
+    min-width: 0;
+  }
+  .sidebar-toggle-btn {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    border-radius: 10px;
+  }
+  .dashboard-topbar__title-box {
+    min-width: 0;
+  }
+  .dashboard-topbar__title-box .tamil-accent {
+    font-size: 0.7rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .dashboard-topbar__title-box h1 {
+    font-size: 1.12rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .dashboard-topbar__actions {
+    gap: 0.5rem;
+    flex-shrink: 0;
+    flex-wrap: nowrap;
+  }
+  .dashboard-user-pill__info {
+    display: none;
+  }
+  .dashboard-user-pill {
+    padding: 0;
+    border: none;
+    background: transparent;
+    height: 36px;
+    width: 36px;
+    min-width: 36px;
+    box-shadow: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .dashboard-topbar {
+    padding: 0.5rem 0.65rem;
+    min-height: 54px;
+    gap: 0.4rem;
+  }
+  .dashboard-topbar__left {
+    gap: 0.45rem;
+  }
+  .sidebar-toggle-btn {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    border-radius: 8px;
+  }
+  .dashboard-topbar__title-box h1 {
+    font-size: 1rem;
+  }
+  .dashboard-topbar__title-box .tamil-accent {
+    font-size: 0.65rem;
+  }
+  .dashboard-topbar__actions {
+    gap: 0.35rem;
+  }
+  .sruti-pill {
+    padding: 0.25rem 0.55rem;
+    font-size: 0.72rem;
+    height: 34px;
+    gap: 0.3rem;
+  }
+  .sruti-pill__full {
+    display: none;
+  }
+  .sruti-pill__short {
+    display: inline;
+  }
+  .dashboard-user-pill img {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
   }
 }
 

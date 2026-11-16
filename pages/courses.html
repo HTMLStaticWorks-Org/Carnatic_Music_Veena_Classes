@@ -11,6 +11,13 @@
   <meta property="og:image" content="../assets/images/course-1-foundation-veena.webp">
   <link rel="canonical" href="https://nadamveena.org/pages/courses.html">
 
+    <!-- Favicon & App Icons (Matching Nadam Veena Logo) -->
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/apple-touch-icon.png">
+  <link rel="shortcut icon" href="../favicon.ico">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Noto+Serif+Tamil:wght@500;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -60,10 +67,10 @@
   <header class="site-header">
     <div class="container navbar">
       <a href="../index.html" class="brand-logo" aria-label="Nadam Veena Academy Home">
-        <span class="brand-logo__mark"><i class="fa-solid fa-music" aria-hidden="true"></i></span>
+        <span class="brand-logo__mark"><img src="../assets/images/logo-veena.svg" alt="Nadam Veena Academy Musical Emblem" width="48" height="48"></span>
         <span class="brand-logo__text">
           <span class="brand-logo__name">Nadam Veena Academy</span>
-          <span class="brand-logo__tagline">Where every string finds its raga</span>
+          <span class="brand-logo__tagline">Carnatic Music &amp; Veena</span>
         </span>
       </a>
 
@@ -73,14 +80,11 @@
             <a href="../index.html" class="nav-link" aria-haspopup="true">
               Home <i class="fa-solid fa-chevron-down" style="font-size:0.7rem;" aria-hidden="true"></i>
             </a>
-            <div class="dropdown-menu" role="menu">
-              <a href="../index.html" class="dropdown-link" role="menuitem"><i class="fa-solid fa-landmark"></i> Home 1 — The Concert Hall</a>
-              <a href="home-2.html" class="dropdown-link" role="menuitem"><i class="fa-solid fa-om"></i> Home 2 — Living Gurukulam</a>
+            <div class="dropdown-menu dropdown-menu--home" role="menu">
+              <a href="../index.html" class="dropdown-link" role="menuitem">Home 1</a>
+              <a href="home-2.html" class="dropdown-link" role="menuitem">Home 2</a>
             </div>
           </li>
-          <li class="nav-item"><a href="courses.html" class="nav-link is-active">Courses</a></li>
-          <li class="nav-item"><a href="teachers.html" class="nav-link">Teachers</a></li>
-          <li class="nav-item"><a href="resources.html" class="nav-link">Resources</a></li>
           <li class="nav-item">
             <a href="about.html" class="nav-link" aria-haspopup="true">
               Explore <i class="fa-solid fa-chevron-down" style="font-size:0.7rem;" aria-hidden="true"></i>
@@ -95,6 +99,9 @@
               <a href="contact.html" class="dropdown-link" role="menuitem"><i class="fa-solid fa-location-dot"></i> Contact &amp; Demo</a>
             </div>
           </li>
+          <li class="nav-item"><a href="courses.html" class="nav-link is-active">Courses</a></li>
+          <li class="nav-item"><a href="teachers.html" class="nav-link">Teachers</a></li>
+          <li class="nav-item"><a href="resources.html" class="nav-link">Resources</a></li>
         </ul>
       </nav>
 
@@ -106,7 +113,7 @@
         </button>
         <div class="nav-auth-btns">
           <a href="login.html" class="btn btn--outline">Login</a>
-          <a href="signup.html" class="btn btn--primary">Sign Up</a>
+          <a href="student-dashboard.html" class="btn btn--primary">Dashboard</a>
         </div>
         <button type="button" class="hamburger-btn" data-action="open-drawer" aria-label="Open navigation menu" aria-expanded="false">
           <i class="fa-solid fa-bars" aria-hidden="true"></i>
@@ -119,36 +126,60 @@
   <div class="mobile-drawer-backdrop" aria-hidden="true"></div>
   <aside class="mobile-drawer" aria-label="Mobile Navigation Drawer">
     <div class="mobile-drawer__header">
-      <span class="brand-logo__name">Nadam Veena Academy</span>
+      <a href="../index.html" class="brand-logo" aria-label="Nadam Veena Academy Home">
+        <span class="brand-logo__mark"><img src="../assets/images/logo-veena.svg" alt="Nadam Veena Academy Musical Emblem" width="38" height="38"></span>
+        <span class="brand-logo__text">
+          <span class="brand-logo__name">Nadam Veena Academy</span>
+          <span class="brand-logo__tagline">Carnatic Music &amp; Veena</span>
+        </span>
+      </a>
       <button type="button" class="icon-toggle-btn" data-action="close-drawer" aria-label="Close navigation menu">
         <i class="fa-solid fa-xmark" aria-hidden="true"></i>
       </button>
     </div>
-    <nav class="mobile-drawer__list">
-      <a href="../index.html" class="mobile-drawer__link">Home 1 — Concert Hall</a>
-      <a href="home-2.html" class="mobile-drawer__link">Home 2 — Living Gurukulam</a>
-      <a href="courses.html" class="mobile-drawer__link is-active">Courses Catalog</a>
-      <a href="teachers.html" class="mobile-drawer__link">Faculty &amp; Gurus</a>
-      <a href="resources.html" class="mobile-drawer__link">Learning Resources</a>
-      <div class="mobile-drawer__sub">
-        <a href="about.html" class="mobile-drawer__link">About Us &amp; Lineage</a>
-        <a href="concerts.html" class="mobile-drawer__link">Concerts &amp; Events</a>
-        <a href="fees.html" class="mobile-drawer__link">Fees &amp; Plans</a>
-        <a href="gallery.html" class="mobile-drawer__link">Gallery</a>
-        <a href="blog.html" class="mobile-drawer__link">Blog</a>
-        <a href="faq.html" class="mobile-drawer__link">FAQ</a>
-        <a href="contact.html" class="mobile-drawer__link">Contact Us</a>
+    <div class="mobile-drawer__utilities">
+      <button type="button" class="icon-toggle-btn" data-action="toggle-lang" title="Switch key headings to Tamil" aria-label="Toggle Tamil/English language">தமிழ்</button>
+      <button type="button" class="icon-toggle-btn" data-action="toggle-rtl" title="Toggle Right-to-Left layout" aria-label="Toggle RTL layout">RTL</button>
+      <button type="button" class="icon-toggle-btn" data-action="toggle-theme" title="Toggle Dark/Light mode" aria-label="Toggle theme">
+        <i class="fa-solid fa-moon" aria-hidden="true"></i>
+      </button>
+    </div>
+
+        <nav class="mobile-drawer__list">
+      <a href="../index.html" class="mobile-drawer__link">Home 1</a>
+      <a href="home-2.html" class="mobile-drawer__link">Home 2</a>
+      <div class="mobile-drawer__dropdown is-open">
+        <a href="about.html" class="mobile-drawer__link mobile-drawer__dropdown-toggle" aria-expanded="true">
+          <span>Explore</span>
+          <i class="fa-solid fa-chevron-down" style="font-size:0.7rem;" aria-hidden="true"></i>
+        </a>
+        <div class="mobile-drawer__sub">
+          <a href="about.html" class="mobile-drawer__link">About &amp; Lineage</a>
+          <a href="concerts.html" class="mobile-drawer__link">Concerts &amp; Sabha</a>
+          <a href="fees.html" class="mobile-drawer__link">Fees &amp; Pricing</a>
+          <a href="gallery.html" class="mobile-drawer__link">Photo Gallery</a>
+          <a href="blog.html" class="mobile-drawer__link">Musicology Blog</a>
+          <a href="faq.html" class="mobile-drawer__link">Admission FAQ</a>
+          <a href="contact.html" class="mobile-drawer__link">Contact &amp; Demo</a>
+        </div>
       </div>
+      <a href="courses.html" class="mobile-drawer__link is-active">Courses</a>
+      <a href="teachers.html" class="mobile-drawer__link">Teachers</a>
+      <a href="resources.html" class="mobile-drawer__link">Resources</a>
     </nav>
-    <div class="mobile-drawer__ctas">
-      <a href="login.html" class="btn btn--outline">Student Login</a>
-      <a href="signup.html" class="btn btn--primary">Enroll / Sign Up</a>
+        <div class="mobile-drawer__ctas">
+      <a href="login.html" class="btn btn--outline">Login</a>
+      <a href="student-dashboard.html" class="btn btn--primary">Dashboard</a>
     </div>
   </aside>
 
   <main id="main-content">
     <!-- PAGE HERO -->
     <section class="page-hero" aria-label="Courses Catalog Header">
+      <div class="page-hero__bg">
+        <img src="../assets/images/hero-bg-courses.webp" alt="Artisan classical Indian stringed musical instruments in conservatory study setting" width="1600" height="700" fetchpriority="high">
+      </div>
+      <div class="page-hero__overlay"></div>
       <div class="container page-hero__inner">
         <nav class="breadcrumb" aria-label="Breadcrumb">
           <a href="../index.html">Home</a> <span>/</span> <span aria-current="page">Courses Catalog</span>
@@ -222,7 +253,7 @@
         <!-- 10 Course Cards Grid -->
         <div class="card-grid-3" id="coursesCatalogGrid">
           <!-- 1. Foundation Veena -->
-          <article class="tilt-card" data-tilt data-filter-item data-category="veena" data-level="beginner" data-age="adults kids" data-mode="online offline">
+          <article class="tilt-card course-card" data-tilt data-filter-item data-category="veena" data-level="beginner" data-age="adults kids" data-mode="online offline">
             <div class="card-media">
               <img src="../assets/images/course-1-foundation-veena.webp" alt="Foundation Saraswati Veena class showing posture and right-hand plucking" width="800" height="520" loading="lazy">
             </div>
@@ -246,7 +277,7 @@
           </article>
 
           <!-- 2. Gitam and Varnam Level -->
-          <article class="tilt-card" data-tilt data-filter-item data-category="veena vocal" data-level="intermediate" data-age="adults kids" data-mode="online offline">
+          <article class="tilt-card course-card" data-tilt data-filter-item data-category="veena vocal" data-level="intermediate" data-age="adults kids" data-mode="online offline">
             <div class="card-media">
               <img src="../assets/images/course-2-gitam-varnam.webp" alt="Close-up of Saraswati Veena frets used in Gitam and Tana Varnam training" width="800" height="520" loading="lazy">
             </div>
@@ -270,7 +301,7 @@
           </article>
 
           <!-- 3. Kriti Repertoire (Tyagaraja, Dikshitar, Syama Sastri) -->
-          <article class="tilt-card" data-tilt data-filter-item data-category="veena vocal" data-level="intermediate advanced" data-age="adults" data-mode="online offline">
+          <article class="tilt-card course-card" data-tilt data-filter-item data-category="veena vocal" data-level="intermediate advanced" data-age="adults" data-mode="online offline">
             <div class="card-media">
               <img src="../assets/images/course-3-kriti-repertoire.webp" alt="Thiruvaiyaru heritage mandapam celebrating the Carnatic Trinity Kriti repertoire" width="800" height="520" loading="lazy">
             </div>
@@ -294,7 +325,7 @@
           </article>
 
           <!-- 4. Manodharma Sangeetham -->
-          <article class="tilt-card" data-tilt data-filter-item data-category="veena vocal violin" data-level="advanced" data-age="adults" data-mode="online offline">
+          <article class="tilt-card course-card" data-tilt data-filter-item data-category="veena vocal violin" data-level="advanced" data-age="adults" data-mode="online offline">
             <div class="card-media">
               <img src="../assets/images/course-4-manodharma.webp" alt="Senior Carnatic vidwan presenting Manodharma Raga Alapana and Kalpanaswaram" width="800" height="520" loading="lazy">
             </div>
@@ -318,7 +349,7 @@
           </article>
 
           <!-- 5. Carnatic Vocal Basics -->
-          <article class="tilt-card" data-tilt data-filter-item data-category="vocal" data-level="beginner" data-age="adults kids" data-mode="online offline">
+          <article class="tilt-card course-card" data-tilt data-filter-item data-category="vocal" data-level="beginner" data-age="adults kids" data-mode="online offline">
             <div class="card-media">
               <img src="../assets/images/course-5-vocal-basics.webp" alt="Carnatic vocal acharya teaching voice culture and swara alignment" width="800" height="520" loading="lazy">
             </div>
@@ -342,7 +373,7 @@
           </article>
 
           <!-- 6. Violin for Carnatic -->
-          <article class="tilt-card" data-tilt data-filter-item data-category="violin" data-level="beginner intermediate" data-age="adults kids" data-mode="online offline">
+          <article class="tilt-card course-card" data-tilt data-filter-item data-category="violin" data-level="beginner intermediate" data-age="adults kids" data-mode="online offline">
             <div class="card-media">
               <img src="../assets/images/course-6-carnatic-violin.webp" alt="Classical Carnatic violin performance demonstrating Gayaki bowing" width="800" height="520" loading="lazy">
             </div>
@@ -366,7 +397,7 @@
           </article>
 
           <!-- 7. Mridangam and Tala Mastery -->
-          <article class="tilt-card" data-tilt data-filter-item data-category="mridangam" data-level="beginner intermediate" data-age="adults kids" data-mode="online offline">
+          <article class="tilt-card course-card" data-tilt data-filter-item data-category="mridangam" data-level="beginner intermediate" data-age="adults kids" data-mode="online offline">
             <div class="card-media">
               <img src="../assets/images/course-7-mridangam-tala.webp" alt="Mridangam percussionist accompanying a classical Carnatic concert" width="800" height="520" loading="lazy">
             </div>
@@ -390,7 +421,7 @@
           </article>
 
           <!-- 8. Kids Starter Batch -->
-          <article class="tilt-card" data-tilt data-filter-item data-category="veena vocal" data-level="beginner" data-age="kids" data-mode="online offline">
+          <article class="tilt-card course-card" data-tilt data-filter-item data-category="veena vocal" data-level="beginner" data-age="kids" data-mode="online offline">
             <div class="card-media">
               <img src="../assets/images/course-8-kids-starter.webp" alt="Young student learning classical Indian rhythm and swara exercises" width="800" height="520" loading="lazy">
             </div>
@@ -414,7 +445,7 @@
           </article>
 
           <!-- 9. Adult Beginners Weekend Batch -->
-          <article class="tilt-card" data-tilt data-filter-item data-category="veena vocal" data-level="beginner" data-age="adults" data-mode="online offline">
+          <article class="tilt-card course-card" data-tilt data-filter-item data-category="veena vocal" data-level="beginner" data-age="adults" data-mode="online offline">
             <div class="card-media">
               <img src="../assets/images/course-9-adult-weekend.webp" alt="Adult classical stringed instrument performers in a weekend conservatory session" width="800" height="520" loading="lazy">
             </div>
@@ -438,7 +469,7 @@
           </article>
 
           <!-- 10. Grade Exam Preparation -->
-          <article class="tilt-card" data-tilt data-filter-item data-category="veena vocal violin mridangam" data-level="intermediate advanced" data-age="adults kids" data-mode="online offline">
+          <article class="tilt-card course-card" data-tilt data-filter-item data-category="veena vocal violin mridangam" data-level="intermediate advanced" data-age="adults kids" data-mode="online offline">
             <div class="card-media">
               <img src="../assets/images/course-10-grade-exam.webp" alt="Classical music convocation and Sangita Kalanidhi award ceremony" width="800" height="520" loading="lazy">
             </div>
@@ -465,11 +496,9 @@
     </section>
   </main>
 
-  <div class="floating-demo-widget" aria-label="Quick Contact Actions">
-    <a href="contact.html#demo-booking" class="floating-whatsapp">
-      <i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book Free Demo
-    </a>
-  </div>
+  <button type="button" class="scroll-to-top" id="scrollToTopBtn" aria-label="Scroll back to top" title="Scroll to top">
+    <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+  </button>
 
   <!-- SITE FOOTER -->
   <footer class="site-footer">
@@ -477,10 +506,10 @@
       <div class="site-footer__grid">
         <div>
           <a href="../index.html" class="brand-logo" style="margin-bottom:1rem;">
-            <span class="brand-logo__mark"><i class="fa-solid fa-music" aria-hidden="true"></i></span>
+            <span class="brand-logo__mark"><img src="../assets/images/logo-veena.svg" alt="Nadam Veena Academy Musical Emblem" width="48" height="48"></span>
             <span class="brand-logo__text">
               <span class="brand-logo__name" style="color:var(--sandal);">Nadam Veena Academy</span>
-              <span class="brand-logo__tagline" style="color:var(--turmeric-light);">Where every string finds its raga</span>
+              <span class="brand-logo__tagline" style="color:var(--turmeric-light);">Carnatic Music &amp; Veena</span>
             </span>
           </a>
           <p style="font-size:0.9rem;color:var(--text-on-dark-muted);margin-bottom:1rem;">

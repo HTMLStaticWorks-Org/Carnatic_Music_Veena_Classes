@@ -6,6 +6,13 @@
   <title>Student Sadhana Dashboard | Nadam Veena Academy</title>
   <meta name="description" content="Student Sadhana Portal at Nadam Veena Academy: manage class bookings, weekly schedule, swara practice notations, audio reference tracks, fee payments, and certificates.">
 
+    <!-- Favicon & App Icons (Matching Nadam Veena Logo) -->
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/apple-touch-icon.png">
+  <link rel="shortcut icon" href="../favicon.ico">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Noto+Serif+Tamil:wght@500;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -26,9 +33,9 @@
     <aside class="dashboard-sidebar" aria-label="Student Dashboard Sidebar">
       <div class="dashboard-sidebar__brand">
         <a href="../index.html" class="brand-logo">
-          <span class="brand-logo__mark"><i class="fa-solid fa-music" aria-hidden="true"></i></span>
+          <span class="brand-logo__mark"><img src="../assets/images/logo-veena.svg" alt="Nadam Veena Academy Musical Emblem" width="48" height="48"></span>
           <span class="brand-logo__text">
-            <span class="brand-logo__name" style="color:var(--sandal);font-size:1.15rem;">Nadam Portal</span>
+            <span class="brand-logo__name" style="color:var(--sandal);font-size:1.15rem;">Nadam Veena Academy</span>
             <span class="brand-logo__tagline" style="color:var(--turmeric-light);">Shishya Sadhana Desk</span>
           </span>
         </a>
@@ -36,32 +43,39 @@
 
       <nav class="dashboard-nav" aria-label="Dashboard Sections">
         <button type="button" class="dashboard-nav__btn is-active" data-dash-nav="overview" data-dash-title="Sadhana Overview">
-          <i class="fa-solid fa-compass" aria-hidden="true"></i> Overview
+          <i class="fa-solid fa-compass" aria-hidden="true"></i> <span data-en="Overview" data-ta="கண்ணோட்டம்">Overview</span>
         </button>
         <button type="button" class="dashboard-nav__btn" data-dash-nav="book-classes" data-dash-title="Book &amp; Manage Classes">
-          <i class="fa-solid fa-calendar-plus" aria-hidden="true"></i> Book Classes
+          <i class="fa-solid fa-calendar-plus" aria-hidden="true"></i> <span data-en="Book Classes" data-ta="வகுப்புகள் பதிவு">Book Classes</span>
         </button>
         <button type="button" class="dashboard-nav__btn" data-dash-nav="schedule" data-dash-title="My Weekly &amp; Monthly Schedule">
-          <i class="fa-solid fa-calendar-days" aria-hidden="true"></i> My Schedule
+          <i class="fa-solid fa-calendar-days" aria-hidden="true"></i> <span data-en="My Schedule" data-ta="எனது அட்டவணை">My Schedule</span>
         </button>
         <button type="button" class="dashboard-nav__btn" data-dash-nav="practice-notes" data-dash-title="Swara Notations &amp; Practice Tracks">
-          <i class="fa-solid fa-book-open-reader" aria-hidden="true"></i> Practice Notes
+          <i class="fa-solid fa-book-open-reader" aria-hidden="true"></i> <span data-en="Practice Notes" data-ta="பயிற்சி குறிப்புகள்">Practice Notes</span>
         </button>
         <button type="button" class="dashboard-nav__btn" data-dash-nav="fees" data-dash-title="Fees, Invoices &amp; Receipts">
-          <i class="fa-solid fa-indian-rupee-sign" aria-hidden="true"></i> Fees &amp; Payments
+          <i class="fa-solid fa-indian-rupee-sign" aria-hidden="true"></i> <span data-en="Fees &amp; Payments" data-ta="கட்டணம் &amp; வரவு">Fees &amp; Payments</span>
         </button>
         <button type="button" class="dashboard-nav__btn" data-dash-nav="progress" data-dash-title="Level Progress &amp; Certificates">
-          <i class="fa-solid fa-award" aria-hidden="true"></i> Progress &amp; Certificates
+          <i class="fa-solid fa-award" aria-hidden="true"></i> <span data-en="Progress &amp; Certificates" data-ta="முன்னேற்றம் &amp; சான்றிதழ்">Progress &amp; Certificates</span>
         </button>
         <button type="button" class="dashboard-nav__btn" data-dash-nav="messages" data-dash-title="Guru-Shishya Inbox">
-          <i class="fa-solid fa-comments" aria-hidden="true"></i> Messages <span class="tag tag--gold" style="margin-left:auto;padding:0.1rem 0.5rem;font-size:0.7rem;">2</span>
+          <i class="fa-solid fa-comments" aria-hidden="true"></i> <span data-en="Messages" data-ta="செய்திகள்">Messages</span> <span class="tag tag--gold" style="margin-left:auto;padding:0.1rem 0.5rem;font-size:0.7rem;">2</span>
         </button>
         <button type="button" class="dashboard-nav__btn" data-dash-nav="settings" data-dash-title="Profile, Sruti &amp; Settings">
-          <i class="fa-solid fa-sliders" aria-hidden="true"></i> Profile &amp; Settings
+          <i class="fa-solid fa-sliders" aria-hidden="true"></i> <span data-en="Profile &amp; Settings" data-ta="சுயவிவரம் &amp; அமைப்புகள்">Profile &amp; Settings</span>
         </button>
       </nav>
 
       <div class="dashboard-sidebar__footer">
+        <div class="dashboard-sidebar__utilities" aria-label="Dashboard Appearance and Language Controls">
+          <button type="button" class="icon-toggle-btn" data-action="toggle-lang" title="Switch key headings to Tamil" aria-label="Toggle Tamil/English language">தமிழ்</button>
+          <button type="button" class="icon-toggle-btn" data-action="toggle-rtl" title="Toggle Right-to-Left layout" aria-label="Toggle RTL layout">RTL</button>
+          <button type="button" class="icon-toggle-btn" data-action="toggle-theme" title="Toggle Dark/Light mode" aria-label="Toggle theme">
+            <i class="fa-solid fa-moon" aria-hidden="true"></i>
+          </button>
+        </div>
         <a href="instructor-dashboard.html" class="dashboard-nav__btn" style="font-size:0.82rem;">
           <i class="fa-solid fa-chalkboard-user" aria-hidden="true"></i> Switch to Acharya View
         </a>
@@ -81,20 +95,16 @@
           <button type="button" class="sidebar-toggle-btn" data-action="toggle-dash-sidebar" aria-label="Toggle sidebar menu">
             <i class="fa-solid fa-bars" aria-hidden="true"></i>
           </button>
-          <div>
-            <span class="tamil-accent" style="font-size:0.78rem;">ஸ்வர சாதகம் • மாணவர் தளம்</span>
-            <h1 id="dashTopbarTitle" style="font-size:1.45rem;line-height:1.15;">Sadhana Overview</h1>
+          <div class="dashboard-topbar__title-box">
+            <span class="tamil-accent">ஸ்வர சாதகம் • மாணவர் தளம்</span>
+            <h1 id="dashTopbarTitle" data-en="Sadhana Overview" data-ta="சாதனா கண்ணோட்டம்">Sadhana Overview</h1>
           </div>
         </div>
 
-        <div style="display:flex;align-items:center;gap:0.65rem;flex-wrap:wrap;">
-          <button type="button" class="icon-toggle-btn" data-action="toggle-rtl" title="Toggle RTL layout">RTL</button>
-          <button type="button" class="icon-toggle-btn" data-action="toggle-theme" title="Toggle Dark/Light mode" aria-label="Toggle theme">
-            <i class="fa-solid fa-moon" aria-hidden="true"></i>
-          </button>
+        <div class="dashboard-topbar__actions">
           <div class="dashboard-user-pill">
             <img src="../assets/images/dashboard-student-avatar.webp" alt="Student avatar of Ananya Venkataraman" width="36" height="36">
-            <div style="text-align:left;line-height:1.2;">
+            <div class="dashboard-user-pill__info">
               <strong style="font-size:0.85rem;display:block;" data-user-name>Ananya Venkataraman</strong>
               <small style="font-size:0.72rem;color:var(--text-muted);" data-user-level>Madhyama (Varnam Level)</small>
             </div>
@@ -735,6 +745,7 @@
 
               <div class="btn-group">
                 <button type="submit" class="btn btn--primary">Save Profile Changes</button>
+                <button type="button" class="btn btn--outline" data-action="toggle-lang">Toggle Tamil / English Language</button>
                 <button type="button" class="btn btn--outline" data-action="toggle-theme">Toggle Dark / Light Theme</button>
                 <button type="button" class="btn btn--outline" data-action="toggle-rtl">Toggle RTL / LTR Layout</button>
               </div>

@@ -6,6 +6,13 @@
   <title>Acharya Faculty Portal | Nadam Veena Academy</title>
   <meta name="description" content="Acharya Faculty & Guru Dashboard at Nadam Veena Academy: manage disciples, mark live class attendance, publish archival swara notations, and review monthly honorarium statements.">
 
+    <!-- Favicon & App Icons (Matching Nadam Veena Logo) -->
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/apple-touch-icon.png">
+  <link rel="shortcut icon" href="../favicon.ico">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Noto+Serif+Tamil:wght@500;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -26,9 +33,9 @@
     <aside class="dashboard-sidebar" aria-label="Instructor Dashboard Sidebar">
       <div class="dashboard-sidebar__brand">
         <a href="../index.html" class="brand-logo">
-          <span class="brand-logo__mark"><i class="fa-solid fa-music" aria-hidden="true"></i></span>
+          <span class="brand-logo__mark"><img src="../assets/images/logo-veena.svg" alt="Nadam Veena Academy Musical Emblem" width="48" height="48"></span>
           <span class="brand-logo__text">
-            <span class="brand-logo__name" style="color:var(--sandal);font-size:1.15rem;">Nadam Acharya</span>
+            <span class="brand-logo__name" style="color:var(--sandal);font-size:1.15rem;">Nadam Veena Academy</span>
             <span class="brand-logo__tagline" style="color:var(--turmeric-light);">Guru Peetham Desk</span>
           </span>
         </a>
@@ -36,23 +43,30 @@
 
       <nav class="dashboard-nav" aria-label="Instructor Sections">
         <button type="button" class="dashboard-nav__btn is-active" data-dash-nav="inst-overview" data-dash-title="Acharya Peetham Overview">
-          <i class="fa-solid fa-compass" aria-hidden="true"></i> Overview
+          <i class="fa-solid fa-compass" aria-hidden="true"></i> <span data-en="Overview" data-ta="கண்ணோட்டம்">Overview</span>
         </button>
         <button type="button" class="dashboard-nav__btn" data-dash-nav="inst-students" data-dash-title="My Disciples &amp; Sadhana Progress">
-          <i class="fa-solid fa-users-line" aria-hidden="true"></i> My Students <span class="tag tag--gold" style="margin-left:auto;padding:0.1rem 0.5rem;font-size:0.7rem;">42</span>
+          <i class="fa-solid fa-users-line" aria-hidden="true"></i> <span data-en="My Students" data-ta="எனது மாணவர்கள்">My Students</span> <span class="tag tag--gold" style="margin-left:auto;padding:0.1rem 0.5rem;font-size:0.7rem;">42</span>
         </button>
         <button type="button" class="dashboard-nav__btn" data-dash-nav="inst-schedule" data-dash-title="Teaching Schedule &amp; Attendance">
-          <i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Schedule &amp; Attendance
+          <i class="fa-solid fa-calendar-check" aria-hidden="true"></i> <span data-en="Schedule &amp; Attendance" data-ta="அட்டவணை &amp; வருகை">Schedule &amp; Attendance</span>
         </button>
         <button type="button" class="dashboard-nav__btn" data-dash-nav="inst-notes" data-dash-title="Publish Swara Notations &amp; Varnams">
-          <i class="fa-solid fa-file-waveform" aria-hidden="true"></i> Upload Practice Notes
+          <i class="fa-solid fa-file-waveform" aria-hidden="true"></i> <span data-en="Upload Practice Notes" data-ta="குறிப்புகள் பதிவேற்றம்">Upload Practice Notes</span>
         </button>
         <button type="button" class="dashboard-nav__btn" data-dash-nav="inst-earnings" data-dash-title="Honorarium &amp; Guru Dakshina Statements">
-          <i class="fa-solid fa-indian-rupee-sign" aria-hidden="true"></i> Earnings &amp; Honorarium
+          <i class="fa-solid fa-indian-rupee-sign" aria-hidden="true"></i> <span data-en="Earnings &amp; Honorarium" data-ta="வருமானம் &amp; தட்சிணை">Earnings &amp; Honorarium</span>
         </button>
       </nav>
 
       <div class="dashboard-sidebar__footer">
+        <div class="dashboard-sidebar__utilities" aria-label="Dashboard Appearance and Language Controls">
+          <button type="button" class="icon-toggle-btn" data-action="toggle-lang" title="Switch key headings to Tamil" aria-label="Toggle Tamil/English language">தமிழ்</button>
+          <button type="button" class="icon-toggle-btn" data-action="toggle-rtl" title="Toggle Right-to-Left layout" aria-label="Toggle RTL layout">RTL</button>
+          <button type="button" class="icon-toggle-btn" data-action="toggle-theme" title="Toggle Dark/Light mode" aria-label="Toggle theme">
+            <i class="fa-solid fa-moon" aria-hidden="true"></i>
+          </button>
+        </div>
         <a href="student-dashboard.html" class="dashboard-nav__btn" style="font-size:0.82rem;">
           <i class="fa-solid fa-user-graduate" aria-hidden="true"></i> Switch to Student View
         </a>
@@ -72,24 +86,21 @@
           <button type="button" class="sidebar-toggle-btn" data-action="toggle-dash-sidebar" aria-label="Toggle sidebar menu">
             <i class="fa-solid fa-bars" aria-hidden="true"></i>
           </button>
-          <div>
-            <span class="tamil-accent" style="font-size:0.78rem;">ஆச்சார்ய பீடம் • குரு தளம்</span>
-            <h1 id="dashTopbarTitle" style="font-size:1.45rem;line-height:1.15;">Acharya Peetham Overview</h1>
+          <div class="dashboard-topbar__title-box">
+            <span class="tamil-accent">ஆச்சார்ய பீடம் • குரு தளம்</span>
+            <h1 id="dashTopbarTitle" data-en="Acharya Peetham Overview" data-ta="ஆச்சார்ய பீட கண்ணோட்டம்">Acharya Peetham Overview</h1>
           </div>
         </div>
 
-        <div style="display:flex;align-items:center;gap:0.65rem;flex-wrap:wrap;">
+        <div class="dashboard-topbar__actions">
           <button type="button" class="sruti-pill" data-action="toggle-drone" aria-pressed="false" title="Toggle reference Tanpura drone">
             <span class="sruti-pill__dot" aria-hidden="true"></span>
-            <span>Tanpura Sruti (D#)</span>
-          </button>
-          <button type="button" class="icon-toggle-btn" data-action="toggle-rtl" title="Toggle RTL layout">RTL</button>
-          <button type="button" class="icon-toggle-btn" data-action="toggle-theme" title="Toggle Dark/Light mode" aria-label="Toggle theme">
-            <i class="fa-solid fa-moon" aria-hidden="true"></i>
+            <span class="sruti-pill__full">Tanpura Sruti (D#)</span>
+            <span class="sruti-pill__short">Sruti (D#)</span>
           </button>
           <div class="dashboard-user-pill">
             <img src="../assets/images/dashboard-instructor-avatar.webp" alt="Portrait of Vidushi Dr. Meenakshi Sundaram" width="36" height="36">
-            <div style="text-align:left;line-height:1.2;">
+            <div class="dashboard-user-pill__info">
               <strong style="font-size:0.85rem;display:block;" data-instructor-name>Vidushi Dr. Meenakshi</strong>
               <small style="font-size:0.72rem;color:var(--text-muted);">Principal Veena Acharya</small>
             </div>

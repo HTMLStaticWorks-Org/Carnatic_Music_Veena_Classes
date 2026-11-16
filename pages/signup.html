@@ -11,6 +11,13 @@
   <meta property="og:image" content="../assets/images/signup-gurukulam.webp">
   <link rel="canonical" href="https://nadamveena.org/pages/signup.html">
 
+    <!-- Favicon & App Icons (Matching Nadam Veena Logo) -->
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/apple-touch-icon.png">
+  <link rel="shortcut icon" href="../favicon.ico">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Noto+Serif+Tamil:wght@500;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -22,230 +29,127 @@
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
-  <div class="scroll-progress-bar" role="presentation"></div>
 
-  <!-- SITE HEADER -->
-  <header class="site-header">
-    <div class="container navbar">
-      <a href="../index.html" class="brand-logo" aria-label="Nadam Veena Academy Home">
-        <span class="brand-logo__mark"><i class="fa-solid fa-music" aria-hidden="true"></i></span>
-        <span class="brand-logo__text">
-          <span class="brand-logo__name">Nadam Veena Academy</span>
-          <span class="brand-logo__tagline">Where every string finds its raga</span>
-        </span>
-      </a>
+  <!-- Top Right Utility Controls (Language, RTL, Theme Mode) -->
+  <div class="auth-top-actions">
+    <button type="button" class="icon-toggle-btn" data-action="toggle-lang" title="Switch key headings to Tamil" aria-label="Toggle Tamil/English language">தமிழ்</button>
+    <button type="button" class="icon-toggle-btn" data-action="toggle-rtl" title="Toggle Right-to-Left layout" aria-label="Toggle RTL layout">RTL</button>
+    <button type="button" class="icon-toggle-btn" data-action="toggle-theme" title="Toggle Dark/Light mode" aria-label="Toggle theme">
+      <i class="fa-solid fa-moon" aria-hidden="true"></i>
+    </button>
+  </div>
 
-      <nav aria-label="Primary Navigation">
-        <ul class="nav-menu">
-          <li class="nav-item">
-            <a href="../index.html" class="nav-link" aria-haspopup="true">
-              Home <i class="fa-solid fa-chevron-down" style="font-size:0.7rem;" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu" role="menu">
-              <a href="../index.html" class="dropdown-link" role="menuitem"><i class="fa-solid fa-landmark"></i> Home 1 — The Concert Hall</a>
-              <a href="home-2.html" class="dropdown-link" role="menuitem"><i class="fa-solid fa-om"></i> Home 2 — Living Gurukulam</a>
-            </div>
-          </li>
-          <li class="nav-item"><a href="courses.html" class="nav-link">Courses</a></li>
-          <li class="nav-item"><a href="teachers.html" class="nav-link">Teachers</a></li>
-          <li class="nav-item"><a href="resources.html" class="nav-link">Resources</a></li>
-          <li class="nav-item">
-            <a href="about.html" class="nav-link" aria-haspopup="true">
-              Explore <i class="fa-solid fa-chevron-down" style="font-size:0.7rem;" aria-hidden="true"></i>
-            </a>
-            <div class="dropdown-menu" role="menu">
-              <a href="about.html" class="dropdown-link" role="menuitem"><i class="fa-solid fa-scroll"></i> About &amp; Lineage</a>
-              <a href="concerts.html" class="dropdown-link" role="menuitem"><i class="fa-solid fa-ticket"></i> Concerts &amp; Sabha</a>
-              <a href="fees.html" class="dropdown-link" role="menuitem"><i class="fa-solid fa-indian-rupee-sign"></i> Fees &amp; Pricing</a>
-              <a href="gallery.html" class="dropdown-link" role="menuitem"><i class="fa-solid fa-images"></i> Photo Gallery</a>
-              <a href="blog.html" class="dropdown-link" role="menuitem"><i class="fa-solid fa-feather-pointed"></i> Musicology Blog</a>
-              <a href="faq.html" class="dropdown-link" role="menuitem"><i class="fa-solid fa-circle-question"></i> Admission FAQ</a>
-              <a href="contact.html" class="dropdown-link" role="menuitem"><i class="fa-solid fa-location-dot"></i> Contact &amp; Demo</a>
-            </div>
-          </li>
-        </ul>
-      </nav>
-
-      <div class="nav-actions">
-        <button type="button" class="icon-toggle-btn" data-action="toggle-lang" title="Switch key headings to Tamil" aria-label="Toggle Tamil/English language">தமிழ்</button>
-        <button type="button" class="icon-toggle-btn" data-action="toggle-rtl" title="Toggle Right-to-Left layout" aria-label="Toggle RTL layout">RTL</button>
-        <button type="button" class="icon-toggle-btn" data-action="toggle-theme" title="Toggle Dark/Light mode" aria-label="Toggle theme">
-          <i class="fa-solid fa-moon" aria-hidden="true"></i>
-        </button>
-        <div class="nav-auth-btns">
-          <a href="login.html" class="btn btn--outline">Login</a>
-          <a href="signup.html" class="btn btn--primary is-active">Sign Up</a>
-        </div>
-        <button type="button" class="hamburger-btn" data-action="open-drawer" aria-label="Open navigation menu" aria-expanded="false">
-          <i class="fa-solid fa-bars" aria-hidden="true"></i>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <!-- Mobile Drawer -->
-  <div class="mobile-drawer-backdrop" aria-hidden="true"></div>
-  <aside class="mobile-drawer" aria-label="Mobile Navigation Drawer">
-    <div class="mobile-drawer__header">
-      <span class="brand-logo__name">Nadam Veena Academy</span>
-      <button type="button" class="icon-toggle-btn" data-action="close-drawer" aria-label="Close navigation menu">
-        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
-      </button>
-    </div>
-    <nav class="mobile-drawer__list">
-      <a href="../index.html" class="mobile-drawer__link">Home 1 — Concert Hall</a>
-      <a href="home-2.html" class="mobile-drawer__link">Home 2 — Living Gurukulam</a>
-      <a href="courses.html" class="mobile-drawer__link">Courses Catalog</a>
-      <a href="teachers.html" class="mobile-drawer__link">Faculty &amp; Gurus</a>
-      <a href="resources.html" class="mobile-drawer__link">Learning Resources</a>
-      <div class="mobile-drawer__sub">
-        <a href="about.html" class="mobile-drawer__link">About Us &amp; Lineage</a>
-        <a href="concerts.html" class="mobile-drawer__link">Concerts &amp; Events</a>
-        <a href="fees.html" class="mobile-drawer__link">Fees &amp; Plans</a>
-        <a href="gallery.html" class="mobile-drawer__link">Gallery</a>
-        <a href="blog.html" class="mobile-drawer__link">Blog</a>
-        <a href="faq.html" class="mobile-drawer__link">FAQ</a>
-        <a href="contact.html" class="mobile-drawer__link">Contact Us</a>
-      </div>
-    </nav>
-    <div class="mobile-drawer__ctas">
-      <a href="login.html" class="btn btn--outline">Student Login</a>
-      <a href="signup.html" class="btn btn--primary is-active">Enroll / Sign Up</a>
-    </div>
-  </aside>
-
-  <main id="main-content">
+  <main id="main-content" class="auth-page-main">
     <!-- ======================================================================
-         SPLIT-SCREEN STUDENT REGISTRATION PORTAL
+         CENTERED STUDENT REGISTRATION PORTAL
          ====================================================================== -->
-    <section class="section reveal" aria-labelledby="signup-heading">
-      <div class="container">
-        <div class="academy-card" style="overflow:hidden;border:2px solid var(--turmeric);">
-          <div class="card-grid-2" style="gap:0;">
-            <!-- Left Panel: Heritage Image & Benefits -->
-            <div style="position:relative;background:var(--teak-deep);color:var(--sandal);display:flex;flex-direction:column;justify-content:flex-end;min-height:600px;padding:var(--space-5);">
-              <img src="../assets/images/signup-gurukulam.webp" alt="Classical Carnatic recital inspiring new disciples at Nadam Veena Academy" width="1000" height="1200" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.38;">
-              <div style="position:relative;z-index:2;display:flex;flex-direction:column;gap:1rem;">
-                <span class="tag tag--gold">Vidyarambham Admissions</span>
-                <span class="tamil-accent" style="color:var(--turmeric-light);">வித்யாரம்பம் • புதிய மாணவர் சேர்க்கை</span>
-                <h2 style="font-size:1.85rem;color:var(--sandal);">Begin Your Journey in the Thanjavur Sampradaya</h2>
-                <ul style="display:flex;flex-direction:column;gap:0.65rem;font-size:0.9rem;color:var(--text-on-dark-muted);">
-                  <li><i class="fa-solid fa-circle-check" style="color:var(--turmeric);"></i> Complimentary 1-on-1 Sruti &amp; Level Diagnostic</li>
-                  <li><i class="fa-solid fa-circle-check" style="color:var(--turmeric);"></i> Instant Access to Swara Explorer &amp; Practice Tracks</li>
-                  <li><i class="fa-solid fa-circle-check" style="color:var(--turmeric);"></i> Flexible IST, EST, PST, GMT &amp; AEST Class Timings</li>
-                </ul>
-              </div>
-            </div>
+    <section class="section reveal" aria-labelledby="signup-heading" style="width:100%;padding-block:0;">
+      <div class="auth-container">
+        <div style="text-align:center;margin-bottom:1.5rem;">
+          <a href="../index.html" class="brand-logo" style="justify-content:center;" aria-label="Nadam Veena Academy Home">
+            <span class="brand-logo__mark"><img src="../assets/images/logo-veena.svg" alt="Nadam Veena Academy Musical Emblem" width="48" height="48"></span>
+            <span class="brand-logo__text" style="text-align:left;">
+              <span class="brand-logo__name">Nadam Veena Academy</span>
+              <span class="brand-logo__tagline">Carnatic Music &amp; Veena</span>
+            </span>
+          </a>
+        </div>
 
-            <!-- Right Panel: Multi-Field Validated Registration Form -->
-            <div style="padding:var(--space-5);">
-              <span class="tag tag--peacock" style="margin-bottom:0.4rem;">New Shishya Enrollment</span>
-              <h1 id="signup-heading" style="font-size:2rem;margin-bottom:0.5rem;" data-en="Create Your Student Account" data-ta="புதிய மாணவர் கணக்கை உருவாக்கவும்">Create Your Student Account</h1>
-              <p style="font-size:0.88rem;color:var(--text-secondary);margin-bottom:1.25rem;">
+        <div class="auth-card">
+          <div style="display:flex;flex-direction:column;">
+            <div style="text-align:center;margin-bottom:1.5rem;">
+              <span class="tag tag--peacock" style="margin-bottom:0.5rem;">New Shishya Enrollment</span>
+              <h1 id="signup-heading" style="font-size:2.1rem;margin-bottom:0.5rem;" data-en="Create Your Student Account" data-ta="புதிய மாணவர் கணக்கை உருவாக்கவும்">Create Your Student Account</h1>
+              <p style="font-size:0.88rem;color:var(--text-secondary);margin:0 auto;max-width:520px;">
                 Complete the fields below to create your Sadhana Portal profile and book your first class.
               </p>
-
-              <!-- TODO: Connect registration form to backend user creation API -->
-              <form data-validate-form="signup" novalidate>
-                <div class="card-grid-2">
-                  <div class="form-group">
-                    <label class="form-label" for="regFullName">Student Full Name *</label>
-                    <input type="text" id="regFullName" name="fullname" class="form-control" placeholder="e.g., Ananya Venkataraman" required>
-                    <span class="form-error">Please enter full name.</span>
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label" for="regPhone">WhatsApp / Phone *</label>
-                    <input type="tel" id="regPhone" name="phone" class="form-control" placeholder="+91 98400 00000" required>
-                    <span class="form-error">Please enter phone number.</span>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="form-label" for="regEmail">Email Address *</label>
-                  <input type="email" id="regEmail" name="email" class="form-control" placeholder="you@example.com" required>
-                  <span class="form-error">Please enter a valid email address.</span>
-                </div>
-
-                <div class="card-grid-2">
-                  <div class="form-group">
-                    <label class="form-label" for="regInstrument">Primary Discipline *</label>
-                    <select id="regInstrument" name="instrument" class="form-control" required>
-                      <option value="Saraswati Veena">Saraswati Veena</option>
-                      <option value="Carnatic Vocal">Carnatic Vocal</option>
-                      <option value="Classical Violin">Classical Violin</option>
-                      <option value="Mridangam & Tala">Mridangam &amp; Tala</option>
-                      <option value="Carnatic Venu Flute">Carnatic Venu Flute</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label" for="regLevel">Proficiency Level *</label>
-                    <select id="regLevel" name="level" class="form-control" required>
-                      <option value="Prarambha (Beginner)">Prarambha (Absolute Beginner)</option>
-                      <option value="Geetham Level">Prarambha II (Sarali / Geetham)</option>
-                      <option value="Madhyama (Varnam Level)">Madhyama (Tana Varnam Level)</option>
-                      <option value="Vidwat (Kriti & Manodharma)">Vidwat (Kriti &amp; Manodharma)</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="card-grid-2">
-                  <div class="form-group">
-                    <label class="form-label" for="regMode">Learning Mode *</label>
-                    <select id="regMode" name="mode" class="form-control" required>
-                      <option value="Online Dual-Camera">Live Online (Dual-Camera)</option>
-                      <option value="Mylapore Campus">In-Person — Mylapore Campus</option>
-                      <option value="Weekend Hybrid">Weekend Hybrid</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label" for="regPassword">Create Password *</label>
-                    <div style="position:relative;display:flex;align-items:center;">
-                      <input type="password" id="regPassword" name="password" class="form-control" placeholder="Min. 6 characters" minlength="6" required style="padding-right:3rem;">
-                      <button type="button" class="icon-toggle-btn" data-toggle-password="regPassword" aria-label="Show or hide password" style="position:absolute;right:4px;border:none;background:transparent;">
-                        <i class="fa-solid fa-eye" aria-hidden="true"></i>
-                      </button>
-                    </div>
-                    <span class="form-error">Password must be at least 6 characters.</span>
-                  </div>
-                </div>
-
-                <div class="form-group" style="margin-block:0.5rem 1.25rem;">
-                  <label style="display:flex;align-items:flex-start;gap:0.6rem;font-size:0.85rem;cursor:pointer;">
-                    <input type="checkbox" id="regTerms" required style="margin-top:0.25rem;">
-                    <span>I agree to the <a href="terms-conditions.html" style="color:var(--kumkum);text-decoration:underline;">Gurukulam Terms &amp; Attendance Policy</a> and <a href="privacy-policy.html" style="color:var(--kumkum);text-decoration:underline;">Privacy Policy</a>. *</span>
-                  </label>
-                  <span class="form-error">Please accept the terms and conditions to register.</span>
-                </div>
-
-                <button type="submit" class="btn btn--primary" style="width:100%;">
-                  <i class="fa-solid fa-user-plus"></i> Complete Registration &amp; Enter Portal
-                </button>
-              </form>
-
-              <p style="text-align:center;margin-top:1.25rem;font-size:0.88rem;color:var(--text-secondary);">
-                Already enrolled? <a href="login.html" style="color:var(--kumkum);font-weight:600;">Sign In Here &rarr;</a>
-              </p>
             </div>
+
+            <!-- TODO: Connect registration form to backend user creation API -->
+            <form data-validate-form="signup" novalidate>
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label" for="regFullName">Student Full Name *</label>
+                  <input type="text" id="regFullName" name="fullname" class="form-control" placeholder="e.g., Ananya Venkataraman" required>
+                  <span class="form-error">Please enter full name.</span>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="regPhone">WhatsApp / Phone *</label>
+                  <input type="tel" id="regPhone" name="phone" class="form-control" placeholder="+91 98400 00000" required>
+                  <span class="form-error">Please enter phone number.</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="regEmail">Email Address *</label>
+                <input type="email" id="regEmail" name="email" class="form-control" placeholder="you@example.com" required>
+                <span class="form-error">Please enter a valid email address.</span>
+              </div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label" for="regInstrument">Primary Discipline *</label>
+                  <select id="regInstrument" name="instrument" class="form-control" required>
+                    <option value="Saraswati Veena">Saraswati Veena</option>
+                    <option value="Carnatic Vocal">Carnatic Vocal</option>
+                    <option value="Classical Violin">Classical Violin</option>
+                    <option value="Mridangam & Tala">Mridangam &amp; Tala</option>
+                    <option value="Carnatic Venu Flute">Carnatic Venu Flute</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="regLevel">Proficiency Level *</label>
+                  <select id="regLevel" name="level" class="form-control" required>
+                    <option value="Prarambha (Beginner)">Prarambha (Absolute Beginner)</option>
+                    <option value="Geetham Level">Prarambha II (Sarali / Geetham)</option>
+                    <option value="Madhyama (Varnam Level)">Madhyama (Tana Varnam Level)</option>
+                    <option value="Vidwat (Kriti & Manodharma)">Vidwat (Kriti &amp; Manodharma)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label" for="regMode">Learning Mode *</label>
+                  <select id="regMode" name="mode" class="form-control" required>
+                    <option value="Online Dual-Camera">Live Online (Dual-Camera)</option>
+                    <option value="Mylapore Campus">In-Person — Mylapore Campus</option>
+                    <option value="Weekend Hybrid">Weekend Hybrid</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="regPassword">Create Password *</label>
+                  <div style="position:relative;display:flex;align-items:center;">
+                    <input type="password" id="regPassword" name="password" class="form-control" placeholder="Min. 6 characters" minlength="6" required style="padding-right:3rem;">
+                    <button type="button" class="icon-toggle-btn" data-toggle-password="regPassword" aria-label="Show or hide password" style="position:absolute;right:4px;border:none;background:transparent;">
+                      <i class="fa-solid fa-eye" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                  <span class="form-error">Password must be at least 6 characters.</span>
+                </div>
+              </div>
+
+              <div class="form-group" style="margin-block:0.5rem 1.25rem;">
+                <label style="display:flex;align-items:flex-start;gap:0.6rem;font-size:0.85rem;cursor:pointer;">
+                  <input type="checkbox" id="regTerms" required style="margin-top:0.25rem;">
+                  <span>I agree to the <a href="terms-conditions.html" class="inline-link">Gurukulam Terms &amp; Attendance Policy</a> and <a href="privacy-policy.html" class="inline-link">Privacy Policy</a>. *</span>
+                </label>
+                <span class="form-error">Please accept the terms and conditions to register.</span>
+              </div>
+
+              <button type="submit" class="btn btn--primary btn-submit">
+                <i class="fa-solid fa-user-plus"></i> Complete Registration &amp; Enter Portal
+              </button>
+            </form>
+
+            <p style="text-align:center;margin-top:1.5rem;font-size:0.88rem;color:var(--text-secondary);">
+              Already enrolled? <a href="login.html" class="auth-switch-link">Sign In Here <span class="arrow">&rarr;</span></a>
+            </p>
           </div>
         </div>
       </div>
     </section>
   </main>
-
-  <!-- SITE FOOTER -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="site-footer__bottom">
-        <p>&copy; 2026 Nadam Veena Academy. Crafted with reverence for Carnatic Sampradaya.</p>
-        <div style="display:flex;gap:1.25rem;flex-wrap:wrap;">
-          <a href="../index.html">Home</a>
-          <a href="privacy-policy.html">Privacy Policy</a>
-          <a href="terms-conditions.html">Terms &amp; Conditions</a>
-          <a href="contact.html">Support</a>
-        </div>
-      </div>
-    </div>
-  </footer>
 
   <script src="../assets/js/plugins/vanilla-tilt.js"></script>
   <script src="../assets/js/main.js"></script>

@@ -1,6 +1,6 @@
 /* ==========================================================================
    NADAM VEENA ACADEMY — MASTER STYLESHEET (style.css)
-   "Where every string finds its raga"
+   "Carnatic Music & Veena"
    Architecture:
    1. CSS Custom Properties (:root Palette, Typography, Spacing, Shadows)
    2. Reset, Base & WCAG 2.1 AA Accessibility Foundations
@@ -20,6 +20,7 @@
    1. CSS CUSTOM PROPERTIES (:root)
    -------------------------------------------------------------------------- */
 :root {
+  color-scheme: light;
   /* Mandatory Brand Palette */
   --teak-deep: #2B120A;
   --kumkum: #A3171E;
@@ -67,15 +68,24 @@
   --font-tamil: 'Noto Serif Tamil', serif;
 
   /* 8px Base Spacing Scale */
-  --space-1: 0.5rem;   /* 8px */
-  --space-2: 1rem;     /* 16px */
-  --space-3: 1.5rem;   /* 24px */
-  --space-4: 2rem;     /* 32px */
-  --space-5: 2.5rem;   /* 40px */
-  --space-6: 3rem;     /* 48px */
-  --space-8: 4rem;     /* 64px */
-  --space-10: 5rem;    /* 80px */
-  --space-12: 6rem;    /* 96px */
+  --space-1: 0.5rem;
+  /* 8px */
+  --space-2: 1rem;
+  /* 16px */
+  --space-3: 1.5rem;
+  /* 24px */
+  --space-4: 2rem;
+  /* 32px */
+  --space-5: 2.5rem;
+  /* 40px */
+  --space-6: 3rem;
+  /* 48px */
+  --space-8: 4rem;
+  /* 64px */
+  --space-10: 5rem;
+  /* 80px */
+  --space-12: 6rem;
+  /* 96px */
 
   /* Border Radius (14px - 24px) */
   --radius-sm: 14px;
@@ -206,72 +216,14 @@ textarea {
   transition: width 0.08s linear;
 }
 
-/* Custom Gold Bindi Cursor (Desktop only) */
-@media (pointer: fine) {
-  .cursor-bindi {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: var(--kumkum);
-    border: 2px solid var(--turmeric);
-    pointer-events: none;
-    z-index: 9998;
-    transform: translate(-50%, -50%);
-    transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease;
-    box-shadow: 0 0 12px rgba(224, 165, 38, 0.65);
-  }
-  .cursor-bindi.is-hovering {
-    width: 32px;
-    height: 32px;
-    background: rgba(224, 165, 38, 0.25);
-    border-color: var(--kumkum);
-  }
-}
-@media (pointer: coarse) {
-  .cursor-bindi {
-    display: none !important;
-  }
+/* Custom Gold Bindi Cursor (Disabled) */
+.cursor-bindi {
+  display: none !important;
 }
 
-/* Preloader */
+/* Preloader (Disabled) */
 .preloader {
-  position: fixed;
-  inset: 0;
-  background: var(--teak-deep);
-  color: var(--sandal);
-  z-index: 10000;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-2);
-  transition: opacity 0.45s ease, visibility 0.45s ease;
-}
-.preloader.is-hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-.preloader__strings {
-  width: 180px;
-  height: 36px;
-}
-.preloader__strings line {
-  stroke: var(--turmeric);
-  stroke-width: 2;
-  animation: stringPluck 0.9s ease-in-out infinite alternate;
-}
-.preloader__strings line:nth-child(2) { animation-delay: 0.15s; stroke: #F5CE69; }
-.preloader__strings line:nth-child(3) { animation-delay: 0.3s; stroke: var(--kumkum); }
-.preloader__strings line:nth-child(4) { animation-delay: 0.45s; }
-
-@keyframes stringPluck {
-  0% { transform: translateY(-3px); }
-  50% { transform: translateY(3px); }
-  100% { transform: translateY(-2px); }
+  display: none !important;
 }
 
 /* --------------------------------------------------------------------------
@@ -303,7 +255,25 @@ textarea {
 
 .section--peacock {
   background: linear-gradient(145deg, #0B4442 0%, #0F5C5A 100%);
-  color: var(--sandal);
+  color: #FFF9F0;
+}
+
+.section--peacock .tag,
+.section--peacock .tag--gold {
+  background: rgba(245, 206, 105, 0.2) !important;
+  color: var(--turmeric-light) !important;
+  border-color: rgba(245, 206, 105, 0.6) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.06em !important;
+}
+
+.section--peacock h2,
+.section--peacock #newsletter-heading {
+  color: #FFF9F0 !important;
+}
+
+.section--peacock p {
+  color: var(--mist) !important;
 }
 
 .section-header {
@@ -328,10 +298,12 @@ textarea {
   justify-content: center;
   overflow: hidden;
 }
+
 .veena-divider svg {
   width: 100%;
   height: 28px;
 }
+
 .veena-divider path {
   fill: none;
   stroke: var(--turmeric);
@@ -339,19 +311,34 @@ textarea {
   stroke-opacity: 0.65;
   transition: d 0.3s ease;
 }
+
 .veena-divider:hover path {
   animation: vibrateWave 0.6s ease-in-out infinite alternate;
 }
+
 @keyframes vibrateWave {
-  0% { transform: scaleY(1); }
-  50% { transform: scaleY(1.6); }
-  100% { transform: scaleY(0.7); }
+  0% {
+    transform: scaleY(1);
+  }
+
+  50% {
+    transform: scaleY(1.6);
+  }
+
+  100% {
+    transform: scaleY(0.7);
+  }
 }
 
 /* --------------------------------------------------------------------------
    4. TYPOGRAPHY, HEADINGS, GOLD UNDERLINES & BADGES
    -------------------------------------------------------------------------- */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
   font-weight: 700;
   line-height: 1.18;
@@ -383,6 +370,7 @@ h4 {
   font-weight: 600;
   display: inline-block;
 }
+
 .section--dark .tamil-accent,
 .hero .tamil-accent {
   color: var(--turmeric-light);
@@ -394,6 +382,7 @@ h4 {
   display: inline-block;
   padding-bottom: 6px;
 }
+
 .gold-underline::after {
   content: '';
   position: absolute;
@@ -407,6 +396,7 @@ h4 {
   transform-origin: center;
   transition: transform var(--transition-smooth);
 }
+
 .section-header:hover .gold-underline::after,
 .gold-underline.is-active::after,
 .reveal.is-visible .gold-underline::after {
@@ -431,18 +421,22 @@ h4 {
   border: 1px solid rgba(163, 23, 30, 0.25);
   width: fit-content;
 }
+
 .tag--gold,
 .badge--gold {
   background: rgba(224, 165, 38, 0.16);
   color: #7D5400;
   border-color: rgba(224, 165, 38, 0.45);
 }
+
 .section--dark .tag--gold,
+.section--peacock .tag--gold,
 .hero .tag--gold {
   background: rgba(224, 165, 38, 0.2);
   color: var(--turmeric-light);
   border-color: rgba(224, 165, 38, 0.5);
 }
+
 .tag--peacock,
 .badge--peacock {
   background: rgba(15, 92, 90, 0.12);
@@ -478,6 +472,7 @@ h4 {
 .btn:hover {
   transform: translateY(-2px);
 }
+
 .btn:active {
   transform: translateY(0);
 }
@@ -489,6 +484,7 @@ h4 {
   border-color: rgba(224, 165, 38, 0.45);
   box-shadow: 0 6px 20px rgba(163, 23, 30, 0.28);
 }
+
 .btn--primary:hover {
   background: linear-gradient(135deg, #8A1117 0%, #B52128 100%);
   box-shadow: 0 10px 26px rgba(163, 23, 30, 0.38);
@@ -501,6 +497,7 @@ h4 {
   border-color: #F6D883;
   box-shadow: var(--shadow-gold);
 }
+
 .btn--gold:hover {
   background: linear-gradient(135deg, #EEB434 0%, #F7DA82 50%, #D29319 100%);
   color: var(--ink);
@@ -512,6 +509,7 @@ h4 {
   color: var(--kumkum);
   border-color: var(--kumkum);
 }
+
 .btn--outline:hover {
   background: var(--kumkum);
   color: #FFFFFF;
@@ -523,6 +521,7 @@ h4 {
   border-color: var(--turmeric);
   backdrop-filter: blur(6px);
 }
+
 .btn--outline-light:hover {
   background: var(--turmeric);
   color: var(--ink);
@@ -533,6 +532,7 @@ h4 {
   color: #FFFFFF;
   border-color: rgba(224, 165, 38, 0.35);
 }
+
 .btn--peacock:hover {
   background: var(--peacock-light);
   color: #FFFFFF;
@@ -560,11 +560,13 @@ h4 {
   border-bottom: 1px solid var(--border-gold);
   transition: padding var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
   padding-block: 0.9rem;
+  --header-dropdown-offset: 20px;
 }
 
 .site-header.is-scrolled {
   padding-block: 0.5rem;
   box-shadow: var(--shadow-md);
+  --header-dropdown-offset: 14px;
 }
 
 .navbar {
@@ -577,42 +579,77 @@ h4 {
 .brand-logo {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.82rem;
   text-decoration: none;
+  transition: transform var(--transition-fast);
+}
+
+.brand-logo:hover {
+  transform: translateY(-1px);
 }
 
 .brand-logo__mark {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: var(--teak-deep);
-  border: 1.5px solid var(--turmeric);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--turmeric);
-  font-size: 1.3rem;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 4px 16px rgba(43, 18, 10, 0.28), 0 0 14px rgba(224, 165, 38, 0.28);
   flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  background: url('../images/logo-veena.svg') no-repeat center / contain;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.brand-logo:hover .brand-logo__mark {
+  transform: scale(1.06) rotate(2deg);
+  box-shadow: 0 6px 20px rgba(224, 165, 38, 0.52), 0 0 22px rgba(224, 165, 38, 0.42);
+}
+
+.brand-logo__mark img,
+.brand-logo__mark svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.brand-logo__mark i {
+  display: none;
 }
 
 .brand-logo__text {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  line-height: 1.15;
+  min-width: 0;
 }
+
 .brand-logo__name {
   font-family: var(--font-heading);
-  font-size: 1.35rem;
+  font-size: 1.4rem;
   font-weight: 700;
-  line-height: 1.1;
+  line-height: 1.15;
   color: var(--text-primary);
+  letter-spacing: -0.01em;
+  white-space: nowrap !important;
+  transition: color var(--transition-fast);
 }
+
+.brand-logo:hover .brand-logo__name {
+  color: var(--kumkum);
+}
+
 .brand-logo__tagline {
   font-size: 0.68rem;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--jackwood);
-  font-weight: 500;
+  font-weight: 600;
+  white-space: nowrap !important;
 }
 
 /* Mandatory Navigation Links: Home | Courses | Teachers | Resources | More | Login | Sign Up */
@@ -620,10 +657,12 @@ h4 {
   display: flex;
   align-items: center;
   gap: 0.25rem;
+  flex-shrink: 0;
 }
 
 .nav-item {
   position: relative;
+  flex-shrink: 0;
 }
 
 .nav-link {
@@ -635,6 +674,7 @@ h4 {
   font-size: 0.92rem;
   font-weight: 500;
   color: var(--text-primary);
+  white-space: nowrap;
   transition: background var(--transition-fast), color var(--transition-fast);
 }
 
@@ -647,7 +687,7 @@ h4 {
 /* Dropdown Menu (Home 1 / Home 2 & Explore More) */
 .dropdown-menu {
   position: absolute;
-  top: calc(100% + 6px);
+  top: calc(100% + var(--header-dropdown-offset, 20px));
   left: 0;
   min-width: 220px;
   background: var(--bg-surface-elevated);
@@ -657,17 +697,59 @@ h4 {
   padding: 0.5rem;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(8px);
-  transition: opacity var(--transition-fast), transform var(--transition-fast), visibility var(--transition-fast);
+  transform: translateY(6px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
   z-index: 1100;
+  pointer-events: none;
 }
 
-.nav-item:hover .dropdown-menu,
-.nav-item:focus-within .dropdown-menu,
-.nav-item.is-open .dropdown-menu {
+/* Invisible Hover Bridge strictly confined to dropdown width */
+.dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: calc(-1 * var(--header-dropdown-offset, 20px) - 2px);
+  left: 0;
+  right: 0;
+  height: calc(var(--header-dropdown-offset, 20px) + 6px);
+  background: transparent;
+  pointer-events: auto;
+}
+
+/* Compact Home Dropdown */
+.dropdown-menu--home,
+.nav-item:first-child .dropdown-menu {
+  min-width: 115px;
+  width: max-content;
+  left: 0;
+  padding: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.dropdown-menu--home .dropdown-link,
+.nav-item:first-child .dropdown-menu .dropdown-link {
+  justify-content: center;
+  text-align: center;
+  padding: 0.5rem 0.95rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Align Explore dropdown neatly to the right edge of its trigger to prevent spilling into utility buttons */
+.nav-item:last-child .dropdown-menu {
+  left: auto;
+  right: 0;
+}
+
+.nav-item.is-open>.dropdown-menu,
+.nav-item:focus-within>.dropdown-menu {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
+  pointer-events: auto;
 }
 
 .dropdown-link {
@@ -679,13 +761,16 @@ h4 {
   font-size: 0.88rem;
   font-weight: 500;
   color: var(--text-primary);
+  white-space: nowrap;
   transition: background var(--transition-fast), color var(--transition-fast);
 }
+
 .dropdown-link i {
   color: var(--turmeric-dark);
   width: 18px;
   text-align: center;
 }
+
 .dropdown-link:hover,
 .dropdown-link.is-active {
   background: rgba(224, 165, 38, 0.15);
@@ -693,15 +778,100 @@ h4 {
 }
 
 /* Utility Controls (Theme, RTL, Lang, Auth) */
-.nav-actions {
+.nav-actions,
+.auth-top-actions {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
+.auth-top-actions {
+  position: fixed;
+  top: 1.25rem;
+  inset-inline-end: 1.5rem;
+  z-index: 999;
+}
+
+/* ==========================================================================
+   AUTHENTICATION & REGISTRATION PORTALS (LOGIN & SIGNUP PAGES)
+   Fully responsive centered card layout with mobile padding optimization
+   ========================================================================== */
+.auth-page-main {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3.5rem 1.25rem 2.5rem;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.auth-container {
+  width: 100%;
+  max-width: 680px;
+  margin-inline: auto;
+  padding-inline: 0 !important;
+  box-sizing: border-box;
+}
+
+.auth-page-main .brand-logo {
+  max-width: 100% !important;
+  justify-content: center !important;
+  margin-inline: auto;
+}
+
+.auth-card {
+  width: 100%;
+  background: var(--bg-surface-elevated);
+  border: 2px solid var(--turmeric) !important;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-6) var(--space-5);
+  box-sizing: border-box;
+  overflow: visible !important;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.auth-card .form-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 0;
+}
+
+.auth-card .form-row-2 > .form-group {
+  margin-bottom: 1.25rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.auth-card .form-control {
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.auth-card .btn-submit {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-height: 48px;
+  height: auto;
+  padding: 0.85rem 1.25rem !important;
+  font-size: 0.95rem !important;
+  font-weight: 600;
+  white-space: normal !important;
+  word-break: normal !important;
+  text-align: center;
+  justify-content: center;
+  line-height: 1.35;
+  display: inline-flex;
+  align-items: center;
+}
+
 .icon-toggle-btn {
   width: 44px;
   height: 44px;
+  min-width: 44px;
+  min-height: 44px;
   border-radius: 12px;
   border: 1px solid var(--border-warm);
   background: var(--bg-surface);
@@ -711,13 +881,44 @@ h4 {
   justify-content: center;
   font-size: 0.85rem;
   font-weight: 600;
+  line-height: 1;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  vertical-align: middle;
   cursor: pointer;
   transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
 }
+
 .icon-toggle-btn:hover {
   border-color: var(--turmeric);
   background: rgba(224, 165, 38, 0.14);
   transform: translateY(-1px);
+}
+
+.icon-toggle-btn[data-action="toggle-lang"] {
+  width: auto;
+  min-width: 50px;
+  padding: 0 0.6rem;
+  font-family: var(--font-tamil), "Noto Serif Tamil", "Segoe UI", sans-serif;
+  font-size: 0.84rem;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+html[data-lang="ta"] .icon-toggle-btn[data-action="toggle-lang"] {
+  font-family: var(--font-body);
+  font-size: 0.84rem;
+  font-weight: 600;
+  padding: 0 0.6rem;
+}
+
+.icon-toggle-btn[data-action="toggle-rtl"] {
+  width: auto;
+  min-width: 44px;
+  padding: 0 0.45rem;
+  white-space: nowrap;
 }
 
 .nav-auth-btns {
@@ -725,6 +926,7 @@ h4 {
   align-items: center;
   gap: 0.5rem;
 }
+
 .nav-auth-btns .btn {
   min-width: 115px;
   height: 44px;
@@ -758,6 +960,7 @@ h4 {
   visibility: hidden;
   transition: opacity var(--transition-fast), visibility var(--transition-fast);
 }
+
 .mobile-drawer-backdrop.is-open {
   opacity: 1;
   visibility: visible;
@@ -781,21 +984,81 @@ h4 {
   transition: transform var(--transition-smooth);
   box-shadow: var(--shadow-lg);
 }
+
 .mobile-drawer.is-open {
   transform: translateX(0);
 }
+
 .mobile-drawer__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 0.5rem;
   padding-bottom: var(--space-2);
   border-bottom: 1px solid var(--border-warm);
 }
+
+.mobile-drawer__header .brand-logo {
+  flex: 1 1 auto;
+  min-width: 0;
+  text-decoration: none;
+}
+
+.mobile-drawer__header .icon-toggle-btn {
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.mobile-drawer__utilities {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.85rem var(--space-2);
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-warm);
+  background: rgba(255, 249, 240, 0.04);
+  border-radius: var(--radius-sm);
+}
+
+.mobile-drawer__utilities .icon-toggle-btn {
+  display: inline-flex !important;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--border-warm);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.mobile-drawer__utilities .icon-toggle-btn[data-action="toggle-lang"] {
+  width: auto;
+  min-width: 56px;
+  padding: 0 0.8rem;
+  font-family: var(--font-tamil), "Noto Serif Tamil", "Segoe UI", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.mobile-drawer__utilities .icon-toggle-btn[data-action="toggle-rtl"] {
+  width: auto;
+  min-width: 50px;
+  padding: 0 0.7rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
 .mobile-drawer__list {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
 }
+
 .mobile-drawer__link {
   display: flex;
   align-items: center;
@@ -805,11 +1068,36 @@ h4 {
   font-weight: 500;
   color: var(--text-primary);
 }
+
 .mobile-drawer__link:hover,
 .mobile-drawer__link.is-active {
   background: rgba(163, 23, 30, 0.1);
   color: var(--kumkum);
 }
+
+.mobile-drawer__dropdown {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-drawer__dropdown-toggle {
+  cursor: pointer;
+  user-select: none;
+}
+
+.mobile-drawer__dropdown-toggle .fa-chevron-down {
+  transition: transform var(--transition-fast, 0.2s ease);
+  transform: rotate(0deg);
+}
+
+.mobile-drawer__dropdown:not(.is-open) .mobile-drawer__dropdown-toggle .fa-chevron-down {
+  transform: rotate(-90deg);
+}
+
+.mobile-drawer__dropdown:not(.is-open) .mobile-drawer__sub {
+  display: none !important;
+}
+
 .mobile-drawer__sub {
   padding-left: 1rem;
   display: flex;
@@ -818,6 +1106,7 @@ h4 {
   border-left: 2px solid var(--border-gold);
   margin-left: 0.9rem;
 }
+
 .mobile-drawer__ctas {
   margin-top: auto;
   display: flex;
@@ -849,36 +1138,82 @@ h4 {
   inset: 0;
   z-index: 0;
 }
+
 .hero-concert__bg img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transform: scale(1.05);
-  transition: transform 0.6s ease-out;
+  filter: brightness(1.16) contrast(1.12) saturate(1.22);
+  transition: transform 0.8s ease-out;
 }
+
 .hero-concert__overlay {
   position: absolute;
   inset: 0;
-  background: var(--hero-overlay);
+  /* Cinematic dual-gradient: luminous radial center + rich amber-teak vignette at perimeter */
+  background:
+    radial-gradient(ellipse at 50% 45%, rgba(20, 8, 4, 0.28) 0%, rgba(20, 8, 4, 0.48) 55%, rgba(12, 4, 2, 0.76) 100%),
+    linear-gradient(180deg, rgba(20, 7, 3, 0.42) 0%, rgba(35, 12, 5, 0.18) 40%, rgba(15, 5, 2, 0.78) 100%);
   z-index: 1;
 }
 
 .hero-concert__content {
   position: relative;
   z-index: 2;
-  max-width: 920px;
+  max-width: 960px;
   margin-inline: auto;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--space-3);
+  padding: var(--space-4) var(--space-3);
+  border-radius: 24px;
+  background: radial-gradient(ellipse at center, rgba(16, 6, 2, 0.42) 0%, rgba(16, 6, 2, 0.20) 60%, transparent 88%);
+  backdrop-filter: blur(1.5px);
+  -webkit-backdrop-filter: blur(1.5px);
+}
+
+.hero-concert__content h1 {
+  color: #FFFFFF;
+  font-size: clamp(2.4rem, 4.5vw, 4.2rem);
+  font-weight: 700;
+  line-height: 1.12;
+  text-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.95),
+    0 6px 24px rgba(0, 0, 0, 0.82),
+    0 0 45px rgba(224, 165, 38, 0.35);
 }
 
 .hero-concert__subtitle {
-  max-width: 680px;
-  font-size: clamp(1.02rem, 1.4vw, 1.2rem);
-  color: var(--text-on-dark-muted);
+  max-width: 720px;
+  font-size: clamp(1.05rem, 1.45vw, 1.25rem);
+  color: #FFF2DF !important;
+  font-weight: 400;
+  line-height: 1.7;
+  text-shadow:
+    0 1px 4px rgba(0, 0, 0, 0.95),
+    0 2px 12px rgba(0, 0, 0, 0.85);
+}
+
+.hero-concert__content .tamil-accent {
+  color: #FFDA73 !important;
+  font-size: 1.08rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-shadow:
+    0 1px 4px rgba(0, 0, 0, 0.95),
+    0 0 20px rgba(224, 165, 38, 0.55);
+}
+
+.hero-concert__content .tag {
+  background: rgba(18, 7, 3, 0.68) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1.5px solid var(--turmeric) !important;
+  color: #FFE699 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
 }
 
 /* Floating Glass Card for Next Concert + Audio Sruti Drone */
@@ -905,6 +1240,7 @@ h4 {
   align-items: center;
   gap: 0.5rem;
 }
+
 .mini-countdown__unit {
   background: rgba(255, 249, 240, 0.1);
   border: 1px solid rgba(224, 165, 38, 0.35);
@@ -913,6 +1249,7 @@ h4 {
   min-width: 56px;
   text-align: center;
 }
+
 .mini-countdown__num {
   display: block;
   font-family: var(--font-heading);
@@ -921,6 +1258,7 @@ h4 {
   color: var(--turmeric-light);
   line-height: 1;
 }
+
 .mini-countdown__label {
   font-size: 0.65rem;
   text-transform: uppercase;
@@ -940,6 +1278,7 @@ h4 {
   color: var(--sandal);
   font-size: 0.84rem;
 }
+
 .sruti-drone-btn {
   width: 36px;
   height: 36px;
@@ -958,9 +1297,11 @@ h4 {
   position: relative;
   padding-block: var(--space-8) var(--space-10);
   background: radial-gradient(circle at 15% 20%, rgba(224, 165, 38, 0.14), transparent 50%),
-              radial-gradient(circle at 85% 80%, rgba(163, 23, 30, 0.09), transparent 55%),
-              var(--bg-primary);
+    radial-gradient(circle at 85% 80%, rgba(163, 23, 30, 0.09), transparent 55%),
+    var(--bg-primary);
   border-bottom: 1px solid var(--border-warm);
+  overflow-x: clip;
+  width: 100%;
 }
 
 .hero-gurukulam__grid {
@@ -968,6 +1309,9 @@ h4 {
   grid-template-columns: 1.12fr 0.88fr;
   align-items: center;
   gap: var(--space-6);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .hero-gurukulam__left {
@@ -975,11 +1319,16 @@ h4 {
   flex-direction: column;
   align-items: flex-start;
   gap: var(--space-3);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 /* Search / Enquiry Bar inside Home 2 Hero */
 .hero-finder-bar {
   width: 100%;
+  max-width: 100%;
   background: var(--bg-surface-elevated);
   border: 1.5px solid var(--border-gold);
   border-radius: var(--radius-md);
@@ -989,6 +1338,7 @@ h4 {
   grid-template-columns: repeat(3, 1fr) auto;
   gap: 0.75rem;
   align-items: center;
+  box-sizing: border-box;
 }
 
 .hero-finder-field {
@@ -998,9 +1348,11 @@ h4 {
   padding-inline: 0.5rem;
   border-right: 1px solid var(--border-warm);
 }
+
 .hero-finder-field:last-of-type {
   border-right: none;
 }
+
 .hero-finder-field label {
   font-size: 0.7rem;
   text-transform: uppercase;
@@ -1008,6 +1360,7 @@ h4 {
   color: var(--text-muted);
   font-weight: 600;
 }
+
 .hero-finder-field select {
   border: none;
   background: transparent;
@@ -1016,91 +1369,363 @@ h4 {
   color: var(--text-primary);
   padding-block: 0.25rem;
   cursor: pointer;
+  width: 100%;
 }
 
-/* Home 2 Arch Collage Right Column */
+.hero-finder-field select:focus,
+.hero-finder-field select:focus-visible {
+  outline: 2px solid var(--turmeric);
+  border-radius: var(--radius-xs, 4px);
+}
+
+.hero-finder-field select option,
+select option {
+  background-color: var(--bg-surface-elevated, #FFFFFF);
+  color: var(--text-primary, #2B120A);
+  font-weight: 500;
+  padding: 0.5rem 0.75rem;
+}
+
+.hero-finder-field select option:checked,
+select option:checked {
+  background-color: var(--turmeric, #E0A526);
+  color: var(--teak-deep, #1A0E09);
+  font-weight: 700;
+}
+
+/* Home 2 Hero Stage Showcase */
 .hero-collage {
   position: relative;
   min-height: 520px;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(12, 42px);
+  display: flex;
   align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  width: 100%;
+}
+
+.hero-stage__glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 90%;
+  background: radial-gradient(circle, rgba(224, 165, 38, 0.22) 0%, rgba(163, 23, 30, 0.12) 50%, transparent 72%);
+  border-radius: 50%;
+  filter: blur(28px);
+  z-index: 1;
+  pointer-events: none;
 }
 
 .arch-photo {
+  position: relative;
   overflow: hidden;
-  border-radius: 140px 140px 20px 20px;
+  border-radius: 180px 180px 24px 24px;
   border: 3px solid var(--turmeric);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.55), 0 0 24px rgba(224, 165, 38, 0.22);
   background: var(--teak-deep);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+  z-index: 2;
 }
+
+.arch-photo:hover {
+  transform: translateY(-4px);
+  border-color: var(--turmeric-light);
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.65), 0 0 32px rgba(245, 206, 105, 0.35);
+}
+
 .arch-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 10%;
+  display: block;
+  filter: brightness(1.05) contrast(1.06) saturate(1.12);
+  transition: transform 0.6s ease-out;
 }
+
+.arch-photo:hover img {
+  transform: scale(1.03);
+}
+
 .arch-photo--main {
-  grid-column: 2 / 9;
-  grid-row: 1 / 11;
-  z-index: 2;
-}
-.arch-photo--top-right {
-  grid-column: 7 / 13;
-  grid-row: 2 / 8;
-  z-index: 3;
-}
-.arch-photo--bottom-left {
-  grid-column: 1 / 6;
-  grid-row: 7 / 13;
-  z-index: 4;
+  width: 100%;
+  max-width: 440px;
+  aspect-ratio: 4 / 5;
+  margin-inline: auto;
 }
 
 .collage-badge {
   position: absolute;
   z-index: 5;
-  background: var(--teak-deep);
+  background: rgba(30, 17, 13, 0.94);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   color: var(--sandal);
   border: 1.5px solid var(--turmeric);
   border-radius: var(--radius-sm);
-  padding: 0.75rem 1.1rem;
-  box-shadow: var(--shadow-md);
+  padding: 0.75rem 1.15rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 12px rgba(224, 165, 38, 0.18);
   display: flex;
   align-items: center;
-  gap: 0.65rem;
-  font-size: 0.84rem;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
+
+.collage-badge:hover {
+  transform: translateY(-2px);
+  border-color: var(--turmeric-light);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6), 0 0 16px rgba(245, 206, 105, 0.3);
+}
+
 .collage-badge--top {
-  top: 12px;
-  left: 0;
+  top: 16px;
+  left: -8px;
 }
+
+.collage-badge--mid-left {
+  bottom: 110px;
+  left: -16px;
+}
+
 .collage-badge--bottom {
-  bottom: 18px;
-  right: 0;
+  bottom: 24px;
+  right: -8px;
 }
 
 /* --------------------------------------------------------------------------
    8. 3D TILT CARD SYSTEM & MUSICAL MICRO-ANIMATIONS (SECTION 5)
+   Card Grids: In All Views, Across Entire Page, Last Cards Are Centered
+   With Exact Same Size (No Stretching)
    -------------------------------------------------------------------------- */
 .card-grid-3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: var(--space-4);
   align-items: stretch;
 }
 
+.card-grid-3>* {
+  flex: 0 1 calc((100% - 2 * var(--space-4)) / 3);
+  width: calc((100% - 2 * var(--space-4)) / 3);
+  max-width: calc((100% - 2 * var(--space-4)) / 3);
+  box-sizing: border-box;
+}
+
 .card-grid-4 {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: var(--space-3);
   align-items: stretch;
 }
 
+.card-grid-4>* {
+  flex: 0 1 calc((100% - 3 * var(--space-3)) / 4);
+  width: calc((100% - 3 * var(--space-3)) / 4);
+  max-width: calc((100% - 3 * var(--space-3)) / 4);
+  box-sizing: border-box;
+}
+
 .card-grid-2 {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-4);
+  --grid-gap: var(--space-4);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--grid-gap);
   align-items: stretch;
+}
+
+.card-grid-2>* {
+  flex: 0 1 calc((100% - var(--grid-gap, var(--space-4))) / 2);
+  width: calc((100% - var(--grid-gap, var(--space-4))) / 2);
+  max-width: calc((100% - var(--grid-gap, var(--space-4))) / 2);
+  box-sizing: border-box;
+}
+
+.card-grid-2[style*="var(--space-6)"] {
+  --grid-gap: var(--space-6);
+}
+
+.card-grid-2[style*="var(--space-5)"] {
+  --grid-gap: var(--space-5);
+}
+
+/* ==========================================================================
+   HOME 2 CARDS: GUARANTEED EQUAL SIZES & IDENTICAL COMPONENT HEIGHTS
+   ========================================================================== */
+figure.tilt-card {
+  margin: 0 !important;
+}
+
+.mode-comparison-grid,
+.academy-day-grid,
+.academy-day-grid-1,
+.academy-day-grid-2,
+.voices-wall-grid,
+#coursesCatalogGrid,
+#blogGrid,
+#eventsGrid,
+#photoGalleryGrid,
+#featuredConcertsGrid,
+#whyCarnaticGrid,
+#signatureCoursesGrid,
+#fourPillarsGrid,
+#campusFacilitiesGrid,
+#contactInfoGrid,
+#facultyGrid,
+#pricingGrid,
+#ragaGlossaryGrid,
+.horizontal-scroll-track,
+.card-grid-2,
+.card-grid-3,
+.card-grid-4 {
+  align-items: stretch !important;
+}
+
+.mode-comparison-grid>*,
+.academy-day-grid>*,
+.academy-day-grid-1>*,
+.academy-day-grid-2>*,
+.voices-wall-grid>*,
+#coursesCatalogGrid>*,
+#blogGrid>*,
+#eventsGrid>*,
+#photoGalleryGrid>*,
+#featuredConcertsGrid>*,
+#whyCarnaticGrid>*,
+#signatureCoursesGrid>*,
+#fourPillarsGrid>*,
+#campusFacilitiesGrid>*,
+#contactInfoGrid>*,
+#facultyGrid>*,
+#pricingGrid>*,
+#ragaGlossaryGrid>*,
+.horizontal-scroll-track>*,
+.card-grid-2>*,
+.card-grid-3>*,
+.card-grid-4>* {
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  box-sizing: border-box !important;
+}
+
+.mode-comparison-grid .tilt-card,
+.academy-day-grid .tilt-card,
+.academy-day-grid-1 .tilt-card,
+.academy-day-grid-2 .tilt-card,
+.voices-wall-grid .tilt-card,
+#coursesCatalogGrid .tilt-card,
+#blogGrid .tilt-card,
+#eventsGrid .tilt-card,
+#photoGalleryGrid .tilt-card,
+#featuredConcertsGrid .tilt-card,
+#whyCarnaticGrid .tilt-card,
+#signatureCoursesGrid .tilt-card,
+#fourPillarsGrid .tilt-card,
+#campusFacilitiesGrid .tilt-card,
+#contactInfoGrid .tilt-card,
+#facultyGrid .tilt-card,
+#pricingGrid .tilt-card,
+#ragaGlossaryGrid .tilt-card,
+.horizontal-scroll-track .tilt-card,
+.card-grid-2 .tilt-card,
+.card-grid-3 .tilt-card,
+.card-grid-4 .tilt-card,
+.card-grid-2 .academy-card,
+.card-grid-3 .academy-card,
+.card-grid-4 .academy-card,
+.course-card,
+.teacher-card {
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto !important;
+  box-sizing: border-box !important;
+}
+
+.mode-comparison-grid .card-body,
+.academy-day-grid .card-body,
+.academy-day-grid-1 .card-body,
+.academy-day-grid-2 .card-body,
+.voices-wall-grid .card-body,
+#coursesCatalogGrid .card-body,
+#blogGrid .card-body,
+#eventsGrid .card-body,
+#photoGalleryGrid .card-body,
+#featuredConcertsGrid .card-body,
+#whyCarnaticGrid .card-body,
+#signatureCoursesGrid .card-body,
+#fourPillarsGrid .card-body,
+#campusFacilitiesGrid .card-body,
+#contactInfoGrid .card-body,
+#facultyGrid .card-body,
+#pricingGrid .card-body,
+#ragaGlossaryGrid .card-body,
+.horizontal-scroll-track .card-body,
+.card-grid-2 .card-body,
+.card-grid-3 .card-body,
+.card-grid-4 .card-body,
+.course-card .card-body,
+.teacher-card .card-body {
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto !important;
+  box-sizing: border-box !important;
+}
+
+.mode-comparison-grid .card-checklist {
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin: 0 auto 1.25rem auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.65rem !important;
+  width: 100% !important;
+  max-width: 440px !important;
+  flex: 1 1 auto !important;
+}
+
+.mode-comparison-grid .card-checklist li {
+  display: flex !important;
+  align-items: flex-start !important;
+  text-align: left !important;
+  gap: 0.65rem !important;
+  line-height: 1.45 !important;
+  font-size: 0.9rem !important;
+}
+
+.mode-comparison-grid .card-checklist li i {
+  width: 18px !important;
+  min-width: 18px !important;
+  max-width: 18px !important;
+  height: 18px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  margin-top: 0.18rem !important;
+}
+
+.mode-comparison-grid .card-checklist li span {
+  flex: 1 1 auto !important;
+  text-align: left !important;
+}
+
+.mode-comparison-grid .card-footer,
+.voices-wall-grid .card-footer {
+  margin-top: auto !important;
+  width: 100% !important;
+}
+
+.mode-comparison-grid .card-footer .btn {
+  width: 100% !important;
+  min-height: 48px !important;
 }
 
 /* Base Card with Equal Height & Pinned Bottom Button */
@@ -1145,7 +1770,9 @@ h4 {
 }
 
 /* Touch device gentle lift fallback */
-@media (hover: none), (pointer: coarse) {
+@media (hover: none),
+(pointer: coarse) {
+
   .tilt-card:active,
   .academy-card:active {
     transform: translateY(-4px) scale(0.99);
@@ -1155,21 +1782,30 @@ h4 {
 .card-media {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 16 / 10.8;
   overflow: hidden;
   background: var(--teak-deep);
 }
+
 .card-media--portrait {
   aspect-ratio: 4 / 4.3;
 }
+
 .card-media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.55s ease;
+  object-position: center center;
+  transition: transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
+
+.card-media--portrait img {
+  object-position: center 16%;
+}
+
 .tilt-card:hover .card-media img {
-  transform: scale(1.06);
+  transform: scale(1.03);
+  transform-origin: center center;
 }
 
 .card-date-badge {
@@ -1205,22 +1841,35 @@ h4 {
   font-size: 0.82rem;
   color: var(--text-muted);
 }
+
 .section--dark .card-meta {
   color: var(--text-on-dark-muted);
 }
 
 .card-title {
   font-family: var(--font-heading);
-  font-size: 1.42rem;
+  font-size: 1.38rem;
   font-weight: 700;
   line-height: 1.25;
+  margin-block: 0.35rem 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .card-title {
+    min-height: 3.2rem;
+    display: flex;
+    align-items: center;
+  }
 }
 
 .card-text {
   font-size: 0.92rem;
   color: var(--text-secondary);
   line-height: 1.6;
+  margin-bottom: 0.85rem;
+  flex: 1 1 auto;
 }
+
 .section--dark .card-text {
   color: var(--text-on-dark-muted);
 }
@@ -1237,20 +1886,2122 @@ h4 {
   flex-wrap: wrap;
 }
 
-/* ICON CARDS: Strictly Center Aligned in ALL Views */
+/* ICON CARDS: Strictly Center Aligned & Harmonious Baseline Across All Views */
 .icon-card {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
   text-align: center !important;
   align-items: center !important;
-  padding: var(--space-4) var(--space-3);
+  padding: var(--space-5) var(--space-3) var(--space-4) !important;
 }
+
 .icon-card .card-body {
+  width: 100%;
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto !important;
   align-items: center !important;
   text-align: center !important;
-  padding: 0;
+  padding: 0 !important;
+  gap: 0.75rem;
 }
-.icon-card .card-footer {
+
+.icon-card .tag {
+  align-self: center;
+  margin-bottom: 0.2rem;
+}
+
+/* Gurukulam Sadhana & Icon Card Title & Sub-Text: Guaranteed Identical Baselines */
+.icon-card .card-title,
+.card-grid-4 .icon-card .card-title {
+  min-height: 4.2rem !important;
+  display: flex !important;
+  align-items: center !important;
   justify-content: center !important;
+  text-align: center !important;
+  font-size: 1.25rem !important;
+  line-height: 1.3 !important;
+  margin: 0.25rem 0 0.5rem !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.icon-card .card-text,
+.card-grid-4 .icon-card .card-text {
+  min-height: 7.5rem !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: center !important;
+  text-align: center !important;
+  line-height: 1.62 !important;
+  margin-bottom: 1.25rem !important;
+  flex: 1 1 auto !important;
+}
+
+.icon-card .card-footer {
+  margin-top: auto !important;
   width: 100%;
+  border-top: none;
+  padding-top: 0;
+  justify-content: center !important;
+}
+
+/* ==========================================================================
+   UNIVERSAL CARD TAG ALIGNMENT ACROSS ALL PAGES & VIEWS
+   Guarantees all tags inside cards share identical 30px height, single-line baseline,
+   perfect vertical centering, and consistent spacing across all grid columns.
+   ========================================================================== */
+.card-body .tag,
+.tilt-card .tag,
+.academy-card .tag,
+.course-card .tag,
+.teacher-card .tag,
+.blog-card .tag,
+.icon-card .tag {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 30px !important;
+  min-height: 30px !important;
+  max-height: 30px !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+  font-size: 0.74rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.08em !important;
+  padding: 0 0.95rem !important;
+  border-radius: var(--radius-pill) !important;
+  margin-top: 0 !important;
+  margin-bottom: 0.5rem !important;
+  flex-shrink: 0 !important;
+  box-sizing: border-box !important;
+  vertical-align: middle !important;
+}
+
+/* Card body tag container baseline consistency */
+.card-body>.tag:first-child,
+.tilt-card .card-body>.tag:first-child,
+.academy-card .card-body>.tag:first-child {
+  margin-top: 0.15rem !important;
+  margin-bottom: 0.45rem !important;
+}
+
+/* Universal Card Tag Alignment Across All Card Types & Grids:
+   Ensures tags in all cards (card-grid-2, card-grid-3, card-grid-4, #facultyGrid, etc.)
+   are perfectly centered, never touch or overflow card boundaries, and maintain balanced margins in all views */
+.tag,
+.badge,
+.card-body .tag,
+.card-body>.tag:first-child,
+.tilt-card .tag,
+.academy-card .tag,
+.course-card .tag,
+.teacher-card .tag,
+.blog-card .tag,
+.icon-card .tag,
+.card-grid-2 .tag,
+.card-grid-3 .tag,
+.card-grid-4 .tag,
+#facultyGrid .tag {
+  align-self: center !important;
+  margin-inline: auto !important;
+  text-align: center !important;
+  max-width: 100% !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.04em !important;
+  padding: 0 0.8rem !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  box-sizing: border-box !important;
+}
+
+/* Swara Notation Box (Raga Glossary & Student Portal) */
+.swara-notation-box {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.88rem;
+  background: var(--bg-surface);
+  border-left: 3px solid var(--turmeric);
+  padding: 0.65rem 0.85rem;
+  border-radius: 8px;
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+  min-height: 4.2rem;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  gap: 0.3rem;
+  margin-bottom: 0.5rem;
+  box-sizing: border-box;
+}
+
+.swara-notation-box .swara-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.45rem !important;
+  white-space: nowrap !important;
+  text-align: left !important;
+  line-height: 1.4 !important;
+}
+
+.swara-notation-box .swara-row strong {
+  display: inline-block !important;
+  min-width: 2.5rem !important;
+  color: var(--turmeric-dark) !important;
+  font-weight: 700 !important;
+}
+
+.swara-notation-box .swara-row span {
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.section--dark .swara-notation-box,
+[data-theme="dark"] .swara-notation-box {
+  background: rgba(255, 249, 240, 0.05);
+  border-left-color: var(--turmeric-light);
+}
+
+.section--dark .swara-notation-box .swara-row strong,
+[data-theme="dark"] .swara-notation-box .swara-row strong {
+  color: var(--turmeric-light) !important;
+}
+
+/* ==========================================================================
+   UNIVERSAL CARD HEADINGS & SUB-TEXT ALIGNMENT ACROSS ALL PAGES
+   (Courses, Concerts, Teachers, Blog, Fees, Lineage)
+   ========================================================================== */
+@media (min-width: 640px) {
+
+  /* ==========================================================================
+     COURSES CATALOG: STRICT UNIFORM DIMENSIONS ACROSS ALL ROWS (ALL CARDS SAME SIZE)
+     Guarantees every card in #coursesCatalogGrid has the EXACT SAME WIDTH and TOTAL HEIGHT
+     ========================================================================== */
+  #coursesCatalogGrid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: var(--space-4) !important;
+    align-items: stretch !important;
+  }
+
+  #coursesCatalogGrid>* {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: none !important;
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+  }
+
+  #coursesCatalogGrid .tilt-card,
+  .course-card {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+  }
+
+  #coursesCatalogGrid .card-media,
+  .course-card .card-media {
+    aspect-ratio: 16 / 10.4 !important;
+    width: 100% !important;
+    overflow: hidden !important;
+    flex-shrink: 0 !important;
+  }
+
+  #coursesCatalogGrid .card-media img,
+  .course-card .card-media img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+  }
+
+  #coursesCatalogGrid .card-body,
+  .course-card .card-body {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 1 auto !important;
+    padding: var(--space-3) !important;
+    box-sizing: border-box !important;
+  }
+
+  #coursesCatalogGrid .card-body>div:first-child,
+  .course-card .card-body>div:first-child {
+    min-height: 2.2rem !important;
+    max-height: 2.2rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    margin-bottom: 0.25rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  #coursesCatalogGrid .tag,
+  .course-card .tag {
+    height: 26px !important;
+    min-height: 26px !important;
+    max-height: 26px !important;
+    margin: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    white-space: nowrap !important;
+    font-size: 0.68rem !important;
+    letter-spacing: 0.03em !important;
+    padding: 0 0.65rem !important;
+    box-sizing: border-box !important;
+    flex-shrink: 0 !important;
+  }
+
+  #coursesCatalogGrid .card-title,
+  .course-card .card-title,
+  [data-filter-item] .card-title {
+    min-height: 3.6rem !important;
+    max-height: 3.6rem !important;
+    display: flex !important;
+    align-items: center !important;
+    font-size: 1.25rem !important;
+    line-height: 1.25 !important;
+    margin-block: 0.25rem 0.5rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  #coursesCatalogGrid .card-text,
+  .course-card .card-text,
+  [data-filter-item] .card-text {
+    min-height: 7.2rem !important;
+    max-height: 7.2rem !important;
+    font-size: 0.88rem !important;
+    line-height: 1.55 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 5 !important;
+    line-clamp: 5 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    margin-bottom: 0.75rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  #coursesCatalogGrid .card-meta,
+  .course-card .card-meta {
+    min-height: 3.2rem !important;
+    max-height: 3.2rem !important;
+    display: flex !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 0.45rem !important;
+    margin-bottom: 0.75rem !important;
+    flex-shrink: 0 !important;
+    font-size: 0.82rem !important;
+  }
+
+  #coursesCatalogGrid .card-footer,
+  .course-card .card-footer {
+    margin-top: auto !important;
+    padding-top: var(--space-2) !important;
+    border-top: 1px solid var(--border-warm) !important;
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-shrink: 0 !important;
+  }
+
+  #coursesCatalogGrid .card-footer .btn,
+  .course-card .card-footer .btn {
+    min-height: 48px !important;
+    height: 48px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Courses Catalog: Center the 10th (last) card in the middle column on Desktop (3-column grid) */
+  #coursesCatalogGrid> :last-child,
+  #coursesCatalogGrid>.course-card:last-child {
+    grid-column: 2 !important;
+  }
+
+  /* Concert / Event Cards */
+  .tilt-card:not(.icon-card) .card-title,
+  .academy-card:not(.icon-card) .card-title {
+    min-height: 3.4rem !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  .tilt-card:not(.icon-card) .card-text,
+  .academy-card:not(.icon-card) .card-text {
+    min-height: 4.8rem !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    flex: 1 1 auto !important;
+  }
+
+  /* ==========================================================================
+     TEACHERS / FACULTY CARDS: STRICT UNIFORM DIMENSIONS ACROSS ALL ROWS
+     Guarantees every card in #facultyGrid has the EXACT SAME WIDTH and TOTAL HEIGHT
+     ========================================================================== */
+  #facultyGrid .tilt-card,
+  .teacher-card {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  #facultyGrid .card-media,
+  .teacher-card .card-media {
+    aspect-ratio: 4 / 4.3 !important;
+    width: 100% !important;
+    flex-shrink: 0 !important;
+  }
+
+  #facultyGrid .card-body,
+  .teacher-card .card-body {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 1 auto !important;
+    padding: var(--space-3) !important;
+  }
+
+  #facultyGrid .tag,
+  .teacher-card .tag {
+    align-self: center !important;
+    margin-inline: auto !important;
+    text-align: center !important;
+    height: 30px !important;
+    min-height: 30px !important;
+    max-height: 30px !important;
+    font-size: 0.68rem !important;
+    letter-spacing: 0.04em !important;
+    padding: 0 0.72rem !important;
+    margin-top: 0 !important;
+    margin-bottom: 0.5rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  #facultyGrid .card-title,
+  .teacher-card .card-title {
+    min-height: 3.6rem !important;
+    max-height: 3.6rem !important;
+    display: flex !important;
+    align-items: center !important;
+    font-size: 1.25rem !important;
+    line-height: 1.25 !important;
+    margin-block: 0.25rem 0.5rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  #facultyGrid .card-text,
+  .teacher-card .card-text {
+    min-height: 7.2rem !important;
+    max-height: 7.2rem !important;
+    font-size: 0.88rem !important;
+    line-height: 1.55 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 5 !important;
+    line-clamp: 5 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    margin-bottom: 0.75rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  #facultyGrid .card-meta,
+  .teacher-card .card-meta {
+    min-height: 2.2rem !important;
+    max-height: 2.2rem !important;
+    display: flex !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 0.5rem !important;
+    margin-bottom: 0.75rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  #facultyGrid .card-footer,
+  .teacher-card .card-footer {
+    margin-top: auto !important;
+    padding-top: var(--space-2) !important;
+    width: 100% !important;
+    flex-shrink: 0 !important;
+  }
+
+  #facultyGrid .card-footer .btn,
+  .teacher-card .card-footer .btn {
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  /* ==========================================================================
+     HOME 1: SECTION 3 - FEATURED CONCERTS (GUARANTEED IDENTICAL CARD SIZES)
+     All 3 cards share the EXACT SAME WIDTH and TOTAL HEIGHT across all rows
+     ========================================================================== */
+  #featuredConcertsGrid .tilt-card,
+  section[aria-labelledby="featured-concerts-heading"] .tilt-card {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+  }
+
+  #featuredConcertsGrid .card-media,
+  section[aria-labelledby="featured-concerts-heading"] .card-media {
+    aspect-ratio: 16 / 10.4 !important;
+    width: 100% !important;
+    overflow: hidden !important;
+    flex-shrink: 0 !important;
+  }
+
+  #featuredConcertsGrid .card-body,
+  section[aria-labelledby="featured-concerts-heading"] .card-body {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 1 auto !important;
+    padding: var(--space-3) !important;
+    box-sizing: border-box !important;
+  }
+
+  #featuredConcertsGrid .card-title,
+  section[aria-labelledby="featured-concerts-heading"] .card-title {
+    min-height: 3.4rem !important;
+    max-height: 3.4rem !important;
+    display: flex !important;
+    align-items: center !important;
+    font-size: 1.25rem !important;
+    line-height: 1.25 !important;
+    margin-block: 0.25rem 0.5rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  #featuredConcertsGrid .card-text,
+  section[aria-labelledby="featured-concerts-heading"] .card-text {
+    min-height: 5.2rem !important;
+    max-height: 5.2rem !important;
+    font-size: 0.88rem !important;
+    line-height: 1.55 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3 !important;
+    line-clamp: 3 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    margin-bottom: 0.75rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  #featuredConcertsGrid .card-meta,
+  section[aria-labelledby="featured-concerts-heading"] .card-meta {
+    min-height: 2.4rem !important;
+    max-height: 2.4rem !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.65rem !important;
+    margin-bottom: 0.75rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  #featuredConcertsGrid .card-footer,
+  section[aria-labelledby="featured-concerts-heading"] .card-footer {
+    margin-top: auto !important;
+    padding-top: var(--space-2) !important;
+    border-top: 1px solid var(--border-warm) !important;
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-shrink: 0 !important;
+  }
+
+  #featuredConcertsGrid .card-footer .btn,
+  section[aria-labelledby="featured-concerts-heading"] .card-footer .btn {
+    min-height: 48px !important;
+    height: 48px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* ==========================================================================
+     HOME 1: SECTION 4 - WHY CARNATIC ICON CARDS (GUARANTEED IDENTICAL CARD SIZES)
+     All 4 icon cards share the EXACT SAME WIDTH and TOTAL HEIGHT
+     ========================================================================== */
+  #whyCarnaticGrid .tilt-card,
+  section[aria-labelledby="why-carnatic-heading"] .tilt-card {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+  }
+
+  #whyCarnaticGrid .card-body,
+  section[aria-labelledby="why-carnatic-heading"] .card-body {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 1 auto !important;
+    align-items: center !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+  }
+
+  #whyCarnaticGrid .card-title,
+  section[aria-labelledby="why-carnatic-heading"] .card-title {
+    min-height: 4.2rem !important;
+    max-height: 4.2rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    font-size: 1.25rem !important;
+    line-height: 1.3 !important;
+    margin: 0.25rem 0 0.5rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  #whyCarnaticGrid .card-text,
+  section[aria-labelledby="why-carnatic-heading"] .card-text {
+    min-height: 7.2rem !important;
+    max-height: 7.2rem !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 4 !important;
+    line-clamp: 4 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-align: center !important;
+    line-height: 1.6 !important;
+    font-size: 0.9rem !important;
+    margin-bottom: 0 !important;
+    flex: 1 1 auto !important;
+  }
+
+  /* ==========================================================================
+     HOME 1: SECTION 5 - SIGNATURE COURSES (GUARANTEED IDENTICAL CARD SIZES)
+     All 3 cards share the EXACT SAME WIDTH and TOTAL HEIGHT
+     ========================================================================== */
+  #signatureCoursesGrid .tilt-card,
+  section[aria-labelledby="signature-courses-heading"] .tilt-card {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+  }
+
+  #signatureCoursesGrid .card-media,
+  section[aria-labelledby="signature-courses-heading"] .card-media {
+    aspect-ratio: 16 / 10.4 !important;
+    width: 100% !important;
+    overflow: hidden !important;
+    flex-shrink: 0 !important;
+  }
+
+  #signatureCoursesGrid .card-body,
+  section[aria-labelledby="signature-courses-heading"] .card-body {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 1 auto !important;
+    padding: var(--space-3) !important;
+    box-sizing: border-box !important;
+  }
+
+  #signatureCoursesGrid .card-body>div:first-child,
+  section[aria-labelledby="signature-courses-heading"] .card-body>div:first-child {
+    min-height: 2.2rem !important;
+    max-height: 2.2rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    margin-bottom: 0.25rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  #signatureCoursesGrid .card-title,
+  section[aria-labelledby="signature-courses-heading"] .card-title {
+    min-height: 3.4rem !important;
+    max-height: 3.4rem !important;
+    display: flex !important;
+    align-items: center !important;
+    font-size: 1.25rem !important;
+    line-height: 1.25 !important;
+    margin-block: 0.25rem 0.5rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  #signatureCoursesGrid .card-text,
+  section[aria-labelledby="signature-courses-heading"] .card-text {
+    min-height: 5.6rem !important;
+    max-height: 5.6rem !important;
+    font-size: 0.88rem !important;
+    line-height: 1.55 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3 !important;
+    line-clamp: 3 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    margin-bottom: 0.75rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  #signatureCoursesGrid .card-meta,
+  section[aria-labelledby="signature-courses-heading"] .card-meta {
+    min-height: 2.4rem !important;
+    max-height: 2.4rem !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    margin-bottom: 0.75rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  #signatureCoursesGrid .card-footer,
+  section[aria-labelledby="signature-courses-heading"] .card-footer {
+    margin-top: auto !important;
+    padding-top: var(--space-2) !important;
+    border-top: 1px solid var(--border-warm) !important;
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-shrink: 0 !important;
+  }
+
+  #signatureCoursesGrid .card-footer .btn,
+  section[aria-labelledby="signature-courses-heading"] .card-footer .btn {
+    min-height: 48px !important;
+    height: 48px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* ==========================================================================
+     CONCERTS PAGE: SABHA & FESTIVAL CONCERTS (GUARANTEED IDENTICAL CARD SIZES)
+     All 6 cards in #eventsGrid share the EXACT SAME WIDTH and TOTAL HEIGHT
+     ========================================================================== */
+  #eventsGrid .tilt-card {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+  }
+
+  #eventsGrid .card-media {
+    aspect-ratio: 16 / 10.4 !important;
+    width: 100% !important;
+    overflow: hidden !important;
+    flex-shrink: 0 !important;
+  }
+
+  #eventsGrid .card-body {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 1 auto !important;
+    padding: var(--space-3) !important;
+    box-sizing: border-box !important;
+  }
+
+  #eventsGrid .card-title {
+    min-height: 3.6rem !important;
+    max-height: 3.6rem !important;
+    display: flex !important;
+    align-items: center !important;
+    font-size: 1.25rem !important;
+    line-height: 1.25 !important;
+    margin-block: 0.25rem 0.5rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  #eventsGrid .card-text {
+    min-height: 5.6rem !important;
+    max-height: 5.6rem !important;
+    font-size: 0.88rem !important;
+    line-height: 1.55 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3 !important;
+    line-clamp: 3 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    margin-bottom: 0.75rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  #eventsGrid .card-meta {
+    min-height: 2.4rem !important;
+    max-height: 2.4rem !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.65rem !important;
+    margin-bottom: 0.75rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  #eventsGrid .card-footer {
+    margin-top: auto !important;
+    padding-top: var(--space-2) !important;
+    border-top: 1px solid var(--border-warm) !important;
+    width: 100% !important;
+    flex-shrink: 0 !important;
+  }
+
+  #eventsGrid .card-footer .btn {
+    width: 100% !important;
+    min-height: 48px !important;
+    height: 48px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* ==========================================================================
+     BLOG PAGE: RESEARCH & JOURNAL ESSAYS (GUARANTEED IDENTICAL CARD SIZES)
+     All 6 cards in #blogGrid share the EXACT SAME WIDTH and TOTAL HEIGHT
+     ========================================================================== */
+  #blogGrid .tilt-card,
+  .blog-card {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+  }
+
+  #blogGrid .card-media,
+  .blog-card .card-media {
+    aspect-ratio: 16 / 10.4 !important;
+    width: 100% !important;
+    overflow: hidden !important;
+    flex-shrink: 0 !important;
+  }
+
+  #blogGrid .card-body,
+  .blog-card .card-body {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 1 auto !important;
+    padding: var(--space-3) !important;
+    box-sizing: border-box !important;
+  }
+
+  #blogGrid .card-meta,
+  .blog-card .card-meta {
+    min-height: 2.2rem !important;
+    max-height: 2.2rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    margin-bottom: 0.25rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  #blogGrid .card-title,
+  .blog-card .card-title {
+    min-height: 4.4rem !important;
+    max-height: 4.4rem !important;
+    display: flex !important;
+    align-items: center !important;
+    font-size: 1.25rem !important;
+    line-height: 1.25 !important;
+    margin-block: 0.25rem 0.5rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  #blogGrid .card-text,
+  .blog-card .card-text {
+    min-height: 5.6rem !important;
+    max-height: 5.6rem !important;
+    font-size: 0.88rem !important;
+    line-height: 1.55 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3 !important;
+    line-clamp: 3 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    margin-bottom: 0.75rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  #blogGrid .card-footer,
+  .blog-card .card-footer {
+    margin-top: auto !important;
+    padding-top: var(--space-2) !important;
+    border-top: 1px solid var(--border-warm) !important;
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-shrink: 0 !important;
+  }
+
+  #blogGrid .card-footer .btn,
+  .blog-card .card-footer .btn {
+    min-height: 44px !important;
+    height: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* ==========================================================================
+     GALLERY PAGE: ARCHIVAL PHOTO CARDS (GUARANTEED IDENTICAL CARD SIZES)
+     All 9 cards in #photoGalleryGrid share the EXACT SAME WIDTH and TOTAL HEIGHT
+     ========================================================================== */
+  #photoGalleryGrid .tilt-card {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+  }
+
+  #photoGalleryGrid .card-media {
+    aspect-ratio: 16 / 11 !important;
+    width: 100% !important;
+    overflow: hidden !important;
+    flex-shrink: 0 !important;
+  }
+
+  #photoGalleryGrid .card-body {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 1 auto !important;
+    padding: var(--space-3) !important;
+    box-sizing: border-box !important;
+  }
+
+  #photoGalleryGrid .card-title {
+    min-height: 3.2rem !important;
+    max-height: 3.2rem !important;
+    display: flex !important;
+    align-items: center !important;
+    font-size: 1.25rem !important;
+    line-height: 1.25 !important;
+    margin-block: 0.25rem 0.5rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  #photoGalleryGrid .card-text {
+    min-height: 4.8rem !important;
+    max-height: 4.8rem !important;
+    font-size: 0.88rem !important;
+    line-height: 1.55 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3 !important;
+    line-clamp: 3 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    margin-bottom: 0 !important;
+    flex: 1 1 auto !important;
+  }
+
+  /* ==========================================================================
+     ABOUT PAGE: SECTION 3 - FOUR PILLARS (GUARANTEED IDENTICAL CARD SIZES)
+     All 4 cards in #fourPillarsGrid share the EXACT SAME WIDTH and TOTAL HEIGHT
+     ========================================================================== */
+  #fourPillarsGrid .tilt-card,
+  section[aria-labelledby="philosophy-heading"] .tilt-card {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+  }
+
+  #fourPillarsGrid .card-body,
+  section[aria-labelledby="philosophy-heading"] .card-body {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 1 auto !important;
+    padding: var(--space-4) !important;
+    box-sizing: border-box !important;
+  }
+
+  #fourPillarsGrid .card-title,
+  section[aria-labelledby="philosophy-heading"] .card-title {
+    min-height: 3.6rem !important;
+    max-height: 3.6rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    font-size: 1.25rem !important;
+    line-height: 1.25 !important;
+    margin-block: 0.25rem 0.65rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  #fourPillarsGrid .card-text,
+  section[aria-labelledby="philosophy-heading"] .card-text {
+    min-height: 6.8rem !important;
+    max-height: 6.8rem !important;
+    font-size: 0.9rem !important;
+    line-height: 1.6 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 4 !important;
+    line-clamp: 4 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-align: center !important;
+    margin-bottom: 0 !important;
+    flex: 1 1 auto !important;
+  }
+
+  /* ==========================================================================
+     ABOUT PAGE: SECTION 5 - CAMPUS FACILITIES (GUARANTEED IDENTICAL CARD SIZES)
+     All 3 cards in #campusFacilitiesGrid share the EXACT SAME WIDTH and TOTAL HEIGHT
+     ========================================================================== */
+  #campusFacilitiesGrid .tilt-card,
+  section[aria-labelledby="campus-heading"] .tilt-card {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+  }
+
+  #campusFacilitiesGrid .card-media,
+  section[aria-labelledby="campus-heading"] .card-media {
+    aspect-ratio: 16 / 10.4 !important;
+    width: 100% !important;
+    overflow: hidden !important;
+    flex-shrink: 0 !important;
+  }
+
+  #campusFacilitiesGrid .card-body,
+  section[aria-labelledby="campus-heading"] .card-body {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 1 auto !important;
+    padding: var(--space-3) !important;
+    box-sizing: border-box !important;
+  }
+
+  #campusFacilitiesGrid .card-title,
+  section[aria-labelledby="campus-heading"] .card-title {
+    min-height: 3.2rem !important;
+    max-height: 3.2rem !important;
+    display: flex !important;
+    align-items: center !important;
+    font-size: 1.25rem !important;
+    line-height: 1.25 !important;
+    margin-block: 0.25rem 0.5rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  #campusFacilitiesGrid .card-text,
+  section[aria-labelledby="campus-heading"] .card-text {
+    min-height: 5.6rem !important;
+    max-height: 5.6rem !important;
+    font-size: 0.88rem !important;
+    line-height: 1.55 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3 !important;
+    line-clamp: 3 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    margin-bottom: 0.75rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  #campusFacilitiesGrid .card-footer,
+  section[aria-labelledby="campus-heading"] .card-footer {
+    margin-top: auto !important;
+    width: 100% !important;
+    flex-shrink: 0 !important;
+  }
+
+  #campusFacilitiesGrid .card-footer .btn,
+  section[aria-labelledby="campus-heading"] .card-footer .btn {
+    width: 100% !important;
+    min-height: 48px !important;
+    height: 48px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* ==========================================================================
+     CONTACT PAGE: TOP INFO CARDS (GUARANTEED IDENTICAL CARD SIZES)
+     All 3 cards in #contactInfoGrid share the EXACT SAME WIDTH and TOTAL HEIGHT
+     ========================================================================== */
+  #contactInfoGrid .tilt-card,
+  #contactInfoGrid .icon-card {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: var(--space-4) var(--space-3) !important;
+    box-sizing: border-box !important;
+  }
+
+  #contactInfoGrid .icon-mandala-wrap {
+    margin-bottom: 0.65rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  #contactInfoGrid .tag {
+    margin-bottom: 0.45rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  #contactInfoGrid .card-title {
+    min-height: 3.2rem !important;
+    max-height: 3.2rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    font-size: 1.35rem !important;
+    line-height: 1.25 !important;
+    margin-block: 0.2rem 0.5rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  #contactInfoGrid .card-text {
+    min-height: 5.8rem !important;
+    max-height: 5.8rem !important;
+    font-size: 0.88rem !important;
+    line-height: 1.55 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin-bottom: 0 !important;
+    flex: 1 1 auto !important;
+  }
+
+  /* ==========================================================================
+     HOME 2: HORIZONTAL SCROLL INSTRUMENT TRACK (GUARANTEED IDENTICAL CARD SIZES)
+     All 5 cards share the EXACT SAME WIDTH and TOTAL HEIGHT
+     ========================================================================== */
+  .horizontal-scroll-track .tilt-card {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+  }
+
+  .horizontal-scroll-track .card-media {
+    aspect-ratio: 16 / 10.4 !important;
+    width: 100% !important;
+    overflow: hidden !important;
+    flex-shrink: 0 !important;
+  }
+
+  .horizontal-scroll-track .card-body {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 1 auto !important;
+    padding: var(--space-3) !important;
+    box-sizing: border-box !important;
+  }
+
+  .horizontal-scroll-track .card-title {
+    min-height: 2.8rem !important;
+    max-height: 2.8rem !important;
+    display: flex !important;
+    align-items: center !important;
+    font-size: 1.25rem !important;
+    line-height: 1.25 !important;
+    margin-block: 0.25rem 0.5rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  .horizontal-scroll-track .card-text {
+    min-height: 5.6rem !important;
+    max-height: 5.6rem !important;
+    font-size: 0.88rem !important;
+    line-height: 1.55 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3 !important;
+    line-clamp: 3 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    margin-bottom: 0.75rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  .horizontal-scroll-track .card-footer {
+    margin-top: auto !important;
+    padding-top: var(--space-2) !important;
+    border-top: 1px solid var(--border-warm) !important;
+    width: 100% !important;
+    flex-shrink: 0 !important;
+  }
+
+  .horizontal-scroll-track .card-footer .btn {
+    width: 100% !important;
+    min-height: 48px !important;
+    height: 48px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* Milestone / Counter Cards: Equal Heights Across All Rows */
+  .counter-card {
+    height: 100% !important;
+    min-height: 175px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+  }
+
+  .counter-card h3 {
+    min-height: 2.8rem !important;
+    max-height: 2.8rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  .counter-card p {
+    min-height: 2.4rem !important;
+    max-height: 2.4rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  /* ==========================================================================
+     RESOURCES PAGE: GUARANTEED IDENTICAL CARD SIZES (ALL CARDS SAME SIZE)
+     All 6 cards in #ragaGlossaryGrid share the EXACT SAME WIDTH and TOTAL HEIGHT
+     across all rows in desktop, tablet, and mobile views.
+     ========================================================================== */
+  #ragaGlossaryGrid .tilt-card {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  #ragaGlossaryGrid .card-body {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 1 auto !important;
+    padding: var(--space-3) !important;
+  }
+
+  #ragaGlossaryGrid .tag {
+    align-self: center !important;
+    margin-inline: auto !important;
+    text-align: center !important;
+    height: 30px !important;
+    min-height: 30px !important;
+    max-height: 30px !important;
+    font-size: 0.72rem !important;
+    letter-spacing: 0.04em !important;
+    padding: 0 0.85rem !important;
+    margin-top: 0 !important;
+    margin-bottom: 0.5rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  #ragaGlossaryGrid .card-title {
+    min-height: 3.4rem !important;
+    max-height: 3.4rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    font-size: 1.3rem !important;
+    line-height: 1.25 !important;
+    margin-block: 0.2rem 0.5rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  #ragaGlossaryGrid .swara-notation-box {
+    min-height: 4.2rem !important;
+    max-height: 4.2rem !important;
+    margin-bottom: 0.75rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  #ragaGlossaryGrid .card-text {
+    min-height: 5.6rem !important;
+    max-height: 5.6rem !important;
+    font-size: 0.88rem !important;
+    line-height: 1.55 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 4 !important;
+    line-clamp: 4 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    margin-bottom: 0.75rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  #ragaGlossaryGrid .card-footer {
+    margin-top: auto !important;
+    padding-top: var(--space-2) !important;
+    width: 100% !important;
+    flex-shrink: 0 !important;
+  }
+
+  #ragaGlossaryGrid .card-footer .btn {
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  /* ==========================================================================
+     Resources Page: Suladi Sapta Tala & Konnakol Metronome (#talaMetronomeCard)
+     Flawless Symmetrical Layout Across Desktop, Tablet & Mobile Views
+     ========================================================================== */
+  .tala-metronome-card {
+    padding: var(--space-4) !important;
+    margin-bottom: var(--space-4) !important;
+    border: 2px solid var(--turmeric) !important;
+    border-radius: var(--radius-lg) !important;
+    box-shadow: var(--shadow-sm) !important;
+    background: var(--bg-surface-elevated) !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .tala-metronome-wrap {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 1.5rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .tala-metronome-header {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+  }
+
+  .tala-metronome-header .tag {
+    margin-bottom: 0.35rem !important;
+  }
+
+  .tala-metronome-header h3 {
+    margin-top: 0.25rem !important;
+    margin-bottom: 0.35rem !important;
+    font-size: 1.35rem !important;
+    line-height: 1.25 !important;
+    color: var(--text-primary) !important;
+  }
+
+  .tala-metronome-header h3 span {
+    display: inline !important;
+  }
+
+  .tala-metronome-header p {
+    font-size: 0.88rem !important;
+    color: var(--text-secondary) !important;
+    margin: 0 !important;
+    line-height: 1.4 !important;
+  }
+
+  .tala-metronome-controls {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  .tala-metronome-controls select.form-control,
+  #talaPatternSelect {
+    width: auto !important;
+    min-width: 260px !important;
+    height: 44px !important;
+  }
+
+  .tala-metronome-controls .btn,
+  #talaMetronomeBtn {
+    height: 44px !important;
+    white-space: nowrap !important;
+  }
+
+  /* ==========================================================================
+     Resources Page: Saraswati Veena Care & Maintenance Guide (#veena-care)
+     Luthier Manual Full Card Media Coverage across Desktop, Tablet & Mobile
+     ========================================================================== */
+  #veena-care .card-grid-2 {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: var(--space-5) !important;
+    align-items: stretch !important;
+  }
+
+  #veena-care .card-grid-2>* {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: none !important;
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+  }
+
+  #veena-care .tilt-card {
+    height: 100% !important;
+    min-height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    border-radius: var(--radius-lg) !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: relative !important;
+    box-sizing: border-box !important;
+  }
+
+  #veena-care .tilt-card .card-media {
+    width: 100% !important;
+    aspect-ratio: 16 / 10 !important;
+    height: auto !important;
+    min-height: auto !important;
+    flex: 0 0 auto !important;
+    border-radius: 0 !important;
+    overflow: hidden !important;
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  #veena-care .tilt-card .card-media img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    display: block !important;
+  }
+
+  #veena-care .tilt-card .card-body {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 1 auto !important;
+    padding: var(--space-3) !important;
+    gap: 0.75rem !important;
+    background: rgba(255, 249, 240, 0.04) !important;
+    box-sizing: border-box !important;
+  }
+
+  #veena-care .tilt-card .card-body .card-footer {
+    margin-top: auto !important;
+    width: 100% !important;
+  }
+
+  /* ==========================================================================
+     PRICING / FEES PAGE: GUARANTEED IDENTICAL CARD SIZES (ALL CARDS SAME SIZE)
+     All 4 cards in #pricingGrid share the EXACT SAME WIDTH and TOTAL HEIGHT
+     across all columns/rows, with aligned tags, titles, descriptions, price
+     blocks, checklist items, and bottom buttons in desktop and tablet views.
+     ========================================================================== */
+  #pricingGrid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: var(--space-3) !important;
+    align-items: stretch !important;
+    width: 100% !important;
+  }
+
+  #pricingGrid>*,
+  #pricingGrid>.tilt-card,
+  #pricingGrid .tilt-card {
+    height: 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+    border: 2px solid rgba(224, 165, 38, 0.28) !important;
+    margin: 0 !important;
+  }
+
+  #pricingGrid .tilt-card[style*="var(--turmeric)"],
+  #pricingGrid .tilt-card:nth-child(2) {
+    border-color: var(--turmeric) !important;
+  }
+
+  #pricingGrid .card-body {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 1 auto !important;
+    padding: var(--space-3) !important;
+    box-sizing: border-box !important;
+  }
+
+  #pricingGrid .tag {
+    align-self: center !important;
+    margin-inline: auto !important;
+    text-align: center !important;
+    height: 30px !important;
+    min-height: 30px !important;
+    max-height: 30px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 0.68rem !important;
+    letter-spacing: 0.04em !important;
+    padding: 0 0.8rem !important;
+    margin-top: 0 !important;
+    margin-bottom: 0.75rem !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    max-width: 100% !important;
+  }
+
+  #pricingGrid .card-title {
+    height: 3.2rem !important;
+    min-height: 3.2rem !important;
+    max-height: 3.2rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    font-size: 1.25rem !important;
+    line-height: 1.25 !important;
+    margin-block: 0 0.5rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  #pricingGrid .card-text {
+    height: 4.8rem !important;
+    min-height: 4.8rem !important;
+    max-height: 4.8rem !important;
+    font-size: 0.88rem !important;
+    line-height: 1.5 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 4 !important;
+    line-clamp: 4 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-align: center !important;
+    margin-bottom: 0.75rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  #pricingGrid .pricing-price-box,
+  #pricingGrid .card-body>div:has([data-price-inr-monthly]) {
+    height: 4.5rem !important;
+    min-height: 4.5rem !important;
+    max-height: 4.5rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin-block: 0.25rem 0.75rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  #pricingGrid .pricing-price-box strong,
+  #pricingGrid [data-price-inr-monthly] {
+    line-height: 1.1 !important;
+    display: block !important;
+  }
+
+  #pricingGrid .pricing-price-box [data-price-period] {
+    min-height: 1.2rem !important;
+    line-height: 1.2 !important;
+  }
+
+  #pricingGrid ul {
+    min-height: 11rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: stretch !important;
+    gap: 0.55rem !important;
+    font-size: 0.86rem !important;
+    margin-bottom: 1rem !important;
+    flex: 1 1 auto !important;
+    padding-left: 0 !important;
+    list-style: none !important;
+    width: 100% !important;
+  }
+
+  #pricingGrid ul li {
+    min-height: 1.5rem !important;
+    line-height: 1.4 !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
+    gap: 0.6rem !important;
+    width: 100% !important;
+  }
+
+  #pricingGrid ul li i {
+    width: 18px !important;
+    min-width: 18px !important;
+    max-width: 18px !important;
+    height: 18px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-top: 0.16rem !important;
+    flex-shrink: 0 !important;
+    text-align: center !important;
+  }
+
+  #pricingGrid ul li span {
+    flex: 1 1 auto !important;
+    text-align: left !important;
+  }
+
+  #pricingGrid .card-footer {
+    margin-top: auto !important;
+    padding-top: var(--space-2) !important;
+    width: 100% !important;
+    flex-shrink: 0 !important;
+  }
+
+  #pricingGrid .card-footer .btn {
+    width: 100% !important;
+    min-height: 48px !important;
+    height: 48px !important;
+    text-align: center !important;
+    justify-content: center !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  /* ==========================================================================
+     HOME 2: SECTION 5 - TWO WAYS TO LEARN COMPARISON CARDS (GUARANTEED EQUAL SIZES)
+     Both cards share the EXACT SAME WIDTH and TOTAL HEIGHT in Desktop & Tablet.
+     ========================================================================== */
+  .mode-comparison-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: var(--space-4) !important;
+    align-items: stretch !important;
+  }
+
+  .mode-comparison-grid>* {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: none !important;
+  }
+
+  .mode-comparison-grid .tilt-card {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+  }
+
+  .mode-comparison-grid .card-body {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 1 auto !important;
+    padding: var(--space-4) !important;
+    box-sizing: border-box !important;
+  }
+
+  .mode-comparison-grid .tag {
+    align-self: center !important;
+    margin-inline: auto !important;
+    text-align: center !important;
+    min-height: 32px !important;
+    height: auto !important;
+    max-height: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 0.72rem !important;
+    letter-spacing: 0.04em !important;
+    padding: 0.35rem 0.85rem !important;
+    margin-top: 0 !important;
+    margin-bottom: 0.75rem !important;
+    white-space: normal !important;
+    line-height: 1.3 !important;
+    flex-shrink: 0 !important;
+  }
+
+  .mode-comparison-grid .card-title {
+    min-height: 4.4rem !important;
+    max-height: 4.4rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    font-size: 1.55rem !important;
+    line-height: 1.25 !important;
+    margin-block: 0 0.75rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  .mode-comparison-grid .card-text {
+    min-height: 5.6rem !important;
+    max-height: 5.6rem !important;
+    font-size: 0.9rem !important;
+    line-height: 1.55 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 4 !important;
+    line-clamp: 4 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-align: center !important;
+    margin-bottom: 1rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  .mode-comparison-grid .card-checklist {
+    min-height: 11.5rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    gap: 0.65rem !important;
+    font-size: 0.88rem !important;
+    width: 100% !important;
+    max-width: 420px !important;
+    margin-inline: auto !important;
+    margin-bottom: 1.25rem !important;
+    padding-left: 0 !important;
+    list-style: none !important;
+    flex: 1 1 auto !important;
+  }
+
+  .mode-comparison-grid .card-checklist li {
+    display: flex !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    gap: 0.65rem !important;
+    line-height: 1.4 !important;
+  }
+
+  .mode-comparison-grid .card-checklist li i {
+    width: 18px !important;
+    min-width: 18px !important;
+    max-width: 18px !important;
+    height: 18px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-top: 0.18rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  .mode-comparison-grid .card-checklist li span {
+    flex: 1 1 auto !important;
+    text-align: left !important;
+  }
+
+  .mode-comparison-grid .card-footer {
+    margin-top: auto !important;
+    padding-top: var(--space-2) !important;
+    width: 100% !important;
+    flex-shrink: 0 !important;
+  }
+
+  .mode-comparison-grid .card-footer .btn {
+    width: 100% !important;
+    min-height: 48px !important;
+    height: 48px !important;
+    text-align: center !important;
+    justify-content: center !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  /* ==========================================================================
+     HOME 2: SECTION 6 - A DAY INSIDE NADAM VEENA ACADEMY (GUARANTEED EQUAL SIZES)
+     All cards share the EXACT SAME WIDTH and TOTAL HEIGHT across rows.
+     ========================================================================== */
+  .academy-day-grid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: var(--space-4) !important;
+    align-items: stretch !important;
+  }
+
+  .academy-day-grid>* {
+    flex: 0 1 calc((100% - 2 * var(--space-4)) / 3) !important;
+    width: calc((100% - 2 * var(--space-4)) / 3) !important;
+    max-width: calc((100% - 2 * var(--space-4)) / 3) !important;
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+  }
+
+  .academy-day-grid-1 {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: var(--space-4) !important;
+    align-items: stretch !important;
+  }
+
+  .academy-day-grid-2 {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: var(--space-4) !important;
+    align-items: stretch !important;
+  }
+
+  .academy-day-grid-1>*,
+  .academy-day-grid-2>* {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: none !important;
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+  }
+
+  .academy-day-grid .tilt-card,
+  .academy-day-grid-1 .tilt-card,
+  .academy-day-grid-2 .tilt-card {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+  }
+
+  .academy-day-grid .card-media,
+  .academy-day-grid-1 .card-media,
+  .academy-day-grid-2 .card-media {
+    aspect-ratio: 16 / 10 !important;
+    width: 100% !important;
+    overflow: hidden !important;
+    flex-shrink: 0 !important;
+  }
+
+  .academy-day-grid .card-media img,
+  .academy-day-grid-1 .card-media img,
+  .academy-day-grid-2 .card-media img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+  }
+
+  .academy-day-grid .card-body,
+  .academy-day-grid-1 .card-body,
+  .academy-day-grid-2 .card-body {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 1 auto !important;
+    padding: var(--space-3) !important;
+    box-sizing: border-box !important;
+  }
+
+  .academy-day-grid .card-title,
+  .academy-day-grid-1 .card-title,
+  .academy-day-grid-2 .card-title {
+    min-height: 3.4rem !important;
+    max-height: 3.4rem !important;
+    display: flex !important;
+    align-items: center !important;
+    font-size: 1.25rem !important;
+    line-height: 1.3 !important;
+    margin-block: 0 0.5rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  .academy-day-grid .card-text,
+  .academy-day-grid-1 .card-text,
+  .academy-day-grid-2 .card-text {
+    min-height: 6.4rem !important;
+    max-height: 6.4rem !important;
+    font-size: 0.88rem !important;
+    line-height: 1.55 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 4 !important;
+    line-clamp: 4 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    margin-bottom: 0 !important;
+    flex: 1 1 auto !important;
+  }
+
+  /* ==========================================================================
+     HOME 2: SECTION 7 - STUDENT VOICES WALL (GUARANTEED EQUAL SIZES)
+     All 6 testimonial cards share the EXACT SAME WIDTH and TOTAL HEIGHT.
+     ========================================================================== */
+  .voices-wall-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: var(--space-4) !important;
+    align-items: stretch !important;
+  }
+
+  .voices-wall-grid>* {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: none !important;
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+  }
+
+  .voices-wall-grid .tilt-card {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+  }
+
+  .voices-wall-grid .card-body {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 1 auto !important;
+    padding: var(--space-4) !important;
+    box-sizing: border-box !important;
+  }
+
+  .voices-wall-grid .tag {
+    height: 30px !important;
+    min-height: 30px !important;
+    max-height: 30px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    align-self: center !important;
+    margin-inline: auto !important;
+    margin-top: 0 !important;
+    margin-bottom: 0.85rem !important;
+    font-size: 0.68rem !important;
+    letter-spacing: 0.04em !important;
+    padding: 0 0.85rem !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+  }
+
+  .voices-wall-grid .card-text {
+    min-height: 8.8rem !important;
+    max-height: 8.8rem !important;
+    font-size: 0.88rem !important;
+    line-height: 1.6 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 6 !important;
+    line-clamp: 6 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    margin-bottom: 1.25rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  .voices-wall-grid .card-footer {
+    margin-top: auto !important;
+    padding-top: var(--space-3) !important;
+    border-top: 1px solid var(--border-warm) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+    width: 100% !important;
+    flex-shrink: 0 !important;
+  }
+}
+
+/* Contact Page Interactive Google Map Embed & Details */
+.map-embed-wrapper {
+  position: relative;
+  width: 100%;
+  height: 360px;
+  min-height: 320px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 2px solid var(--turmeric);
+  box-shadow: var(--shadow-md);
+  background: var(--bg-surface-elevated);
+  margin-bottom: var(--space-3);
+}
+
+.map-embed-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.map-details-card {
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-warm);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.section--dark .map-details-card {
+  background: rgba(255, 249, 240, 0.05);
+  border-color: rgba(224, 165, 38, 0.28);
+}
+
+/* Contact Page Social Media Gap Strip */
+.contact-social-strip {
+  margin-block: 0 var(--space-5);
+  text-align: center;
+}
+
+.contact-social-strip__inner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  background: rgba(255, 249, 240, 0.05);
+  border: 1.5px solid rgba(224, 165, 38, 0.35);
+  background: var(--bg-surface-elevated, #FFFFFF);
+  border: 1.5px solid rgba(224, 165, 38, 0.4);
+  border-radius: 9999px;
+  padding: 0.65rem 1.6rem;
+  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-sm);
+  box-shadow: 0 4px 16px rgba(43, 18, 10, 0.06);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.contact-social-strip__inner:hover {
+  border-color: var(--turmeric);
+  box-shadow: 0 4px 20px rgba(224, 165, 38, 0.2);
+  box-shadow: 0 4px 20px rgba(224, 165, 38, 0.22);
+}
+
+.contact-social-strip__label {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--turmeric-light);
+  color: var(--teak-deep);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  letter-spacing: 0.02em;
+}
+
+.contact-social-strip__label i {
+  color: var(--turmeric-dark, #B67F10);
+}
+
+.contact-social-btns {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.contact-social-btn {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  min-height: 42px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(224, 165, 38, 0.4);
+  background: rgba(255, 249, 240, 0.08);
+  color: var(--sandal);
+  border: 1.5px solid rgba(224, 165, 38, 0.45);
+  background: #FFFFFF;
+  color: var(--teak-deep);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-size: 1.15rem;
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(43, 18, 10, 0.05);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.25s ease;
+}
+
+.contact-social-btn:hover {
+  transform: translateY(-3px) scale(1.12);
+}
+
+/* Individual Brand Styling in Default Lite Mode */
+.contact-social-btn--youtube {
+  color: #CD201F;
+  border-color: rgba(205, 32, 31, 0.35);
+  background: rgba(205, 32, 31, 0.06);
+}
+
+.contact-social-btn--instagram {
+  color: #C13584;
+  border-color: rgba(193, 53, 132, 0.35);
+  background: rgba(193, 53, 132, 0.06);
+}
+
+.contact-social-btn--whatsapp {
+  color: #128C7E;
+  border-color: rgba(18, 140, 126, 0.35);
+  background: rgba(37, 211, 102, 0.06);
+}
+
+.contact-social-btn--facebook {
+  color: #1877F2;
+  border-color: rgba(24, 119, 242, 0.35);
+  background: rgba(24, 119, 242, 0.06);
+}
+
+.contact-social-btn--spotify {
+  color: #1DB954;
+  border-color: rgba(29, 185, 84, 0.35);
+  background: rgba(29, 185, 84, 0.06);
+}
+
+/* Hover States with Brand Fill & Solid Contrast */
+.contact-social-btn--youtube:hover {
+  background: #FF0000;
+  border-color: #FF0000;
+  color: #fff;
+  background: #FF0000 !important;
+  border-color: #FF0000 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(255, 0, 0, 0.45);
+}
+
+.contact-social-btn--instagram:hover {
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  border-color: #e6683c;
+  color: #fff;
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888) !important;
+  border-color: #e6683c !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(220, 39, 67, 0.45);
+}
+
+.contact-social-btn--whatsapp:hover {
+  background: #25D366;
+  border-color: #25D366;
+  color: #fff;
+  background: #25D366 !important;
+  border-color: #25D366 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.45);
+}
+
+.contact-social-btn--facebook:hover {
+  background: #1877F2;
+  border-color: #1877F2;
+  color: #fff;
+  background: #1877F2 !important;
+  border-color: #1877F2 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(24, 119, 242, 0.45);
+}
+
+.contact-social-btn--spotify:hover {
+  background: #1DB954;
+  border-color: #1DB954;
+  color: #fff;
+  background: #1DB954 !important;
+  border-color: #1DB954 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(29, 185, 84, 0.45);
 }
 
 /* Rotating Kolam/Mandala Behind Icons */
@@ -1269,10 +4020,12 @@ h4 {
   font-size: 1.75rem;
   transform: translateZ(24px);
 }
+
 .section--dark .icon-mandala-wrap {
   color: var(--turmeric-light);
   background: rgba(224, 165, 38, 0.18);
 }
+
 .icon-mandala-wrap::before {
   content: '';
   position: absolute;
@@ -1281,11 +4034,15 @@ h4 {
   border: 1.5px dashed var(--turmeric);
   transition: transform 6s linear;
 }
+
 .tilt-card:hover .icon-mandala-wrap::before {
   animation: spinMandala 8s linear infinite;
 }
+
 @keyframes spinMandala {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Sound-Wave Bars Micro-Animation on Hover */
@@ -1295,6 +4052,7 @@ h4 {
   gap: 3px;
   height: 16px;
 }
+
 .sound-wave-bars span {
   width: 3px;
   height: 5px;
@@ -1302,24 +4060,39 @@ h4 {
   border-radius: 2px;
   transition: height 0.2s ease;
 }
+
 .tilt-card:hover .sound-wave-bars span,
 .sound-wave-bars.is-playing span {
   animation: soundBarBounce 0.7s ease-in-out infinite alternate;
 }
-.sound-wave-bars span:nth-child(2) { animation-delay: 0.15s; }
-.sound-wave-bars span:nth-child(3) { animation-delay: 0.3s; }
-.sound-wave-bars span:nth-child(4) { animation-delay: 0.45s; }
+
+.sound-wave-bars span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.sound-wave-bars span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.sound-wave-bars span:nth-child(4) {
+  animation-delay: 0.45s;
+}
 
 @keyframes soundBarBounce {
-  0% { height: 4px; }
-  100% { height: 16px; }
+  0% {
+    height: 4px;
+  }
+
+  100% {
+    height: 16px;
+  }
 }
 
 /* --------------------------------------------------------------------------
    9. MARQUEE, SWARA EXPLORER, TABS, TIMELINES & COUNTERS
    -------------------------------------------------------------------------- */
 
-/* Raga Marquee Strip */
+/* Raga Marquee Strip — Continuous Running Model */
 .raga-marquee {
   background: var(--teak-deep);
   border-block: 2px solid var(--turmeric);
@@ -1327,16 +4100,47 @@ h4 {
   overflow: hidden;
   white-space: nowrap;
   position: relative;
+  display: flex;
+  user-select: none;
 }
+
+.raga-marquee::before,
+.raga-marquee::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 90px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.raga-marquee::before {
+  left: 0;
+  background: linear-gradient(to right, var(--teak-deep) 15%, transparent 100%);
+}
+
+.raga-marquee::after {
+  right: 0;
+  background: linear-gradient(to left, var(--teak-deep) 15%, transparent 100%);
+}
+
 .raga-marquee__track {
-  display: inline-flex;
+  display: flex;
+  flex-shrink: 0;
   align-items: center;
+  justify-content: space-around;
   gap: 2.5rem;
-  animation: marqueeScroll 34s linear infinite;
+  min-width: 100%;
+  animation: marqueeContinuous 26s linear infinite !important;
+  will-change: transform;
 }
+
+/* Keep running model continuously active */
 .raga-marquee:hover .raga-marquee__track {
-  animation-play-state: paused;
+  animation-play-state: running !important;
 }
+
 .raga-marquee__item {
   display: inline-flex;
   align-items: center;
@@ -1345,14 +4149,37 @@ h4 {
   font-size: 1.25rem;
   font-weight: 600;
   color: var(--sandal);
+  letter-spacing: 0.02em;
 }
+
 .raga-marquee__item span.swara-dot {
   color: var(--turmeric);
   font-size: 0.9rem;
+  display: inline-block;
+  animation: swaraGlow 2.5s ease-in-out infinite alternate;
 }
-@keyframes marqueeScroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+
+@keyframes swaraGlow {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.75;
+  }
+
+  100% {
+    transform: scale(1.15);
+    opacity: 1;
+    filter: drop-shadow(0 0 6px rgba(224, 165, 38, 0.8));
+  }
+}
+
+@keyframes marqueeContinuous {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-100% - 2.5rem));
+  }
 }
 
 /* Interactive Swara Explorer (Home 2 & Resources) */
@@ -1364,12 +4191,14 @@ h4 {
   padding: var(--space-5);
   box-shadow: var(--shadow-lg);
 }
+
 .swara-keys {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: var(--space-2);
   margin-block: var(--space-4);
 }
+
 .swara-key {
   background: rgba(255, 249, 240, 0.07);
   border: 1.5px solid var(--border-gold);
@@ -1383,6 +4212,7 @@ h4 {
   color: var(--sandal);
   transition: transform var(--transition-fast), background var(--transition-fast), box-shadow var(--transition-fast);
 }
+
 .swara-key:hover,
 .swara-key.is-active {
   background: var(--gold-gradient);
@@ -1390,17 +4220,20 @@ h4 {
   transform: translateY(-5px);
   box-shadow: var(--shadow-gold);
 }
+
 .swara-key__syllable {
   font-family: var(--font-heading);
   font-size: 2rem;
   font-weight: 700;
   line-height: 1;
 }
+
 .swara-key__tamil {
   font-family: var(--font-tamil);
   font-size: 0.85rem;
   opacity: 0.85;
 }
+
 .swara-info-panel {
   background: rgba(26, 14, 9, 0.65);
   border: 1px solid var(--border-gold);
@@ -1423,7 +4256,8 @@ h4 {
   padding-bottom: var(--space-2);
   scroll-snap-type: x mandatory;
 }
-.horizontal-scroll-track > * {
+
+.horizontal-scroll-track>* {
   scroll-snap-align: start;
 }
 
@@ -1435,6 +4269,7 @@ h4 {
   gap: 0.65rem;
   margin-bottom: var(--space-4);
 }
+
 .tab-btn {
   padding: 0.7rem 1.4rem;
   min-height: 46px;
@@ -1447,16 +4282,19 @@ h4 {
   cursor: pointer;
   transition: all var(--transition-fast);
 }
+
 .tab-btn.is-active,
 .tab-btn:hover {
   background: var(--kumkum);
   color: #FFFFFF;
   border-color: var(--kumkum);
 }
+
 .tab-panel {
   display: none;
   animation: fadeUp 0.35s ease forwards;
 }
+
 .tab-panel.is-active {
   display: block;
 }
@@ -1468,6 +4306,7 @@ h4 {
   gap: var(--space-3);
   position: relative;
 }
+
 .journey-step {
   background: var(--bg-surface-elevated);
   border: 1px solid var(--border-gold);
@@ -1480,6 +4319,7 @@ h4 {
   align-items: center;
   gap: 0.65rem;
 }
+
 .journey-step__num {
   width: 48px;
   height: 48px;
@@ -1502,12 +4342,14 @@ h4 {
   gap: var(--space-3);
   text-align: center;
 }
+
 .counter-card {
   padding: var(--space-4) var(--space-2);
   border-radius: var(--radius-md);
   background: rgba(255, 249, 240, 0.06);
   border: 1px solid var(--border-gold);
 }
+
 .counter-card__number {
   font-family: var(--font-heading);
   font-size: clamp(2.4rem, 4vw, 3.4rem);
@@ -1519,13 +4361,45 @@ h4 {
 /* Page Inner Banner (About, Courses, Teachers, etc.) */
 .page-hero {
   position: relative;
-  padding-block: var(--space-8);
-  background: var(--teak-gradient);
-  color: var(--sandal);
+  padding-block: clamp(3.75rem, 6.5vw, 5.75rem);
+  background: var(--teak-deep);
+  color: #FFFFFF;
   text-align: center;
   border-bottom: 2px solid var(--turmeric);
   overflow: hidden;
 }
+
+.page-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.page-hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.04);
+  filter: brightness(1.16) contrast(1.14) saturate(1.24);
+  transition: transform 0.8s ease-out, filter 0.4s ease;
+}
+
+.page-hero:hover .page-hero__bg img {
+  transform: scale(1.06);
+}
+
+.page-hero__overlay {
+  position: absolute;
+  inset: 0;
+  /* Dual-layered cinematic overlay: vibrant luminous center + rich amber vignette at edges */
+  background:
+    radial-gradient(ellipse at 50% 45%, rgba(20, 8, 4, 0.28) 0%, rgba(20, 8, 4, 0.48) 55%, rgba(12, 4, 2, 0.78) 100%),
+    linear-gradient(180deg, rgba(20, 7, 3, 0.42) 0%, rgba(35, 12, 5, 0.18) 40%, rgba(15, 5, 2, 0.78) 100%);
+  z-index: 1;
+}
+
 .page-hero::after {
   content: '';
   position: absolute;
@@ -1533,25 +4407,112 @@ h4 {
   background-image: var(--gopuram-silhouette);
   background-repeat: repeat-x;
   background-position: bottom center;
-  opacity: 0.35;
+  opacity: 0.20;
   pointer-events: none;
+  z-index: 2;
 }
+
 .page-hero__inner {
   position: relative;
-  z-index: 2;
-  max-width: 780px;
+  z-index: 3;
+  max-width: 860px;
   margin-inline: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border-radius: 20px;
+  background: radial-gradient(ellipse at center, rgba(16, 6, 2, 0.45) 0%, rgba(16, 6, 2, 0.22) 55%, transparent 88%);
+  backdrop-filter: blur(1.5px);
+  -webkit-backdrop-filter: blur(1.5px);
 }
-.breadcrumb {
+
+/* Page Hero Headings & Typography */
+.page-hero h1 {
+  color: #FFFFFF;
+  font-size: clamp(2rem, 3.8vw, 3.1rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-block: 0.25rem 0.5rem;
+  letter-spacing: -0.01em;
+  text-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.95),
+    0 4px 18px rgba(0, 0, 0, 0.85),
+    0 0 35px rgba(224, 165, 38, 0.32);
+}
+
+.page-hero p {
+  color: #FFF2DF !important;
+  font-size: clamp(1rem, 1.3vw, 1.14rem);
+  line-height: 1.65;
+  max-width: 720px;
+  margin-inline: auto;
+  font-weight: 400;
+  text-shadow:
+    0 1px 4px rgba(0, 0, 0, 0.95),
+    0 2px 10px rgba(0, 0, 0, 0.85);
+}
+
+.page-hero .tamil-accent {
+  color: #FFDA73 !important;
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-shadow:
+    0 1px 4px rgba(0, 0, 0, 0.95),
+    0 0 16px rgba(224, 165, 38, 0.5);
+}
+
+.page-hero .breadcrumb {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 0.85rem;
+  gap: 0.55rem;
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: #F8E7C9;
+  background: rgba(16, 6, 2, 0.62);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 0.35rem 1rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(224, 165, 38, 0.45);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  margin-bottom: 0.35rem;
+}
+
+.page-hero .breadcrumb a {
   color: var(--turmeric-light);
+  font-weight: 600;
+  transition: color var(--transition-fast);
+}
+
+.page-hero .breadcrumb a:hover {
+  color: #FFFFFF;
+  text-decoration: underline;
+}
+
+.page-hero .breadcrumb span[aria-current="page"] {
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+/* 404 & Coming Soon Section Hero Support */
+.section--dark .page-hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.04);
+  filter: brightness(1.16) contrast(1.14) saturate(1.24);
+}
+
+.section--dark .page-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 45%, rgba(20, 8, 4, 0.30) 0%, rgba(20, 8, 4, 0.52) 60%, rgba(12, 4, 2, 0.78) 100%),
+    linear-gradient(180deg, rgba(20, 7, 3, 0.42) 0%, rgba(35, 12, 5, 0.20) 40%, rgba(15, 5, 2, 0.78) 100%);
+  z-index: 1;
 }
 
 /* --------------------------------------------------------------------------
@@ -1584,28 +4545,121 @@ h4 {
   color: var(--text-primary);
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
+
 textarea.form-control {
   min-height: 120px;
   resize: vertical;
 }
+
 .form-control:focus {
   border-color: var(--turmeric-dark);
   box-shadow: 0 0 0 3px rgba(224, 165, 38, 0.22);
   outline: none;
 }
+
 .form-control.is-invalid {
   border-color: #D92D20;
   background: rgba(217, 45, 32, 0.03);
 }
+
 .form-error {
   font-size: 0.78rem;
   color: #D92D20;
   min-height: 1.1rem;
   display: none;
 }
-.form-control.is-invalid + .form-error,
+
+.form-control.is-invalid+.form-error,
 .form-error.is-visible {
   display: block;
+}
+
+/* Auth Links & Micro-interactions */
+.auth-switch-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--kumkum);
+  font-weight: 600;
+  text-decoration: none;
+  position: relative;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.auth-switch-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: width var(--transition-normal) cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.auth-switch-link:hover,
+.auth-switch-link:focus-visible {
+  color: var(--kumkum-dark);
+}
+
+.auth-switch-link:hover::after,
+.auth-switch-link:focus-visible::after {
+  width: calc(100% - 1.2rem);
+}
+
+.auth-switch-link .arrow,
+.auth-switch-link i {
+  display: inline-block;
+  transition: transform var(--transition-fast) cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.auth-switch-link:hover .arrow,
+.auth-switch-link:hover i,
+.auth-switch-link:focus-visible .arrow,
+.auth-switch-link:focus-visible i {
+  transform: translateX(5px);
+}
+
+.forgot-link {
+  color: var(--kumkum);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-decoration: none;
+  position: relative;
+  transition: color var(--transition-fast);
+}
+
+.forgot-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 1.5px;
+  background: currentColor;
+  transition: width var(--transition-fast) ease;
+}
+
+.forgot-link:hover,
+.forgot-link:focus-visible {
+  color: var(--kumkum-dark);
+}
+
+.forgot-link:hover::after,
+.forgot-link:focus-visible::after {
+  width: 100%;
+}
+
+.inline-link {
+  color: var(--kumkum);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transition-fast);
+}
+
+.inline-link:hover,
+.inline-link:focus-visible {
+  color: var(--kumkum-dark);
 }
 
 /* Skeleton Loader */
@@ -1615,6 +4669,7 @@ textarea.form-control {
   background: rgba(138, 75, 31, 0.12);
   border-radius: var(--radius-sm);
 }
+
 .skeleton::after {
   content: '';
   position: absolute;
@@ -1622,9 +4677,15 @@ textarea.form-control {
   background: linear-gradient(90deg, transparent, rgba(255, 249, 240, 0.55), transparent);
   animation: skeletonShimmer 1.4s infinite;
 }
+
 @keyframes skeletonShimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 /* Accordion (FAQ & Syllabus) */
@@ -1633,12 +4694,14 @@ textarea.form-control {
   flex-direction: column;
   gap: var(--space-2);
 }
+
 .accordion-item {
   background: var(--bg-surface-elevated);
   border: 1px solid var(--border-warm);
   border-radius: var(--radius-sm);
   overflow: hidden;
 }
+
 .accordion-trigger {
   width: 100%;
   padding: 1.15rem 1.35rem;
@@ -1655,13 +4718,16 @@ textarea.form-control {
   cursor: pointer;
   color: var(--text-primary);
 }
+
 .accordion-trigger i {
   color: var(--kumkum);
   transition: transform var(--transition-fast);
 }
+
 .accordion-item.is-open .accordion-trigger i {
   transform: rotate(180deg);
 }
+
 .accordion-content {
   display: none;
   padding: 0 1.35rem 1.25rem;
@@ -1669,6 +4735,7 @@ textarea.form-control {
   border-top: 1px solid var(--border-warm);
   padding-top: 1rem;
 }
+
 .accordion-item.is-open .accordion-content {
   display: block;
 }
@@ -1688,10 +4755,12 @@ textarea.form-control {
   visibility: hidden;
   transition: opacity var(--transition-fast), visibility var(--transition-fast);
 }
+
 .modal-backdrop.is-open {
   opacity: 1;
   visibility: visible;
 }
+
 .modal-dialog {
   width: 100%;
   max-width: 600px;
@@ -1704,6 +4773,7 @@ textarea.form-control {
   box-shadow: var(--shadow-lg);
   position: relative;
 }
+
 .modal-close {
   position: absolute;
   top: 16px;
@@ -1725,14 +4795,22 @@ textarea.form-control {
   transform: translateY(24px);
   transition: opacity 0.65s ease, transform 0.65s ease;
 }
+
 .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
 
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Responsive Tables */
@@ -1743,17 +4821,20 @@ textarea.form-control {
   border: 1px solid var(--border-warm);
   background: var(--bg-surface-elevated);
 }
+
 .academy-table {
   width: 100%;
   border-collapse: collapse;
   min-width: 640px;
 }
+
 .academy-table th,
 .academy-table td {
   padding: 1rem 1.15rem;
   text-align: left;
   border-bottom: 1px solid var(--border-warm);
 }
+
 .academy-table th {
   background: var(--teak-deep);
   color: var(--turmeric-light);
@@ -1771,6 +4852,7 @@ textarea.form-control {
   padding-top: var(--space-8);
   position: relative;
 }
+
 .site-footer__grid {
   display: grid;
   grid-template-columns: 1.4fr 1fr 1fr 1.1fr;
@@ -1778,17 +4860,20 @@ textarea.form-control {
   padding-bottom: var(--space-6);
   border-bottom: 1px solid rgba(224, 165, 38, 0.22);
 }
+
 .footer-heading {
   font-family: var(--font-heading);
   font-size: 1.3rem;
   color: var(--turmeric-light);
   margin-bottom: var(--space-2);
 }
+
 .footer-links {
   display: flex;
   flex-direction: column;
   gap: 0.55rem;
 }
+
 .footer-links a {
   color: var(--text-on-dark-muted);
   font-size: 0.9rem;
@@ -1797,10 +4882,59 @@ textarea.form-control {
   align-items: center;
   gap: 0.4rem;
 }
+
 .footer-links a:hover {
   color: var(--turmeric-light);
   transform: translateX(4px);
 }
+
+.footer-links li {
+  font-size: 0.9rem;
+  color: var(--text-on-dark-muted);
+  line-height: 1.5;
+}
+
+/* Orderly Footer Contact Icons Base Styling */
+.site-footer__grid>div:last-child .footer-links,
+.footer-links:has(li>i) {
+  gap: 0.85rem;
+}
+
+.site-footer__grid>div:last-child .footer-links li,
+.footer-links li:has(> i) {
+  display: flex;
+  align-items: flex-start;
+  text-align: left;
+  gap: 0.75rem;
+  line-height: 1.5;
+}
+
+.site-footer__grid>div:last-child .footer-links li>i,
+.footer-links li>i {
+  color: var(--turmeric);
+  width: 24px;
+  min-width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+  font-size: 0.92rem;
+  text-align: center;
+  background: rgba(224, 165, 38, 0.1);
+  border: 1px solid rgba(224, 165, 38, 0.22);
+  border-radius: 6px;
+  transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.site-footer__grid>div:last-child .footer-links li:hover>i,
+.footer-links li:hover>i {
+  background: rgba(224, 165, 38, 0.22);
+  border-color: var(--turmeric);
+  transform: scale(1.08);
+}
+
 .site-footer__bottom {
   padding-block: var(--space-3);
   display: flex;
@@ -1812,33 +4946,54 @@ textarea.form-control {
   color: var(--text-on-dark-muted);
 }
 
-/* Floating Quick Action Pill */
-.floating-demo-widget {
+/* Floating Scroll To Top Button */
+.scroll-to-top {
   position: fixed;
-  bottom: 24px;
-  right: 24px;
-  z-index: 990;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.6rem;
-}
-.floating-whatsapp {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
+  bottom: 28px;
+  right: 28px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
   background: var(--peacock);
   color: #FFFFFF;
-  border: 1.5px solid var(--turmeric);
-  padding: 0.7rem 1.15rem;
-  border-radius: var(--radius-pill);
-  font-weight: 600;
-  font-size: 0.86rem;
-  box-shadow: var(--shadow-md);
+  border: 2px solid var(--turmeric);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  cursor: pointer;
+  z-index: 990;
+  box-shadow: var(--shadow-md), 0 4px 14px rgba(43, 18, 10, 0.25);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(14px);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
-.floating-whatsapp:hover {
-  background: var(--peacock-light);
-  transform: translateY(-2px);
+
+.scroll-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.scroll-to-top:hover {
+  background: var(--kumkum);
+  border-color: var(--turmeric-light);
+  color: #FFFFFF;
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg), 0 0 16px rgba(224, 165, 38, 0.45);
+}
+
+.scroll-to-top:focus-visible {
+  outline: 2px solid var(--turmeric);
+  outline-offset: 3px;
+}
+
+.floating-demo-widget,
+.floating-whatsapp {
+  display: none !important;
 }
 
 /* --------------------------------------------------------------------------
@@ -1850,47 +5005,164 @@ textarea.form-control {
    - Large: > 1280px
    -------------------------------------------------------------------------- */
 
+/* DESKTOP VIEWPORTS (1025px - 1200px):
+   Ensure ample spacing and prevent cramped navbar wrapping or overlapping */
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .brand-logo__name {
+    font-size: 1.22rem;
+  }
+
+  .brand-logo__tagline {
+    font-size: 0.62rem;
+  }
+
+  .nav-menu {
+    gap: 0.15rem;
+  }
+
+  .nav-link {
+    padding: 0.45rem 0.62rem;
+    font-size: 0.86rem;
+  }
+
+  .nav-actions {
+    gap: 0.35rem;
+  }
+
+  .icon-toggle-btn {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    min-height: 38px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+  }
+
+  .nav-auth-btns .btn {
+    padding: 0.45rem 0.75rem;
+    font-size: 0.84rem;
+  }
+}
+
 /* TABLET & MOBILE (< 1024px):
    Strict Rule: All tags, headings, sub-headings and buttons are CENTER ALIGNED */
 @media (max-width: 1024px) {
+
+  /* Brand Logo & Name Consistency on Tablet Viewports */
+  .brand-logo {
+    gap: 0.65rem;
+  }
+
+  .brand-logo__mark {
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+  }
+
+  .brand-logo__name {
+    font-size: 1.25rem !important;
+    white-space: nowrap !important;
+  }
+
+  .brand-logo__tagline {
+    font-size: 0.62rem !important;
+    letter-spacing: 0.06em !important;
+    white-space: nowrap !important;
+  }
+
   .nav-menu,
   .nav-auth-btns {
     display: none;
   }
+
+  .nav-actions>.icon-toggle-btn {
+    display: none !important;
+  }
+
   .hamburger-btn {
     display: inline-flex;
   }
 
-  .card-grid-4,
-  .card-grid-3 {
-    grid-template-columns: repeat(2, 1fr);
+  .card-grid-3>* {
+    flex: 0 1 calc((100% - var(--space-4)) / 2) !important;
+    width: calc((100% - var(--space-4)) / 2) !important;
+    max-width: calc((100% - var(--space-4)) / 2) !important;
   }
+
+  .card-grid-4>* {
+    flex: 0 1 calc((100% - var(--space-3)) / 2) !important;
+    width: calc((100% - var(--space-3)) / 2) !important;
+    max-width: calc((100% - var(--space-3)) / 2) !important;
+  }
+
+  /* Swara Keys on Tablet: 4 in row 1, 3 centered in row 2 */
+  .swara-keys {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 0.65rem !important;
+  }
+
+  .swara-key {
+    flex: 0 1 calc((100% - 3 * 0.65rem) / 4) !important;
+    width: calc((100% - 3 * 0.65rem) / 4) !important;
+    max-width: calc((100% - 3 * 0.65rem) / 4) !important;
+  }
+
   .journey-steps,
   .counter-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .hero-gurukulam__grid {
     grid-template-columns: 1fr;
+    gap: var(--space-5);
   }
+
   .hero-gurukulam__left {
-    align-items: center;
-    text-align: center;
+    align-items: center !important;
+    text-align: center !important;
+    margin-inline: auto !important;
+    width: 100% !important;
+    max-width: 720px !important;
+    box-sizing: border-box !important;
   }
+
+  .hero-gurukulam__left h1 {
+    text-align: center !important;
+    max-width: 100% !important;
+  }
+
+  .hero-gurukulam__left p {
+    text-align: center !important;
+    max-width: 640px !important;
+    margin-inline: auto !important;
+  }
+
   .hero-finder-bar {
     grid-template-columns: 1fr 1fr;
+    width: 100% !important;
+    max-width: 620px !important;
+    margin-inline: auto !important;
   }
+
   .hero-floating-bar {
     grid-template-columns: 1fr;
     text-align: center;
     justify-items: center;
   }
+
   .site-footer__grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
   /* Center align all tags, headings, sub-headings and buttons on Tablet & Mobile */
-  h1, h2, h3, h4,
-  .tag, .badge,
+  h1,
+  h2,
+  h3,
+  h4,
+  .tag,
+  .badge,
   .section-header,
   .card-body,
   .card-title,
@@ -1902,8 +5174,33 @@ textarea.form-control {
     justify-content: center !important;
   }
 
-  .tag, .badge {
-    margin-inline: auto;
+  /* Sub-text paragraphs must always align from the top baseline */
+  .card-text {
+    align-items: flex-start !important;
+  }
+
+  .tag,
+  .badge,
+  .card-body .tag,
+  .tilt-card .tag,
+  .academy-card .tag,
+  .card-grid-2 .tag,
+  .card-grid-3 .tag,
+  .card-grid-4 .tag {
+    align-self: center !important;
+    margin-inline: auto !important;
+    text-align: center !important;
+    max-width: calc(100% - 0.5rem) !important;
+    font-size: 0.68rem !important;
+    letter-spacing: 0.03em !important;
+    padding: 0 0.65rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    box-sizing: border-box !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 
   .btn-group {
@@ -1915,12 +5212,1033 @@ textarea.form-control {
   .section .btn {
     margin-inline: auto;
   }
+
+  /* Tablet View: Equal Card Sizing for Home 2 Sections */
+  .mode-comparison-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .mode-comparison-grid .card-body {
+    padding: var(--space-3) 1rem !important;
+  }
+
+  .mode-comparison-grid .card-title {
+    font-size: 1.35rem !important;
+    min-height: 4.4rem !important;
+    max-height: 4.4rem !important;
+  }
+
+  .mode-comparison-grid .card-text {
+    font-size: 0.85rem !important;
+    min-height: 6.8rem !important;
+    max-height: 6.8rem !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 5 !important;
+    line-clamp: 5 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+
+  .mode-comparison-grid .card-checklist {
+    max-width: 360px !important;
+    min-height: 12.5rem !important;
+    font-size: 0.84rem !important;
+  }
+
+  .mode-comparison-grid .card-checklist li {
+    display: flex !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    gap: 0.6rem !important;
+  }
+
+  .mode-comparison-grid .card-checklist li i {
+    width: 18px !important;
+    min-width: 18px !important;
+    max-width: 18px !important;
+    margin-top: 0.16rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  .mode-comparison-grid .card-checklist li span {
+    text-align: left !important;
+    flex: 1 1 auto !important;
+  }
+
+  /* Tablet View: Equal Card Sizing for A Day at the Academy (Section 6) */
+  .academy-day-grid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: var(--space-4) !important;
+    align-items: stretch !important;
+    width: 100% !important;
+  }
+
+  .academy-day-grid>*,
+  .academy-day-grid-1>*,
+  .academy-day-grid-2>* {
+    flex: 0 1 calc((100% - var(--space-4)) / 2) !important;
+    width: calc((100% - var(--space-4)) / 2) !important;
+    max-width: calc((100% - var(--space-4)) / 2) !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+  }
+
+  .academy-day-grid .card-title,
+  .academy-day-grid-1 .card-title,
+  .academy-day-grid-2 .card-title {
+    font-size: 1.2rem !important;
+    min-height: 3.4rem !important;
+    max-height: 3.4rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  .academy-day-grid .card-text,
+  .academy-day-grid-1 .card-text,
+  .academy-day-grid-2 .card-text {
+    font-size: 0.85rem !important;
+    min-height: 6.8rem !important;
+    max-height: 6.8rem !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 5 !important;
+    line-clamp: 5 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-align: center !important;
+  }
+
+  .voices-wall-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .voices-wall-grid .card-body {
+    padding: var(--space-3) 1rem !important;
+  }
+
+  .voices-wall-grid .card-text {
+    font-size: 0.85rem !important;
+    min-height: 9.6rem !important;
+    max-height: 9.6rem !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 7 !important;
+    line-clamp: 7 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+
+  /* Course Cards on Tablet: Equal Sizing Across 2 Columns */
+  #coursesCatalogGrid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: var(--space-4) !important;
+  }
+
+  #coursesCatalogGrid> :last-child,
+  #coursesCatalogGrid>.course-card:last-child {
+    grid-column: auto !important;
+  }
+
+  .course-card .card-title {
+    font-size: 1.2rem !important;
+    min-height: 3.4rem !important;
+    max-height: 3.4rem !important;
+  }
+
+  .course-card .card-text {
+    font-size: 0.85rem !important;
+    min-height: 7.2rem !important;
+    max-height: 7.2rem !important;
+    -webkit-line-clamp: 5 !important;
+    line-clamp: 5 !important;
+  }
+
+  .course-card .card-meta {
+    min-height: 3.2rem !important;
+    max-height: 3.2rem !important;
+  }
+
+  /* Tablet View: Equal Card Sizing for Home 1 Featured Concerts */
+  #featuredConcertsGrid .tilt-card {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  #featuredConcertsGrid .card-media {
+    aspect-ratio: 16 / 10.4 !important;
+    width: 100% !important;
+  }
+
+  #featuredConcertsGrid .card-title {
+    font-size: 1.2rem !important;
+    min-height: 3.4rem !important;
+    max-height: 3.4rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  #featuredConcertsGrid .card-text {
+    font-size: 0.85rem !important;
+    min-height: 5.2rem !important;
+    max-height: 5.2rem !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3 !important;
+    line-clamp: 3 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-align: center !important;
+  }
+
+  #featuredConcertsGrid .card-meta {
+    min-height: 2.4rem !important;
+    max-height: 2.4rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  #featuredConcertsGrid .card-footer {
+    margin-top: auto !important;
+  }
+
+  /* Tablet View: Equal Card Sizing for Home 1 Why Carnatic Icon Cards */
+  #whyCarnaticGrid .tilt-card {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  #whyCarnaticGrid .card-title {
+    font-size: 1.15rem !important;
+    min-height: 4.2rem !important;
+    max-height: 4.2rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  #whyCarnaticGrid .card-text {
+    font-size: 0.86rem !important;
+    min-height: 7.2rem !important;
+    max-height: 7.2rem !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 4 !important;
+    line-clamp: 4 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-align: center !important;
+  }
+
+  /* Tablet View: Equal Card Sizing for Home 1 Signature Courses */
+  #signatureCoursesGrid .tilt-card {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  #signatureCoursesGrid .card-media {
+    aspect-ratio: 16 / 10.4 !important;
+    width: 100% !important;
+  }
+
+  #signatureCoursesGrid .card-body>div:first-child {
+    min-height: 2.2rem !important;
+    max-height: 2.2rem !important;
+  }
+
+  #signatureCoursesGrid .card-title {
+    font-size: 1.2rem !important;
+    min-height: 3.4rem !important;
+    max-height: 3.4rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  #signatureCoursesGrid .card-text {
+    font-size: 0.85rem !important;
+    min-height: 5.6rem !important;
+    max-height: 5.6rem !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3 !important;
+    line-clamp: 3 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-align: center !important;
+  }
+
+  #signatureCoursesGrid .card-meta {
+    min-height: 2.4rem !important;
+    max-height: 2.4rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  #signatureCoursesGrid .card-footer {
+    margin-top: auto !important;
+  }
+
+  /* Tablet View: Equal Card Sizing for Concerts Page (#eventsGrid) */
+  #eventsGrid .tilt-card {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  #eventsGrid .card-media {
+    aspect-ratio: 16 / 10.4 !important;
+    width: 100% !important;
+  }
+
+  #eventsGrid .card-title {
+    font-size: 1.2rem !important;
+    min-height: 3.6rem !important;
+    max-height: 3.6rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  #eventsGrid .card-text {
+    font-size: 0.85rem !important;
+    min-height: 5.6rem !important;
+    max-height: 5.6rem !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3 !important;
+    line-clamp: 3 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-align: center !important;
+  }
+
+  #eventsGrid .card-meta {
+    min-height: 2.4rem !important;
+    max-height: 2.4rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  #eventsGrid .card-footer {
+    margin-top: auto !important;
+  }
+
+  /* Tablet View: Equal Card Sizing for Blog Page (#blogGrid) */
+  #blogGrid .tilt-card {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  #blogGrid .card-media {
+    aspect-ratio: 16 / 10.4 !important;
+    width: 100% !important;
+  }
+
+  #blogGrid .card-meta {
+    min-height: 2.2rem !important;
+    max-height: 2.2rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.5rem !important;
+  }
+
+  #blogGrid .card-title {
+    font-size: 1.18rem !important;
+    min-height: 4.4rem !important;
+    max-height: 4.4rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  #blogGrid .card-text {
+    font-size: 0.85rem !important;
+    min-height: 5.6rem !important;
+    max-height: 5.6rem !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3 !important;
+    line-clamp: 3 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-align: center !important;
+  }
+
+  #blogGrid .card-footer {
+    margin-top: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+  }
+
+  /* Tablet View: Equal Card Sizing for Photo Gallery (#photoGalleryGrid) */
+  #photoGalleryGrid .tilt-card {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  #photoGalleryGrid .card-media {
+    aspect-ratio: 16 / 11 !important;
+    width: 100% !important;
+  }
+
+  #photoGalleryGrid .card-title {
+    font-size: 1.2rem !important;
+    min-height: 3.2rem !important;
+    max-height: 3.2rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  #photoGalleryGrid .card-text {
+    font-size: 0.85rem !important;
+    min-height: 4.8rem !important;
+    max-height: 4.8rem !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3 !important;
+    line-clamp: 3 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-align: center !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* Tablet View: Equal Card Sizing for About Page - Four Pillars (#fourPillarsGrid) */
+  #fourPillarsGrid .tilt-card {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  #fourPillarsGrid .card-title {
+    font-size: 1.2rem !important;
+    min-height: 3.6rem !important;
+    max-height: 3.6rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  #fourPillarsGrid .card-text {
+    font-size: 0.88rem !important;
+    min-height: 6.8rem !important;
+    max-height: 6.8rem !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 4 !important;
+    line-clamp: 4 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-align: center !important;
+  }
+
+  /* Tablet View: Equal Card Sizing for About Page - Facilities (#campusFacilitiesGrid) */
+  #campusFacilitiesGrid .tilt-card {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  #campusFacilitiesGrid .card-media {
+    aspect-ratio: 16 / 10.4 !important;
+    width: 100% !important;
+  }
+
+  #campusFacilitiesGrid .card-title {
+    font-size: 1.2rem !important;
+    min-height: 3.2rem !important;
+    max-height: 3.2rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  #campusFacilitiesGrid .card-text {
+    font-size: 0.85rem !important;
+    min-height: 5.6rem !important;
+    max-height: 5.6rem !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3 !important;
+    line-clamp: 3 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-align: center !important;
+  }
+
+  #campusFacilitiesGrid .card-footer {
+    margin-top: auto !important;
+  }
+
+  /* Tablet View: Equal Card Sizing for Contact Info Cards (#contactInfoGrid) */
+  #contactInfoGrid .tilt-card,
+  #contactInfoGrid .icon-card {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  #contactInfoGrid .card-title {
+    font-size: 1.25rem !important;
+    min-height: 3.2rem !important;
+    max-height: 3.2rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  #contactInfoGrid .card-text {
+    font-size: 0.85rem !important;
+    min-height: 5.8rem !important;
+    max-height: 5.8rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  /* Tablet View: Equal Card Sizing for Teachers Page (#facultyGrid) */
+  #facultyGrid .tilt-card {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  #facultyGrid .card-media {
+    aspect-ratio: 4 / 4.3 !important;
+    width: 100% !important;
+  }
+
+  #facultyGrid .card-title {
+    font-size: 1.2rem !important;
+    min-height: 3.4rem !important;
+    max-height: 3.4rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  #facultyGrid .card-text {
+    font-size: 0.85rem !important;
+    min-height: 6.8rem !important;
+    max-height: 6.8rem !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 4 !important;
+    line-clamp: 4 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-align: center !important;
+  }
+
+  #facultyGrid .card-meta {
+    min-height: 2.2rem !important;
+    max-height: 2.2rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  #facultyGrid .card-footer {
+    margin-top: auto !important;
+  }
+
+  /* Tablet View: Equal Card Sizing & Orderly Text Alignment for Fees / Pricing Page (#pricingGrid) */
+  #pricingGrid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: var(--space-4) !important;
+    align-items: stretch !important;
+    width: 100% !important;
+  }
+
+  #pricingGrid>*,
+  #pricingGrid>.tilt-card,
+  #pricingGrid .tilt-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+    flex: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  #pricingGrid .card-body {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    flex: 1 1 auto !important;
+    padding: var(--space-4) !important;
+    box-sizing: border-box !important;
+  }
+
+  #pricingGrid .tag {
+    align-self: center !important;
+    margin-inline: auto !important;
+    text-align: center !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  #pricingGrid .card-title {
+    font-size: 1.25rem !important;
+    min-height: 3.2rem !important;
+    max-height: 3.2rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin-bottom: 0.5rem !important;
+    width: 100% !important;
+  }
+
+  #pricingGrid .card-text {
+    font-size: 0.88rem !important;
+    min-height: 4.8rem !important;
+    max-height: 4.8rem !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 4 !important;
+    line-clamp: 4 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-align: center !important;
+    max-width: 330px !important;
+    margin-inline: auto !important;
+    margin-bottom: 0.75rem !important;
+    width: 100% !important;
+  }
+
+  #pricingGrid .pricing-price-box {
+    min-height: 4.5rem !important;
+    max-height: 4.5rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin-block: 0.25rem 1rem !important;
+    width: 100% !important;
+  }
+
+  #pricingGrid .pricing-price-box strong {
+    font-size: 2.3rem !important;
+    line-height: 1.1 !important;
+  }
+
+  #pricingGrid .pricing-price-box [data-price-period] {
+    font-size: 0.82rem !important;
+    color: var(--text-muted) !important;
+    margin-top: 0.2rem !important;
+  }
+
+  #pricingGrid ul {
+    min-height: 10.5rem !important;
+    width: 100% !important;
+    max-width: 320px !important;
+    margin-inline: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: stretch !important;
+    gap: 0.65rem !important;
+    flex: 1 1 auto !important;
+    padding-left: 0 !important;
+    list-style: none !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  #pricingGrid ul li {
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
+    gap: 0.65rem !important;
+    font-size: 0.88rem !important;
+    line-height: 1.45 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  #pricingGrid ul li i {
+    width: 18px !important;
+    min-width: 18px !important;
+    max-width: 18px !important;
+    height: 18px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-top: 0.16rem !important;
+    flex-shrink: 0 !important;
+    color: var(--peacock) !important;
+    text-align: center !important;
+  }
+
+  #pricingGrid ul li span {
+    flex: 1 1 auto !important;
+    text-align: left !important;
+  }
+
+  #pricingGrid .card-footer {
+    width: 100% !important;
+    max-width: 320px !important;
+    margin-inline: auto !important;
+    margin-top: auto !important;
+    padding-top: var(--space-2) !important;
+  }
+
+  #pricingGrid .card-footer .btn {
+    width: 100% !important;
+    min-height: 48px !important;
+    height: 48px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* Tablet View: Equal Card Sizing for Resources Page (#ragaGlossaryGrid) */
+  #ragaGlossaryGrid .tilt-card {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  #ragaGlossaryGrid .card-title {
+    font-size: 1.25rem !important;
+    min-height: 3.2rem !important;
+    max-height: 3.2rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  #ragaGlossaryGrid .swara-notation-box {
+    min-height: 4.2rem !important;
+    max-height: 4.2rem !important;
+  }
+
+  #ragaGlossaryGrid .card-text {
+    font-size: 0.85rem !important;
+    min-height: 5.6rem !important;
+    max-height: 5.6rem !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 4 !important;
+    line-clamp: 4 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-align: center !important;
+  }
+
+  #ragaGlossaryGrid .card-footer {
+    margin-top: auto !important;
+  }
+
+  /* Tablet View: Equal Card Sizing for Counter / Milestone Cards */
+  .counter-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .counter-card {
+    height: 100% !important;
+    min-height: 175px !important;
+  }
+
+  /* Tablet View: Equal Card Sizing for Resources Page (#veena-care) */
+  #veena-care .tilt-card {
+    height: 100% !important;
+    min-height: auto !important;
+  }
+
+  #veena-care .tilt-card .card-media {
+    min-height: auto !important;
+    height: auto !important;
+    aspect-ratio: 16 / 10 !important;
+  }
+
+  /* Tablet View: Suladi Sapta Tala & Konnakol Metronome Card (#talaMetronomeCard) */
+  .tala-metronome-card {
+    padding: var(--space-4) var(--space-3) !important;
+  }
+
+  .tala-metronome-wrap {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 1.25rem !important;
+  }
+
+  .tala-metronome-header {
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+  }
+
+  .tala-metronome-header .tag {
+    margin-inline: auto !important;
+  }
+
+  .tala-metronome-header h3 {
+    text-align: center !important;
+    margin-inline: auto !important;
+  }
+
+  .tala-metronome-header h3 span {
+    display: inline !important;
+  }
+
+  .tala-metronome-header p {
+    text-align: center !important;
+    margin-inline: auto !important;
+  }
+
+  .tala-metronome-controls {
+    flex-direction: row !important;
+    justify-content: center !important;
+    width: 100% !important;
+    max-width: 520px !important;
+    margin-inline: auto !important;
+    gap: 0.75rem !important;
+    flex-wrap: wrap !important;
+  }
 }
 
 /* MOBILE (< 640px):
    Strict Rule: All tags, headings, sub-headings and buttons are center aligned.
    All buttons have the SAME SIZE (width 100% up to max 280px, min-height 48px, same padding & font-size). */
 @media (max-width: 639.98px) {
+
+  /* Authentication Portal Mobile Optimization (Login & Signup Pages) */
+  .auth-top-actions {
+    position: relative !important;
+    top: auto !important;
+    inset-inline-end: auto !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+    padding: 0.75rem 1rem 0 !important;
+    margin-bottom: 0.25rem !important;
+    z-index: 10 !important;
+  }
+
+  .auth-page-main {
+    padding: 0.5rem 0.75rem 2rem !important;
+    min-height: auto !important;
+  }
+  .auth-container {
+    padding-inline: 0 !important;
+    max-width: 100% !important;
+  }
+  .auth-card {
+    padding: 1.75rem 1.15rem !important;
+    border-radius: var(--radius-sm) !important;
+  }
+  .auth-card .form-row-2 {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+  }
+  .auth-card h1 {
+    font-size: 1.55rem !important;
+    line-height: 1.25 !important;
+  }
+  .auth-card .btn-submit {
+    width: 100% !important;
+    max-width: 100% !important;
+    font-size: 0.92rem !important;
+    padding: 0.8rem 1rem !important;
+  }
+
+  /* Brand Logo & Name: Guaranteed Single-Line Consistency Across All Mobile Views */
+  .navbar {
+    padding-inline: 0.25rem;
+  }
+
+  .brand-logo {
+    gap: 0.55rem !important;
+    max-width: calc(100% - 52px) !important;
+  }
+
+  .brand-logo__mark {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .brand-logo__name {
+    font-size: 1.12rem !important;
+    line-height: 1.15 !important;
+    white-space: nowrap !important;
+  }
+
+  .brand-logo__tagline {
+    font-size: 0.56rem !important;
+    letter-spacing: 0.05em !important;
+    white-space: nowrap !important;
+  }
+
+  .mobile-drawer__header .brand-logo {
+    gap: 0.55rem !important;
+    max-width: calc(100% - 48px) !important;
+  }
+
+  .mobile-drawer__header .brand-logo__mark {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+  }
+
+  .mobile-drawer__header .brand-logo__name {
+    font-size: 1.12rem !important;
+    white-space: nowrap !important;
+  }
+
+  .mobile-drawer__header .brand-logo__tagline {
+    font-size: 0.54rem !important;
+    white-space: nowrap !important;
+  }
+
+  /* Home 2 Hero Section: Strict Symmetrical Centering & No Horizontal Overflow */
+  .hero-gurukulam {
+    padding-block: var(--space-6) var(--space-8) !important;
+    overflow-x: clip !important;
+    width: 100% !important;
+  }
+
+  .hero-gurukulam__grid {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-4) !important;
+    padding-inline: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .hero-gurukulam__left {
+    align-items: center !important;
+    text-align: center !important;
+    margin-inline: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    padding-inline: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .hero-gurukulam__left .tag {
+    max-width: 100% !important;
+    white-space: normal !important;
+    height: auto !important;
+    min-height: 28px !important;
+    font-size: 0.68rem !important;
+    line-height: 1.35 !important;
+    padding: 0.35rem 0.8rem !important;
+    text-align: center !important;
+    margin-inline: auto !important;
+    box-sizing: border-box !important;
+  }
+
+  .hero-gurukulam__left .tamil-accent {
+    text-align: center !important;
+    margin-inline: auto !important;
+    font-size: 0.88rem !important;
+    display: block !important;
+    max-width: 100% !important;
+  }
+
+  .hero-gurukulam__left h1 {
+    font-size: clamp(1.8rem, 6.8vw, 2.35rem) !important;
+    line-height: 1.18 !important;
+    word-break: normal !important;
+    overflow-wrap: break-word !important;
+    max-width: 100% !important;
+    text-align: center !important;
+    margin-inline: auto !important;
+  }
+
+  .hero-gurukulam__left h1.gold-underline {
+    display: inline-block !important;
+    max-width: 100% !important;
+  }
+
+  .hero-gurukulam__left h1.gold-underline::after {
+    max-width: 100% !important;
+  }
+
+  .hero-gurukulam__left p {
+    font-size: 0.95rem !important;
+    line-height: 1.55 !important;
+    text-align: center !important;
+    margin-inline: auto !important;
+    max-width: 100% !important;
+  }
+
+  .hero-finder-bar {
+    grid-template-columns: 1fr !important;
+    gap: 0.65rem !important;
+    padding: var(--space-2) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-inline: auto !important;
+    box-sizing: border-box !important;
+  }
+
+  .hero-finder-field {
+    border-right: none !important;
+    border-bottom: 1px solid var(--border-warm) !important;
+    padding-bottom: 0.45rem !important;
+    padding-inline: 0.25rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .hero-finder-field:nth-last-of-type(1) {
+    border-bottom: none !important;
+  }
+
+  .hero-finder-field select {
+    text-align: center !important;
+    text-align-last: center !important;
+    width: 100% !important;
+  }
+
+  .hero-finder-bar .btn {
+    width: 100% !important;
+    margin-inline: auto !important;
+  }
+
+  .hero-gurukulam__left>div[style*="display:flex"] {
+    justify-content: center !important;
+    text-align: center !important;
+    gap: 1.25rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-inline: auto !important;
+  }
+
+  .hero-gurukulam__left>div[style*="display:flex"]>div {
+    text-align: center !important;
+    flex: 1 1 95px !important;
+  }
+
   .section {
     padding-block: var(--space-6);
   }
@@ -1935,8 +6253,840 @@ textarea.form-control {
     grid-template-columns: 1fr;
   }
 
+  .card-grid-4>*,
+  .card-grid-3>*,
+  .card-grid-2>* {
+    flex: 0 1 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Teachers Page: Strict Uniform Dimensions on Mobile */
+  #facultyGrid .tilt-card {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  #facultyGrid .card-title {
+    min-height: 2.8rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  #facultyGrid .card-text {
+    min-height: 6.2rem !important;
+    text-align: center !important;
+  }
+
+  /* Resources Page: Strict Uniform Dimensions on Mobile */
+  #ragaGlossaryGrid .tilt-card {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  #ragaGlossaryGrid .card-title {
+    min-height: 2.8rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  #ragaGlossaryGrid .swara-notation-box {
+    min-height: 4.0rem !important;
+  }
+
+  #ragaGlossaryGrid .card-text {
+    min-height: 5.2rem !important;
+    text-align: center !important;
+  }
+
+  /* Resources Page: Luthier Manual Card on Mobile */
+  #veena-care .card-grid-2 {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-4) !important;
+  }
+
+  #veena-care .tilt-card {
+    height: auto !important;
+    min-height: auto !important;
+  }
+
+  #veena-care .tilt-card .card-media {
+    min-height: auto !important;
+    height: auto !important;
+    aspect-ratio: 16 / 10 !important;
+  }
+
+  #veena-care .tilt-card .card-body {
+    padding: var(--space-3) var(--space-2) !important;
+    text-align: center !important;
+    align-items: center !important;
+  }
+
+  #veena-care .tilt-card .card-body ul {
+    align-items: flex-start !important;
+    text-align: left !important;
+    width: 100% !important;
+    max-width: 340px !important;
+    margin-inline: auto !important;
+  }
+
+  #veena-care .tilt-card .card-body .btn {
+    width: 100% !important;
+    max-width: 280px !important;
+    margin-inline: auto !important;
+  }
+
+  /* Resources Page: Suladi Sapta Tala & Konnakol Metronome Card on Mobile */
+  .tala-metronome-card {
+    padding: 1.75rem 1.25rem !important;
+    margin-bottom: var(--space-5) !important;
+    border: 2px solid var(--turmeric) !important;
+    border-radius: var(--radius-lg) !important;
+    box-shadow: var(--shadow-sm) !important;
+    background: var(--bg-surface-elevated) !important;
+    width: 100% !important;
+    max-width: 380px !important;
+    margin-inline: auto !important;
+    box-sizing: border-box !important;
+    text-align: center !important;
+    overflow: hidden !important;
+  }
+
+  .tala-metronome-wrap {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    gap: 1.25rem !important;
+    width: 100% !important;
+    margin-inline: auto !important;
+    box-sizing: border-box !important;
+  }
+
+  .tala-metronome-header {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    margin-inline: auto !important;
+  }
+
+  .tala-metronome-header .tag {
+    margin-inline: auto !important;
+    align-self: center !important;
+    text-align: center !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .tala-metronome-header h3 {
+    font-size: clamp(1.15rem, 4.5vw, 1.3rem) !important;
+    line-height: 1.32 !important;
+    text-align: center !important;
+    text-wrap: balance !important;
+    margin-inline: auto !important;
+    margin-top: 0.35rem !important;
+    margin-bottom: 0.35rem !important;
+    width: 100% !important;
+    max-width: 300px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: var(--text-primary) !important;
+  }
+
+  .tala-metronome-header h3 span {
+    display: block !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+  }
+
+  .tala-metronome-header p,
+  #talaBeatDisplay {
+    font-size: 0.88rem !important;
+    line-height: 1.4 !important;
+    text-align: center !important;
+    color: var(--text-secondary) !important;
+    margin-inline: auto !important;
+    margin-top: 0.25rem !important;
+    margin-bottom: 0 !important;
+    width: 100% !important;
+  }
+
+  .tala-metronome-controls {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    max-width: 280px !important;
+    margin-inline: auto !important;
+    gap: 0.75rem !important;
+    box-sizing: border-box !important;
+  }
+
+  .tala-metronome-controls select.form-control,
+  #talaPatternSelect {
+    width: 100% !important;
+    max-width: 280px !important;
+    min-width: 0 !important;
+    height: 48px !important;
+    min-height: 48px !important;
+    font-size: 0.88rem !important;
+    font-weight: 500 !important;
+    text-align: center !important;
+    text-align-last: center !important;
+    padding-inline: 0.75rem !important;
+    border: 1.5px solid var(--border-warm) !important;
+    border-radius: var(--radius-sm) !important;
+    background-color: var(--bg-surface-elevated) !important;
+    color: var(--text-primary) !important;
+    margin-inline: auto !important;
+    box-sizing: border-box !important;
+    display: block !important;
+  }
+
+  .tala-metronome-controls .btn,
+  #talaMetronomeBtn {
+    width: 100% !important;
+    max-width: 280px !important;
+    min-width: 0 !important;
+    height: 48px !important;
+    min-height: 48px !important;
+    border-radius: var(--radius-sm) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    font-size: 0.95rem !important;
+    margin-inline: auto !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Smooth Table Scrolling on Mobile without Page Overflow */
+  .table-responsive {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    touch-action: pan-x pan-y !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Pricing Page: Strict Uniform Dimensions & Orderly Internal Text Alignment on Mobile */
+  #pricingGrid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: var(--space-4) !important;
+    width: 100% !important;
+  }
+
+  #pricingGrid>*,
+  #pricingGrid>.tilt-card,
+  #pricingGrid .tilt-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+    flex: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    border-radius: var(--radius-md) !important;
+  }
+
+  #pricingGrid .card-body {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    flex: 1 1 auto !important;
+    padding: var(--space-4) var(--space-3) !important;
+    box-sizing: border-box !important;
+  }
+
+  #pricingGrid .tag {
+    align-self: center !important;
+    margin-inline: auto !important;
+    text-align: center !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  #pricingGrid .card-title {
+    font-size: 1.3rem !important;
+    min-height: auto !important;
+    max-height: none !important;
+    display: block !important;
+    text-align: center !important;
+    margin-block: 0 0.5rem !important;
+    width: 100% !important;
+  }
+
+  #pricingGrid .card-text {
+    font-size: 0.88rem !important;
+    line-height: 1.5 !important;
+    min-height: auto !important;
+    max-height: none !important;
+    -webkit-line-clamp: unset !important;
+    line-clamp: unset !important;
+    overflow: visible !important;
+    text-align: center !important;
+    max-width: 320px !important;
+    margin-inline: auto !important;
+    margin-bottom: 0.75rem !important;
+    width: 100% !important;
+  }
+
+  #pricingGrid .pricing-price-box {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    min-height: auto !important;
+    max-height: none !important;
+    margin-block: 0.5rem 1.25rem !important;
+    width: 100% !important;
+  }
+
+  #pricingGrid .pricing-price-box strong {
+    font-size: 2.4rem !important;
+    line-height: 1.1 !important;
+    display: block !important;
+  }
+
+  #pricingGrid .pricing-price-box [data-price-period] {
+    font-size: 0.85rem !important;
+    color: var(--text-muted) !important;
+    margin-top: 0.25rem !important;
+    display: block !important;
+  }
+
+  /* Orderly Left-Aligned Checklist Centered as a Block in Mobile Card */
+  #pricingGrid ul {
+    width: 100% !important;
+    max-width: 310px !important;
+    margin-inline: auto !important;
+    padding-left: 0 !important;
+    list-style: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.7rem !important;
+    margin-bottom: 1.5rem !important;
+    min-height: auto !important;
+    flex: 1 1 auto !important;
+  }
+
+  #pricingGrid ul li {
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
+    gap: 0.75rem !important;
+    font-size: 0.9rem !important;
+    line-height: 1.45 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  #pricingGrid ul li i {
+    width: 18px !important;
+    min-width: 18px !important;
+    max-width: 18px !important;
+    height: 18px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-top: 0.16rem !important;
+    flex-shrink: 0 !important;
+    color: var(--peacock) !important;
+    text-align: center !important;
+  }
+
+  #pricingGrid ul li span {
+    flex: 1 1 auto !important;
+    text-align: left !important;
+  }
+
+  #pricingGrid .card-footer {
+    width: 100% !important;
+    max-width: 310px !important;
+    margin-inline: auto !important;
+    margin-top: auto !important;
+    padding-top: var(--space-2) !important;
+  }
+
+  #pricingGrid .card-footer .btn {
+    width: 100% !important;
+    min-height: 48px !important;
+    height: 48px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* Courses Page: Strict Equal Dimensions on Mobile */
+  #coursesCatalogGrid {
+    grid-template-columns: 1fr !important;
+    display: grid !important;
+    width: 100% !important;
+    gap: var(--space-4) !important;
+  }
+
+  #coursesCatalogGrid>*,
+  .course-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  #coursesCatalogGrid> :last-child,
+  #coursesCatalogGrid>.course-card:last-child {
+    grid-column: auto !important;
+  }
+
+  .course-card .card-body {
+    padding: var(--space-4) var(--space-3) !important;
+    height: auto !important;
+  }
+
+  .course-card .card-title {
+    font-size: 1.35rem !important;
+    min-height: auto !important;
+    max-height: none !important;
+    margin-bottom: 0.6rem !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  .course-card .card-text {
+    font-size: 0.88rem !important;
+    min-height: auto !important;
+    max-height: none !important;
+    -webkit-line-clamp: unset !important;
+    line-clamp: unset !important;
+    overflow: visible !important;
+    margin-bottom: 0.75rem !important;
+    text-align: center !important;
+  }
+
+  .course-card .card-meta {
+    min-height: auto !important;
+    max-height: none !important;
+    margin-bottom: 0.75rem !important;
+    justify-content: center !important;
+  }
+
+  .course-card .card-footer {
+    justify-content: center !important;
+  }
+
+  .course-card .card-footer .btn {
+    width: 100% !important;
+    max-width: 280px !important;
+    margin-inline: auto !important;
+  }
+
+  /* Mobile View: Home 2 Single Column Stacking & Equal Element Dimensions */
+  .mode-comparison-grid,
+  .academy-day-grid,
+  .academy-day-grid-1,
+  .academy-day-grid-2,
+  .voices-wall-grid {
+    grid-template-columns: 1fr !important;
+    display: grid !important;
+    width: 100% !important;
+    gap: var(--space-4) !important;
+  }
+
+  .academy-day-grid-1> :last-child {
+    grid-column: auto !important;
+    max-width: 100% !important;
+    margin-inline: 0 !important;
+  }
+
+  .mode-comparison-grid>*,
+  .academy-day-grid>*,
+  .academy-day-grid-1>*,
+  .academy-day-grid-2>*,
+  .voices-wall-grid>* {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .mode-comparison-grid .tilt-card,
+  .academy-day-grid .tilt-card,
+  .academy-day-grid-1 .tilt-card,
+  .academy-day-grid-2 .tilt-card,
+  .voices-wall-grid .tilt-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  .mode-comparison-grid .card-body,
+  .academy-day-grid .card-body,
+  .academy-day-grid-1 .card-body,
+  .academy-day-grid-2 .card-body,
+  .voices-wall-grid .card-body {
+    padding: var(--space-4) var(--space-3) !important;
+    height: auto !important;
+  }
+
+  .mode-comparison-grid .tag,
+  .voices-wall-grid .tag {
+    height: auto !important;
+    min-height: 28px !important;
+    max-height: none !important;
+    white-space: normal !important;
+    text-align: center !important;
+    padding: 0.35rem 0.75rem !important;
+  }
+
+  .mode-comparison-grid .card-title,
+  .academy-day-grid .card-title,
+  .academy-day-grid-1 .card-title,
+  .academy-day-grid-2 .card-title {
+    font-size: 1.35rem !important;
+    min-height: auto !important;
+    max-height: none !important;
+    margin-bottom: 0.6rem !important;
+  }
+
+  .mode-comparison-grid .card-text,
+  .academy-day-grid .card-text,
+  .academy-day-grid-1 .card-text,
+  .academy-day-grid-2 .card-text,
+  .voices-wall-grid .card-text {
+    font-size: 0.88rem !important;
+    min-height: auto !important;
+    max-height: none !important;
+    -webkit-line-clamp: unset !important;
+    line-clamp: unset !important;
+    overflow: visible !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .mode-comparison-grid .card-checklist {
+    width: 100% !important;
+    max-width: 330px !important;
+    margin-inline: auto !important;
+    min-height: auto !important;
+    font-size: 0.86rem !important;
+    gap: 0.75rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .mode-comparison-grid .card-checklist li {
+    display: flex !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    gap: 0.65rem !important;
+  }
+
+  .mode-comparison-grid .card-checklist li i {
+    width: 18px !important;
+    min-width: 18px !important;
+    max-width: 18px !important;
+    height: 18px !important;
+    margin-top: 0.16rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  .mode-comparison-grid .card-checklist li span {
+    flex: 1 1 auto !important;
+    text-align: left !important;
+  }
+
+  .mode-comparison-grid .card-footer .btn {
+    width: 100% !important;
+    max-width: 280px !important;
+    margin-inline: auto !important;
+  }
+
+  .voices-wall-grid .card-footer {
+    justify-content: center !important;
+  }
+
+  .map-embed-wrapper {
+    height: 280px !important;
+    min-height: 250px !important;
+  }
+
+  .contact-social-strip__inner {
+    border-radius: var(--radius-md) !important;
+    padding: 0.65rem 1rem !important;
+    gap: 0.75rem !important;
+  }
+
+  /* Interactive Swara Explorer: Mobile Centered Alignment & Strict Container Fit */
+  .swara-explorer {
+    padding: var(--space-4) var(--space-2) !important;
+    border-radius: var(--radius-md) !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+  }
+
   .swara-keys {
-    grid-template-columns: repeat(4, 1fr);
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 0.5rem !important;
+    margin-block: var(--space-3) !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .swara-key {
+    flex: 0 1 calc((100% - 3 * 0.5rem) / 4) !important;
+    width: calc((100% - 3 * 0.5rem) / 4) !important;
+    max-width: calc((100% - 3 * 0.5rem) / 4) !important;
+    min-width: 0 !important;
+    padding: 0.65rem 0.2rem !important;
+    border-radius: var(--radius-sm) !important;
+    box-sizing: border-box !important;
+    text-align: center !important;
+  }
+
+  .swara-key__syllable {
+    font-size: 1.5rem !important;
+    line-height: 1 !important;
+  }
+
+  .swara-key__tamil {
+    font-size: 0.72rem !important;
+    line-height: 1.25 !important;
+    text-align: center !important;
+    word-break: break-word !important;
+  }
+
+  .swara-info-panel {
+    padding: var(--space-3) var(--space-2) !important;
+    border-radius: var(--radius-sm) !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+  }
+
+  @media (max-width: 380px) {
+    .auth-top-actions {
+      padding: 0.5rem 0.65rem 0 !important;
+      gap: 0.35rem !important;
+    }
+
+    .auth-page-main {
+      padding: 0.35rem 0.5rem 1.5rem !important;
+      min-height: auto !important;
+    }
+    .auth-card {
+      padding: 1.35rem 0.85rem !important;
+    }
+    .auth-card h1 {
+      font-size: 1.35rem !important;
+    }
+    .auth-card .btn-submit {
+      width: 100% !important;
+      max-width: 100% !important;
+      font-size: 0.88rem !important;
+      padding: 0.75rem 0.85rem !important;
+    }
+
+    .brand-logo {
+      gap: 0.45rem !important;
+      max-width: calc(100% - 46px) !important;
+    }
+
+    .brand-logo__mark {
+      width: 34px !important;
+      height: 34px !important;
+      min-width: 34px !important;
+    }
+
+    .brand-logo__name {
+      font-size: 0.98rem !important;
+      white-space: nowrap !important;
+    }
+
+    .brand-logo__tagline {
+      font-size: 0.48rem !important;
+      letter-spacing: 0.03em !important;
+      white-space: nowrap !important;
+    }
+
+    .mobile-drawer__header .brand-logo__mark {
+      width: 34px !important;
+      height: 34px !important;
+      min-width: 34px !important;
+    }
+
+    .mobile-drawer__header .brand-logo__name {
+      font-size: 0.98rem !important;
+    }
+
+    .mobile-drawer__header .brand-logo__tagline {
+      font-size: 0.48rem !important;
+    }
+
+    /* Mobile 360: Orderly Footer Contact Icons */
+    .site-footer__grid>div:last-child .footer-links,
+    .footer-links:has(li>i) {
+      max-width: 295px !important;
+      gap: 0.75rem !important;
+    }
+
+    .site-footer__grid>div:last-child .footer-links li,
+    .footer-links li:has(> i) {
+      font-size: 0.82rem !important;
+      gap: 0.65rem !important;
+      line-height: 1.4 !important;
+    }
+
+    .site-footer__grid>div:last-child .footer-links li>i,
+    .footer-links li>i {
+      width: 22px !important;
+      min-width: 22px !important;
+      height: 22px !important;
+      font-size: 0.82rem !important;
+    }
+
+    /* Mobile 360 Specific Home 2 Hero Alignment */
+    .hero-gurukulam__left h1 {
+      font-size: 1.58rem !important;
+      line-height: 1.2 !important;
+    }
+
+    .hero-gurukulam__left .tag {
+      font-size: 0.62rem !important;
+      padding: 0.3rem 0.65rem !important;
+    }
+
+    .hero-gurukulam__left p {
+      font-size: 0.88rem !important;
+    }
+
+    .hero-finder-bar {
+      padding: 0.65rem !important;
+    }
+
+    .hero-finder-field select {
+      font-size: 0.85rem !important;
+    }
+
+    .swara-keys {
+      gap: 0.35rem !important;
+    }
+
+    .swara-key {
+      flex: 0 1 calc((100% - 3 * 0.35rem) / 4) !important;
+      width: calc((100% - 3 * 0.35rem) / 4) !important;
+      max-width: calc((100% - 3 * 0.35rem) / 4) !important;
+      padding: 0.5rem 0.15rem !important;
+    }
+
+    .swara-key__syllable {
+      font-size: 1.35rem !important;
+    }
+
+    .swara-key__tamil {
+      font-size: 0.65rem !important;
+    }
+
+    /* Mobile 360: Home 2 Cards */
+    .mode-comparison-grid .card-body,
+    .academy-day-grid .card-body,
+    .academy-day-grid-1 .card-body,
+    .academy-day-grid-2 .card-body,
+    .voices-wall-grid .card-body,
+    .course-card .card-body {
+      padding: var(--space-3) 0.85rem !important;
+    }
+
+    .mode-comparison-grid .card-title,
+    .academy-day-grid .card-title,
+    .academy-day-grid-1 .card-title,
+    .academy-day-grid-2 .card-title,
+    .course-card .card-title {
+      font-size: 1.22rem !important;
+    }
+
+    .mode-comparison-grid .card-checklist {
+      max-width: 295px !important;
+      font-size: 0.82rem !important;
+      gap: 0.65rem !important;
+    }
+
+    .mode-comparison-grid .card-checklist li {
+      gap: 0.5rem !important;
+    }
+
+    .voices-wall-grid .card-text {
+      font-size: 0.82rem !important;
+    }
+
+    /* Mobile 360 / 380: Pricing Page Orderly Layout */
+    #pricingGrid ul {
+      max-width: 285px !important;
+      gap: 0.6rem !important;
+    }
+
+    #pricingGrid ul li {
+      font-size: 0.84rem !important;
+      gap: 0.55rem !important;
+    }
+
+    #pricingGrid ul li i {
+      width: 16px !important;
+      min-width: 16px !important;
+      max-width: 16px !important;
+      font-size: 0.85rem !important;
+    }
+
+    #pricingGrid .card-footer {
+      max-width: 285px !important;
+    }
+  }
+
+  /* Universal Strict Tag Alignment & Bounds on Mobile */
+  .tag,
+  .badge,
+  .card-body .tag,
+  .card-body>.tag:first-child,
+  .tilt-card .tag,
+  .academy-card .tag,
+  .course-card .tag,
+  .teacher-card .tag,
+  .blog-card .tag,
+  .icon-card .tag,
+  .card-grid-2 .tag,
+  .card-grid-3 .tag,
+  .card-grid-4 .tag {
+    align-self: center !important;
+    margin-inline: auto !important;
+    text-align: center !important;
+    max-width: calc(100% - 0.5rem) !important;
+    font-size: 0.68rem !important;
+    letter-spacing: 0.03em !important;
+    padding: 0 0.65rem !important;
+    height: 28px !important;
+    min-height: 28px !important;
+    max-height: 28px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    box-sizing: border-box !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 
   /* Strict Uniform Button Sizing on Mobile */
@@ -1963,8 +7113,27 @@ textarea.form-control {
   }
 
   .hero-collage {
-    min-height: 360px;
-    grid-template-rows: repeat(12, 28px);
+    min-height: auto;
+    padding: var(--space-4) 0;
+  }
+
+  .arch-photo--main {
+    max-width: 320px;
+    border-radius: 120px 120px 20px 20px;
+  }
+
+  .collage-badge--top {
+    top: 8px;
+    left: 4px;
+  }
+
+  .collage-badge--mid-left {
+    display: none;
+  }
+
+  .collage-badge--bottom {
+    bottom: 8px;
+    right: 4px;
   }
 
   .site-footer__grid,
@@ -1972,13 +7141,70 @@ textarea.form-control {
     text-align: center;
     justify-content: center;
   }
+
   .footer-links {
     align-items: center;
+  }
+
+  /* Center Social Icons in Footer Column 1 */
+  .site-footer__grid>div:first-child>div[style*="display:flex"] {
+    justify-content: center !important;
+  }
+
+  /* Orderly Footer Contact Icons on Mobile & 360px Viewports */
+  .site-footer__grid>div:last-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .site-footer__grid>div:last-child .footer-heading {
+    text-align: center;
+    margin-bottom: var(--space-3);
+  }
+
+  .site-footer__grid>div:last-child .footer-links,
+  .footer-links:has(li>i) {
+    width: 100%;
+    max-width: 320px;
+    margin-inline: auto;
+    align-items: stretch !important;
+    gap: 0.85rem;
+  }
+
+  .site-footer__grid>div:last-child .footer-links li,
+  .footer-links li:has(> i) {
+    display: flex !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    gap: 0.75rem !important;
+    width: 100% !important;
+    margin-inline: auto !important;
+    font-size: 0.86rem !important;
+    line-height: 1.45 !important;
+  }
+
+  .site-footer__grid>div:last-child .footer-links li>i,
+  .footer-links li>i {
+    width: 24px !important;
+    min-width: 24px !important;
+    height: 24px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+    margin-top: 0.15rem !important;
+    background: rgba(224, 165, 38, 0.12) !important;
+    border: 1px solid rgba(224, 165, 38, 0.28) !important;
+    border-radius: 6px !important;
+    font-size: 0.88rem !important;
   }
 }
 
 /* Reduced Motion Preference */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -1987,8 +7213,33 @@ textarea.form-control {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+
+  /* Preserve the running model marquee strip smoothly */
+  .raga-marquee__track {
+    animation-duration: 36s !important;
+    animation-iteration-count: infinite !important;
+  }
+
   .reveal {
     opacity: 1 !important;
     transform: none !important;
   }
+}
+
+/* Author & Testimonial Avatars */
+.testimonial-avatar,
+.author-avatar {
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--turmeric);
+  box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-avatar:hover,
+.author-avatar:hover {
+  transform: scale(1.08);
+  border-color: var(--turmeric-light);
+  box-shadow: 0 0 12px rgba(245, 206, 105, 0.4);
 }

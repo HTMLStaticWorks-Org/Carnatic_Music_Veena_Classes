@@ -12,6 +12,15 @@ html[dir="rtl"] .dropdown-menu {
   left: auto;
   right: 0;
 }
+html[dir="rtl"] .dropdown-menu--home,
+html[dir="rtl"] .nav-item:first-child .dropdown-menu {
+  left: auto;
+  right: 0;
+}
+html[dir="rtl"] .nav-item:last-child .dropdown-menu {
+  left: 0;
+  right: auto;
+}
 
 html[dir="rtl"] .mobile-drawer {
   right: auto;
@@ -57,9 +66,20 @@ html[dir="rtl"] .footer-links a:hover {
   transform: translateX(-4px);
 }
 
-html[dir="rtl"] .floating-demo-widget {
+html[dir="rtl"] .site-footer__grid>div:last-child .footer-links li,
+html[dir="rtl"] .footer-links li:has(> i) {
+  text-align: right !important;
+}
+
+html[dir="rtl"] .auth-top-actions {
   right: auto;
-  left: 24px;
+  left: 1.5rem;
+}
+
+html[dir="rtl"] .floating-demo-widget,
+html[dir="rtl"] .scroll-to-top {
+  right: auto;
+  left: 28px;
   align-items: flex-start;
 }
 
@@ -72,6 +92,41 @@ html[dir="rtl"] .fa-arrow-right,
 html[dir="rtl"] .fa-chevron-right,
 html[dir="rtl"] .fa-angle-right {
   transform: scaleX(-1);
+}
+
+html[dir="rtl"] .auth-switch-link:hover .arrow,
+html[dir="rtl"] .auth-switch-link:hover i,
+html[dir="rtl"] .auth-switch-link:focus-visible .arrow,
+html[dir="rtl"] .auth-switch-link:focus-visible i {
+  transform: translateX(-5px);
+}
+html[dir="rtl"] .auth-switch-link::after,
+html[dir="rtl"] .forgot-link::after {
+  left: auto;
+  right: 0;
+}
+
+/* Raga Marquee Running Model in RTL */
+html[dir="rtl"] .raga-marquee__track {
+  animation: marqueeContinuousRTL 26s linear infinite !important;
+}
+@keyframes marqueeContinuousRTL {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(100% + 2.5rem));
+  }
+}
+html[dir="rtl"] .raga-marquee::before {
+  left: auto;
+  right: 0;
+  background: linear-gradient(to left, var(--teak-deep) 15%, transparent 100%);
+}
+html[dir="rtl"] .raga-marquee::after {
+  right: auto;
+  left: 0;
+  background: linear-gradient(to right, var(--teak-deep) 15%, transparent 100%);
 }
 
 /* Preserve strict centering on Tablet & Mobile even in RTL */
@@ -89,5 +144,17 @@ html[dir="rtl"] .fa-angle-right {
   html[dir="rtl"] .card-meta,
   html[dir="rtl"] .card-footer {
     text-align: center !important;
+  }
+
+  html[dir="rtl"] .mode-comparison-grid .card-checklist li {
+    text-align: right !important;
+  }
+
+  html[dir="rtl"] .mode-comparison-grid .card-checklist li span {
+    text-align: right !important;
+  }
+
+  html[dir="rtl"] .voices-wall-grid .card-footer {
+    text-align: right !important;
   }
 }

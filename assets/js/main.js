@@ -4,7 +4,7 @@
  * 1. Theme (Dark/Light) & System Preference Detection (localStorage)
  * 2. RTL Toggle (dir="rtl" / dir="ltr" persisted in localStorage)
  * 3. Bilingual Tamil/English Accent Switch
- * 4. Preloader, Scroll Progress Bar, Sticky Header & Custom Gold Bindi Cursor
+ * 4. Scroll Progress Bar, Sticky Header & Scroll To Top Button
  * 5. Off-Canvas Mobile Drawer & Accessible Dropdown Menus
  * 6. Web Audio API Synthesizer (Sruti Drone, Interactive Swara Explorer, Raga Scales, Tala Metronome)
  * 7. Raga of the Day Dynamic Widget
@@ -102,24 +102,33 @@
   }
 
   /* ------------------------------------------------------------------------
-     4. PRELOADER, SCROLL PROGRESS, STICKY HEADER & CUSTOM BINDI CURSOR
+     4. SCROLL PROGRESS, STICKY HEADER & SCROLL TO TOP BUTTON
      ------------------------------------------------------------------------ */
   function initChromeUI() {
-    var preloader = document.querySelector('.preloader');
-    if (preloader) {
-      window.addEventListener('load', function () {
-        setTimeout(function () {
-          preloader.classList.add('is-hidden');
-        }, 260);
-      });
-      setTimeout(function () {
-        preloader.classList.add('is-hidden');
-      }, 1200);
-    }
-
     var progressBar = document.querySelector('.scroll-progress-bar');
     var header = document.querySelector('.site-header');
     var heroBgImg = document.querySelector('.hero-concert__bg img');
+    var scrollToTopBtn = document.getElementById('scrollToTopBtn') || document.querySelector('.scroll-to-top');
+
+    if (!scrollToTopBtn) {
+      scrollToTopBtn = document.createElement('button');
+      scrollToTopBtn.type = 'button';
+      scrollToTopBtn.id = 'scrollToTopBtn';
+      scrollToTopBtn.className = 'scroll-to-top';
+      scrollToTopBtn.setAttribute('aria-label', 'Scroll back to top');
+      scrollToTopBtn.setAttribute('title', 'Scroll to top');
+      scrollToTopBtn.innerHTML = '<i class="fa-solid fa-arrow-up" aria-hidden="true"></i>';
+      document.body.appendChild(scrollToTopBtn);
+    }
+
+    if (scrollToTopBtn) {
+      scrollToTopBtn.addEventListener('click', function () {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    }
 
     function onScroll() {
       var scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -130,32 +139,15 @@
       if (header) {
         header.classList.toggle('is-scrolled', scrollTop > 40);
       }
+      if (scrollToTopBtn) {
+        scrollToTopBtn.classList.toggle('is-visible', scrollTop > 260);
+      }
       if (heroBgImg && scrollTop < 900 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         heroBgImg.style.transform = 'scale(1.06) translateY(' + (scrollTop * 0.18).toFixed(1) + 'px)';
       }
     }
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
-
-    /* Custom Gold Bindi Cursor */
-    if (window.matchMedia('(pointer: fine)').matches) {
-      var cursor = document.querySelector('.cursor-bindi');
-      if (!cursor) {
-        cursor = document.createElement('div');
-        cursor.className = 'cursor-bindi';
-        cursor.setAttribute('aria-hidden', 'true');
-        document.body.appendChild(cursor);
-      }
-      window.addEventListener('mousemove', function (e) {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-      }, { passive: true });
-
-      document.querySelectorAll('a, button, .swara-key, .tilt-card, input, select').forEach(function (el) {
-        el.addEventListener('mouseenter', function () { cursor.classList.add('is-hovering'); });
-        el.addEventListener('mouseleave', function () { cursor.classList.remove('is-hovering'); });
-      });
-    }
   }
 
   /* ------------------------------------------------------------------------
@@ -179,20 +171,134 @@
     if (closeBtn) closeBtn.addEventListener('click', function () { setDrawer(false); });
     if (backdrop) backdrop.addEventListener('click', function () { setDrawer(false); });
 
+    /* Desktop Navigation Dropdown Hover Intent & Clean Switching */
+    var navItems = document.querySelectorAll('.nav-menu .nav-item');
+    var openTimer = null;
+    var closeTimer = null;
+    var activeDropdownItem = null;
+
+    function closeAllDropdowns() {
+      if (openTimer) {
+        clearTimeout(openTimer);
+        openTimer = null;
+      }
+      if (closeTimer) {
+        clearTimeout(closeTimer);
+        closeTimer = null;
+      }
+      navItems.forEach(function (el) {
+        el.classList.remove('is-open');
+        var trigger = el.querySelector('[aria-haspopup="true"]');
+        if (trigger) trigger.setAttribute('aria-expanded', 'false');
+      });
+      activeDropdownItem = null;
+    }
+
+    navItems.forEach(function (item) {
+      var dropdown = item.querySelector('.dropdown-menu');
+      var trigger = item.querySelector('[aria-haspopup="true"]');
+
+      item.addEventListener('mouseenter', function () {
+        if (closeTimer) {
+          clearTimeout(closeTimer);
+          closeTimer = null;
+        }
+
+        // Entering an item with no dropdown (Courses, Teachers, Resources):
+        // Immediately close any open dropdown so it doesn't linger or overlap!
+        if (!dropdown) {
+          closeAllDropdowns();
+          return;
+        }
+
+        // If another dropdown is already open, switch immediately without delay
+        if (activeDropdownItem && activeDropdownItem !== item) {
+          activeDropdownItem.classList.remove('is-open');
+          var prevTrigger = activeDropdownItem.querySelector('[aria-haspopup="true"]');
+          if (prevTrigger) prevTrigger.setAttribute('aria-expanded', 'false');
+
+          item.classList.add('is-open');
+          if (trigger) trigger.setAttribute('aria-expanded', 'true');
+          activeDropdownItem = item;
+          return;
+        }
+
+        // If no dropdown is open yet, apply a small hover intent delay (90ms)
+        // so fast cursor sweeps across the navbar won't accidentally pop down menus!
+        if (openTimer) {
+          clearTimeout(openTimer);
+        }
+        openTimer = setTimeout(function () {
+          item.classList.add('is-open');
+          if (trigger) trigger.setAttribute('aria-expanded', 'true');
+          activeDropdownItem = item;
+          openTimer = null;
+        }, 90);
+      });
+
+      item.addEventListener('mouseleave', function () {
+        if (openTimer) {
+          clearTimeout(openTimer);
+          openTimer = null;
+        }
+        if (dropdown) {
+          closeTimer = setTimeout(function () {
+            item.classList.remove('is-open');
+            if (trigger) trigger.setAttribute('aria-expanded', 'false');
+            if (activeDropdownItem === item) {
+              activeDropdownItem = null;
+            }
+          }, 140);
+        }
+      });
+    });
+
+    var navMenu = document.querySelector('.nav-menu');
+    if (navMenu) {
+      navMenu.addEventListener('mouseleave', function () {
+        if (openTimer) {
+          clearTimeout(openTimer);
+          openTimer = null;
+        }
+        closeTimer = setTimeout(closeAllDropdowns, 140);
+      });
+    }
+
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.nav-item')) {
+        closeAllDropdowns();
+      }
+    });
+
+    /* Mobile Drawer Dropdown Accordion */
+    var drawerDropdownToggles = document.querySelectorAll('.mobile-drawer__dropdown-toggle');
+    drawerDropdownToggles.forEach(function (toggle) {
+      toggle.addEventListener('click', function (e) {
+        e.preventDefault();
+        var parent = toggle.closest('.mobile-drawer__dropdown');
+        if (parent) {
+          var isOpen = parent.classList.toggle('is-open');
+          toggle.setAttribute('aria-expanded', String(isOpen));
+        }
+      });
+    });
+
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') {
         setDrawer(false);
         closeAllModals();
+        closeAllDropdowns();
       }
     });
   }
 
   /* ------------------------------------------------------------------------
-     6. WEB AUDIO API: SRUTI DRONE, SWARA EXPLORER & TALA METRONOME
+     6. WEB AUDIO API & ORIGINAL MUSIC: VEENA SRUTI, SWARA EXPLORER & TALA
      ------------------------------------------------------------------------ */
   var audioCtx = null;
-  var droneNodes = null;
+  var droneAudio = null;
   var isDronePlaying = false;
+  var droneFadeInterval = null;
 
   function getAudioContext() {
     if (!audioCtx) {
@@ -205,6 +311,28 @@
       audioCtx.resume();
     }
     return audioCtx;
+  }
+
+  function getDroneAudioPath() {
+    var script = document.querySelector('script[src*="assets/js/main.js"]');
+    if (script) {
+      var src = script.getAttribute('src') || '';
+      var prefix = src.replace(/assets\/js\/main\.js.*$/, '');
+      return prefix + 'assets/audio/veena-sruti-original.wav';
+    }
+    return 'assets/audio/veena-sruti-original.wav';
+  }
+
+  function getDroneAudio() {
+    if (!droneAudio) {
+      droneAudio = new Audio(getDroneAudioPath());
+      droneAudio.loop = true;
+      droneAudio.volume = 0.85;
+      droneAudio.addEventListener('error', function (err) {
+        console.warn('Original Veena audio playback notice:', err);
+      });
+    }
+    return droneAudio;
   }
 
   /**
@@ -247,52 +375,87 @@
   }
 
   function initSrutiDrone() {
-    var droneBtn = document.querySelector('[data-action="toggle-drone"]');
-    var droneStatus = document.querySelector('[data-drone-status]');
-    var droneWave = document.querySelector('[data-drone-wave]');
-    if (!droneBtn) return;
+    var droneBtns = document.querySelectorAll('[data-action="toggle-drone"]');
+    var droneStatuses = document.querySelectorAll('[data-drone-status]');
+    var droneWaves = document.querySelectorAll('[data-drone-wave]');
+    if (!droneBtns.length) return;
 
-    droneBtn.addEventListener('click', function () {
-      var ctx = getAudioContext();
-      if (!ctx) return;
-
-      if (isDronePlaying && droneNodes) {
-        droneNodes.gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.3);
-        setTimeout(function () {
-          if (droneNodes) {
-            droneNodes.oscs.forEach(function (o) { try { o.stop(); } catch (err) {} });
-            droneNodes = null;
+    function updateDroneUI(playing) {
+      isDronePlaying = playing;
+      droneBtns.forEach(function (btn) {
+        btn.setAttribute('aria-pressed', playing ? 'true' : 'false');
+        var icon = btn.querySelector('i');
+        if (icon) {
+          icon.className = playing ? 'fa-solid fa-pause' : 'fa-solid fa-play';
+        }
+        var dot = btn.querySelector('.sruti-pill__dot');
+        if (dot) {
+          if (playing) {
+            btn.classList.add('is-active');
+          } else {
+            btn.classList.remove('is-active');
           }
-        }, 320);
-        isDronePlaying = false;
-        droneBtn.innerHTML = '<i class="fa-solid fa-play" aria-hidden="true"></i>';
-        droneBtn.setAttribute('aria-pressed', 'false');
-        if (droneStatus) droneStatus.textContent = 'Sruti Drone: Off (D# / 2.5 Kattai)';
-        if (droneWave) droneWave.classList.remove('is-playing');
-      } else {
-        /* Start Sa - Pa - Sa Tanpura Drone (D#3 = 155.56 Hz, A#3 = 233.08 Hz, D#4 = 311.13 Hz) */
-        var gain = ctx.createGain();
-        gain.gain.setValueAtTime(0.01, ctx.currentTime);
-        gain.gain.linearRampToValueAtTime(0.09, ctx.currentTime + 0.5);
-        gain.connect(ctx.destination);
+        }
+      });
 
-        var freqs = [155.56, 233.08, 311.13];
-        var oscs = freqs.map(function (f, idx) {
-          var osc = ctx.createOscillator();
-          osc.type = idx === 1 ? 'sine' : 'triangle';
-          osc.frequency.setValueAtTime(f, ctx.currentTime);
-          osc.connect(gain);
-          osc.start();
-          return osc;
-        });
+      droneStatuses.forEach(function (status) {
+        status.textContent = playing
+          ? 'Live Music: Playing (Saraswati Veena & Tanpura)'
+          : 'Original Music: Off (Veena & Tanpura)';
+      });
 
-        droneNodes = { oscs: oscs, gain: gain };
-        isDronePlaying = true;
-        droneBtn.innerHTML = '<i class="fa-solid fa-pause" aria-hidden="true"></i>';
-        droneBtn.setAttribute('aria-pressed', 'true');
-        if (droneStatus) droneStatus.textContent = 'Sruti Drone: Playing Sa–Pa–Sa (D#)';
-        if (droneWave) droneWave.classList.add('is-playing');
-      }
+      droneWaves.forEach(function (wave) {
+        if (playing) {
+          wave.classList.add('is-playing');
+        } else {
+          wave.classList.remove('is-playing');
+        }
+      });
+    }
+
+    droneBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var audio = getDroneAudio();
+
+        if (isDronePlaying) {
+          /* Smoothly fade out and pause */
+          clearInterval(droneFadeInterval);
+          var vol = audio.volume;
+          droneFadeInterval = setInterval(function () {
+            vol = Math.max(0, vol - 0.15);
+            audio.volume = vol;
+            if (vol <= 0.02) {
+              clearInterval(droneFadeInterval);
+              audio.pause();
+              audio.volume = 0.85;
+              updateDroneUI(false);
+            }
+          }, 35);
+        } else {
+          /* Start playback with gentle fade-in */
+          clearInterval(droneFadeInterval);
+          audio.volume = 0.05;
+          var playPromise = audio.play();
+          if (playPromise !== undefined) {
+            playPromise.then(function () {
+              updateDroneUI(true);
+              var targetVol = 0.85;
+              droneFadeInterval = setInterval(function () {
+                if (audio.volume < targetVol) {
+                  audio.volume = Math.min(targetVol, audio.volume + 0.1);
+                } else {
+                  clearInterval(droneFadeInterval);
+                }
+              }, 40);
+            }).catch(function (err) {
+              console.warn('Autoplay policy or audio playback notice:', err);
+              updateDroneUI(false);
+            });
+          } else {
+            updateDroneUI(true);
+          }
+        }
+      });
     });
   }
 
@@ -549,6 +712,26 @@
         if (countEl) {
           countEl.textContent = visibleCount + (visibleCount === 1 ? ' result shown' : ' results shown');
         }
+
+        /* Dynamic center-alignment for the last card when alone on the last row on Desktop (3-column track) */
+        if (gridId === 'coursesCatalogGrid') {
+          var visibleItems = [];
+          items.forEach(function (item) {
+            item.style.gridColumn = '';
+            if (item.style.display !== 'none') {
+              visibleItems.push(item);
+            }
+          });
+          if (window.innerWidth >= 1025 && (visibleItems.length % 3 === 1)) {
+            visibleItems[visibleItems.length - 1].style.gridColumn = '2';
+          }
+        }
+      }
+
+      if (gridId === 'coursesCatalogGrid') {
+        window.addEventListener('resize', function () {
+          applyFilters();
+        });
       }
 
       buttons.forEach(function (btn) {
@@ -800,7 +983,8 @@
         if (formType === 'login') {
           var emailInput = form.querySelector('input[type="email"]');
           var roleSelect = form.querySelector('select[name="role"]');
-          var roleVal = roleSelect ? roleSelect.value : 'student';
+          var emailVal = emailInput ? emailInput.value.toLowerCase() : '';
+          var roleVal = roleSelect ? roleSelect.value : ((emailVal.includes('instructor') || emailVal.includes('faculty') || emailVal.includes('meenakshi')) ? 'instructor' : 'student');
           localStorage.setItem('nadam_auth_user', JSON.stringify({
             name: roleVal === 'instructor' ? 'Vidushi Dr. Meenakshi Sundaram' : 'Ananya Venkataraman',
             email: emailInput ? emailInput.value : 'student@nadamveena.org',
