@@ -128,7 +128,7 @@ body {
   color: var(--text-primary);
   background-color: var(--bg-primary);
   background-image: var(--kolam-pattern);
-  overflow-x: hidden;
+  overflow-x: clip;
   transition: background-color var(--transition-smooth), color var(--transition-smooth);
 }
 
@@ -928,11 +928,15 @@ html[data-lang="ta"] .icon-toggle-btn[data-action="toggle-lang"] {
 }
 
 .nav-auth-btns .btn {
-  min-width: 115px;
-  height: 44px;
-  min-height: 44px;
+  min-width: 96px;
+  height: 42px;
+  min-height: 42px;
   padding: 0 1rem;
   font-size: 0.86rem;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hamburger-btn {
@@ -4932,7 +4936,145 @@ textarea.form-control {
 .footer-links li:hover>i {
   background: rgba(224, 165, 38, 0.22);
   border-color: var(--turmeric);
+  color: var(--turmeric-light) !important;
   transform: scale(1.08);
+}
+
+/* ==========================================================================
+   FOOTER SOCIAL & CONTACT ICON BUTTONS (LIGHT & DARK MODE VISIBILITY)
+   Ensures 100% high-contrast icon visibility when hovering in both modes.
+   ========================================================================== */
+.site-footer .icon-toggle-btn {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border-warm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+.site-footer .icon-toggle-btn i {
+  color: inherit;
+  transition: color var(--transition-fast);
+}
+
+/* General Hover & Focus State: Saraswati Veena Turmeric Gold fill with deep teak icon */
+.site-footer .icon-toggle-btn:hover,
+.site-footer .icon-toggle-btn:focus-visible,
+.site-footer .icon-toggle-btn.is-hovered {
+  background: var(--turmeric) !important;
+  border-color: var(--turmeric) !important;
+  color: var(--teak-deep) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(224, 165, 38, 0.4);
+}
+
+.site-footer .icon-toggle-btn:hover i,
+.site-footer .icon-toggle-btn:focus-visible i,
+.site-footer .icon-toggle-btn.is-hovered i,
+.site-footer .icon-toggle-btn:hover>i,
+.site-footer .icon-toggle-btn:focus-visible>i,
+.site-footer .icon-toggle-btn.is-hovered>i {
+  color: var(--teak-deep) !important;
+}
+
+/* Specific Social Brand Hover Accents with Brilliant White Icons */
+.site-footer .icon-toggle-btn:has(.fa-youtube):hover,
+.site-footer .icon-toggle-btn:has(.fa-youtube):focus-visible,
+.site-footer .icon-toggle-btn:has(.fa-youtube).is-hovered,
+.site-footer a[aria-label*="YouTube"]:hover,
+.site-footer a[aria-label*="YouTube"]:focus-visible,
+.site-footer a[aria-label*="YouTube"].is-hovered {
+  background: #FF0000 !important;
+  border-color: #FF0000 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(255, 0, 0, 0.45);
+}
+
+.site-footer .icon-toggle-btn:has(.fa-youtube):hover i,
+.site-footer .icon-toggle-btn:has(.fa-youtube):focus-visible i,
+.site-footer .icon-toggle-btn:has(.fa-youtube).is-hovered i,
+.site-footer a[aria-label*="YouTube"]:hover i,
+.site-footer a[aria-label*="YouTube"]:focus-visible i,
+.site-footer a[aria-label*="YouTube"].is-hovered i {
+  color: #FFFFFF !important;
+}
+
+.site-footer .icon-toggle-btn:has(.fa-instagram):hover,
+.site-footer .icon-toggle-btn:has(.fa-instagram):focus-visible,
+.site-footer .icon-toggle-btn:has(.fa-instagram).is-hovered,
+.site-footer a[aria-label*="Instagram"]:hover,
+.site-footer a[aria-label*="Instagram"]:focus-visible,
+.site-footer a[aria-label*="Instagram"].is-hovered {
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888) !important;
+  border-color: #e6683c !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(220, 39, 67, 0.45);
+}
+
+.site-footer .icon-toggle-btn:has(.fa-instagram):hover i,
+.site-footer .icon-toggle-btn:has(.fa-instagram):focus-visible i,
+.site-footer .icon-toggle-btn:has(.fa-instagram).is-hovered i,
+.site-footer a[aria-label*="Instagram"]:hover i,
+.site-footer a[aria-label*="Instagram"]:focus-visible i,
+.site-footer a[aria-label*="Instagram"].is-hovered i {
+  color: #FFFFFF !important;
+}
+
+.site-footer .icon-toggle-btn:has(.fa-facebook-f):hover,
+.site-footer .icon-toggle-btn:has(.fa-facebook-f):focus-visible,
+.site-footer .icon-toggle-btn:has(.fa-facebook-f).is-hovered,
+.site-footer .icon-toggle-btn:has(.fa-facebook):hover,
+.site-footer .icon-toggle-btn:has(.fa-facebook):focus-visible,
+.site-footer .icon-toggle-btn:has(.fa-facebook).is-hovered,
+.site-footer a[aria-label*="Facebook"]:hover,
+.site-footer a[aria-label*="Facebook"]:focus-visible,
+.site-footer a[aria-label*="Facebook"].is-hovered {
+  background: #1877F2 !important;
+  border-color: #1877F2 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(24, 119, 242, 0.45);
+}
+
+.site-footer .icon-toggle-btn:has(.fa-facebook-f):hover i,
+.site-footer .icon-toggle-btn:has(.fa-facebook-f):focus-visible i,
+.site-footer .icon-toggle-btn:has(.fa-facebook-f).is-hovered i,
+.site-footer .icon-toggle-btn:has(.fa-facebook):hover i,
+.site-footer .icon-toggle-btn:has(.fa-facebook):focus-visible i,
+.site-footer .icon-toggle-btn:has(.fa-facebook).is-hovered i,
+.site-footer a[aria-label*="Facebook"]:hover i,
+.site-footer a[aria-label*="Facebook"]:focus-visible i,
+.site-footer a[aria-label*="Facebook"].is-hovered i {
+  color: #FFFFFF !important;
+}
+
+.site-footer .icon-toggle-btn:has(.fa-envelope):hover,
+.site-footer .icon-toggle-btn:has(.fa-envelope):focus-visible,
+.site-footer .icon-toggle-btn:has(.fa-envelope).is-hovered,
+.site-footer a[aria-label*="Contact"]:hover,
+.site-footer a[aria-label*="Contact"]:focus-visible,
+.site-footer a[aria-label*="Contact"].is-hovered,
+.site-footer a[href*="contact"]:hover,
+.site-footer a[href*="contact"]:focus-visible,
+.site-footer a[href*="contact"].is-hovered {
+  background: var(--turmeric) !important;
+  border-color: var(--turmeric) !important;
+  color: var(--teak-deep) !important;
+  box-shadow: 0 4px 14px rgba(224, 165, 38, 0.45);
+}
+
+.site-footer .icon-toggle-btn:has(.fa-envelope):hover i,
+.site-footer .icon-toggle-btn:has(.fa-envelope):focus-visible i,
+.site-footer .icon-toggle-btn:has(.fa-envelope).is-hovered i,
+.site-footer a[aria-label*="Contact"]:hover i,
+.site-footer a[aria-label*="Contact"]:focus-visible i,
+.site-footer a[aria-label*="Contact"].is-hovered i,
+.site-footer a[href*="contact"]:hover i,
+.site-footer a[href*="contact"]:focus-visible i,
+.site-footer a[href*="contact"].is-hovered i {
+  color: var(--teak-deep) !important;
 }
 
 .site-footer__bottom {
@@ -5005,48 +5147,161 @@ textarea.form-control {
    - Large: > 1280px
    -------------------------------------------------------------------------- */
 
-/* DESKTOP VIEWPORTS (1025px - 1200px):
-   Ensure ample spacing and prevent cramped navbar wrapping or overlapping */
-@media (min-width: 1025px) and (max-width: 1200px) {
+/* ==========================================================================
+   TAB PRO & COMPACT DESKTOP (1024px - 1368px):
+   Precision alignment, balanced spacing, and zero overflow for iPad Pro /
+   Tablet Pro portrait (1024px) and landscape (1194px, 1280px, 1366px).
+   ========================================================================== */
+@media (min-width: 1024px) and (max-width: 1368px) {
+  .site-header {
+    padding-block: 0.65rem;
+  }
+
+  .site-header.is-scrolled {
+    padding-block: 0.45rem;
+  }
+
+  .site-header .container.navbar {
+    width: 100%;
+    max-width: 100%;
+    padding-inline: clamp(1rem, 2vw, 1.5rem);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: clamp(0.4rem, 1vw, 0.85rem);
+    box-sizing: border-box;
+  }
+
+  /* Brand Logo & Name Consistency */
+  .brand-logo {
+    gap: 0.6rem;
+    flex-shrink: 0;
+  }
+
+  .brand-logo__mark {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+  }
+
   .brand-logo__name {
-    font-size: 1.22rem;
+    font-size: 1.15rem !important;
+    white-space: nowrap !important;
+    line-height: 1.15;
   }
 
   .brand-logo__tagline {
-    font-size: 0.62rem;
+    font-size: 0.58rem !important;
+    letter-spacing: 0.05em !important;
+    white-space: nowrap !important;
+  }
+
+  /* Navigation Links: Centered & Balanced */
+  nav[aria-label="Primary Navigation"] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 auto;
+    min-width: 0;
   }
 
   .nav-menu {
-    gap: 0.15rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(0.1rem, 0.25vw, 0.28rem);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-item {
+    flex-shrink: 0;
   }
 
   .nav-link {
-    padding: 0.45rem 0.62rem;
-    font-size: 0.86rem;
+    padding: 0.4rem clamp(0.42rem, 0.6vw, 0.68rem);
+    font-size: 0.84rem;
+    border-radius: 8px;
+    white-space: nowrap;
+    gap: 0.25rem;
   }
 
+  .nav-link i {
+    font-size: 0.65rem !important;
+  }
+
+  /* Utility Controls (Lang, RTL, Theme) */
   .nav-actions {
-    gap: 0.35rem;
+    display: flex;
+    align-items: center;
+    gap: clamp(0.25rem, 0.45vw, 0.42rem);
+    flex-shrink: 0;
   }
 
   .icon-toggle-btn {
-    width: 38px;
-    height: 38px;
-    min-width: 38px;
-    min-height: 38px;
-    border-radius: 10px;
-    font-size: 0.8rem;
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    min-height: 36px;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .icon-toggle-btn[data-action="toggle-rtl"],
+  .icon-toggle-btn[data-action="toggle-lang"],
+  html[data-lang="ta"] .icon-toggle-btn[data-action="toggle-lang"] {
+    width: auto;
+    min-width: 36px;
+    padding-inline: 0.4rem;
+    font-size: 0.76rem;
+  }
+
+  /* Auth Buttons: Perfectly aligned with action icons, flexible widths */
+  .nav-auth-btns {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    flex-shrink: 0;
   }
 
   .nav-auth-btns .btn {
-    padding: 0.45rem 0.75rem;
-    font-size: 0.84rem;
+    min-width: 76px !important;
+    max-width: 105px !important;
+    height: 36px !important;
+    min-height: 36px !important;
+    padding: 0 clamp(0.65rem, 0.9vw, 0.85rem) !important;
+    font-size: 0.82rem !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    white-space: nowrap !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .hamburger-btn {
+    display: none !important;
   }
 }
 
 /* TABLET & MOBILE (< 1024px):
    Strict Rule: All tags, headings, sub-headings and buttons are CENTER ALIGNED */
-@media (max-width: 1024px) {
+@media (max-width: 1023.98px) {
+
+  /* Ensure Sticky Navbar stays permanently fixed while scrolling up & down */
+  .site-header {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+  }
 
   /* Brand Logo & Name Consistency on Tablet Viewports */
   .brand-logo {
