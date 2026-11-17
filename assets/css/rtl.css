@@ -154,7 +154,8 @@ html[dir="rtl"] .raga-marquee::after {
     text-align: right !important;
   }
 
-  html[dir="rtl"] .voices-wall-grid .card-footer {
+  html[dir="rtl"] .voices-wall-grid .card-footer,
+  html[dir="rtl"] .voices-wall-grid .card-footer > div {
     text-align: right !important;
   }
 }

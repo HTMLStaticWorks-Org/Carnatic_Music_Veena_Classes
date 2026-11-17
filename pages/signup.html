@@ -65,19 +65,34 @@
               </p>
             </div>
 
-            <!-- TODO: Connect registration form to backend user creation API -->
+            <!-- Social Mobile Logins (Google & Apple) -->
+            <div class="auth-social-group">
+              <button type="button" class="btn btn-social btn-social--google" data-social-auth="google" aria-label="Sign up with Google">
+                <i class="fa-brands fa-google" aria-hidden="true"></i>
+                <span data-en="Sign up with Google" data-ta="Google மூலம் பதிவு செய்க">Sign up with Google</span>
+              </button>
+              <button type="button" class="btn btn-social btn-social--apple" data-social-auth="apple" aria-label="Sign up with Apple">
+                <i class="fa-brands fa-apple" aria-hidden="true"></i>
+                <span data-en="Sign up with Apple" data-ta="Apple மூலம் பதிவு செய்க">Sign up with Apple</span>
+              </button>
+            </div>
+
+            <div class="auth-divider">
+              <span data-en="or register with email" data-ta="அல்லது மின்னஞ்சல் மூலம் பதிவு செய்க">or register with email</span>
+            </div>
+
+            <!-- Registration Form: All Input Fields One by One -->
             <form data-validate-form="signup" novalidate>
-              <div class="form-row-2">
-                <div class="form-group">
-                  <label class="form-label" for="regFullName">Student Full Name *</label>
-                  <input type="text" id="regFullName" name="fullname" class="form-control" placeholder="e.g., Ananya Venkataraman" required>
-                  <span class="form-error">Please enter full name.</span>
-                </div>
-                <div class="form-group">
-                  <label class="form-label" for="regPhone">WhatsApp / Phone *</label>
-                  <input type="tel" id="regPhone" name="phone" class="form-control" placeholder="+91 98400 00000" required>
-                  <span class="form-error">Please enter phone number.</span>
-                </div>
+              <div class="form-group">
+                <label class="form-label" for="regFullName">Student Full Name *</label>
+                <input type="text" id="regFullName" name="fullname" class="form-control" placeholder="e.g., Ananya Venkataraman" required>
+                <span class="form-error">Please enter full name.</span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="regPhone">WhatsApp / Phone *</label>
+                <input type="tel" id="regPhone" name="phone" class="form-control" placeholder="+91 98400 00000" required>
+                <span class="form-error">Please enter phone number.</span>
               </div>
 
               <div class="form-group">
@@ -86,47 +101,45 @@
                 <span class="form-error">Please enter a valid email address.</span>
               </div>
 
-              <div class="form-row-2">
-                <div class="form-group">
-                  <label class="form-label" for="regInstrument">Primary Discipline *</label>
-                  <select id="regInstrument" name="instrument" class="form-control" required>
-                    <option value="Saraswati Veena">Saraswati Veena</option>
-                    <option value="Carnatic Vocal">Carnatic Vocal</option>
-                    <option value="Classical Violin">Classical Violin</option>
-                    <option value="Mridangam & Tala">Mridangam &amp; Tala</option>
-                    <option value="Carnatic Venu Flute">Carnatic Venu Flute</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label class="form-label" for="regLevel">Proficiency Level *</label>
-                  <select id="regLevel" name="level" class="form-control" required>
-                    <option value="Prarambha (Beginner)">Prarambha (Absolute Beginner)</option>
-                    <option value="Geetham Level">Prarambha II (Sarali / Geetham)</option>
-                    <option value="Madhyama (Varnam Level)">Madhyama (Tana Varnam Level)</option>
-                    <option value="Vidwat (Kriti & Manodharma)">Vidwat (Kriti &amp; Manodharma)</option>
-                  </select>
-                </div>
+              <div class="form-group">
+                <label class="form-label" for="regInstrument">Primary Discipline *</label>
+                <select id="regInstrument" name="instrument" class="form-control" required>
+                  <option value="Saraswati Veena">Saraswati Veena</option>
+                  <option value="Carnatic Vocal">Carnatic Vocal</option>
+                  <option value="Classical Violin">Classical Violin</option>
+                  <option value="Mridangam & Tala">Mridangam &amp; Tala</option>
+                  <option value="Carnatic Venu Flute">Carnatic Venu Flute</option>
+                </select>
               </div>
 
-              <div class="form-row-2">
-                <div class="form-group">
-                  <label class="form-label" for="regMode">Learning Mode *</label>
-                  <select id="regMode" name="mode" class="form-control" required>
-                    <option value="Online Dual-Camera">Live Online (Dual-Camera)</option>
-                    <option value="Mylapore Campus">In-Person — Mylapore Campus</option>
-                    <option value="Weekend Hybrid">Weekend Hybrid</option>
-                  </select>
+              <div class="form-group">
+                <label class="form-label" for="regLevel">Proficiency Level *</label>
+                <select id="regLevel" name="level" class="form-control" required>
+                  <option value="Prarambha (Beginner)">Prarambha (Absolute Beginner)</option>
+                  <option value="Geetham Level">Prarambha II (Sarali / Geetham)</option>
+                  <option value="Madhyama (Varnam Level)">Madhyama (Tana Varnam Level)</option>
+                  <option value="Vidwat (Kriti & Manodharma)">Vidwat (Kriti &amp; Manodharma)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="regMode">Learning Mode *</label>
+                <select id="regMode" name="mode" class="form-control" required>
+                  <option value="Online Dual-Camera">Live Online (Dual-Camera)</option>
+                  <option value="Mylapore Campus">In-Person — Mylapore Campus</option>
+                  <option value="Weekend Hybrid">Weekend Hybrid</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="regPassword">Create Password *</label>
+                <div style="position:relative;display:flex;align-items:center;">
+                  <input type="password" id="regPassword" name="password" class="form-control" placeholder="Min. 6 characters" minlength="6" required style="padding-right:3rem;">
+                  <button type="button" class="icon-toggle-btn" data-toggle-password="regPassword" aria-label="Show or hide password" style="position:absolute;right:4px;border:none;background:transparent;">
+                    <i class="fa-solid fa-eye" aria-hidden="true"></i>
+                  </button>
                 </div>
-                <div class="form-group">
-                  <label class="form-label" for="regPassword">Create Password *</label>
-                  <div style="position:relative;display:flex;align-items:center;">
-                    <input type="password" id="regPassword" name="password" class="form-control" placeholder="Min. 6 characters" minlength="6" required style="padding-right:3rem;">
-                    <button type="button" class="icon-toggle-btn" data-toggle-password="regPassword" aria-label="Show or hide password" style="position:absolute;right:4px;border:none;background:transparent;">
-                      <i class="fa-solid fa-eye" aria-hidden="true"></i>
-                    </button>
-                  </div>
-                  <span class="form-error">Password must be at least 6 characters.</span>
-                </div>
+                <span class="form-error">Password must be at least 6 characters.</span>
               </div>
 
               <div class="form-group" style="margin-block:0.5rem 1.25rem;">

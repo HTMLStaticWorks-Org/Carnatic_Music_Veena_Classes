@@ -948,6 +948,30 @@
       });
     });
 
+    /* One-Click Social Logins (Google & Apple Mobile Buttons) */
+    document.querySelectorAll('[data-social-auth]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var provider = btn.getAttribute('data-social-auth');
+        var isApple = provider === 'apple';
+        var providerLabel = isApple ? 'Apple ID' : 'Google';
+        
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> <span>Connecting to ' + providerLabel + '...</span>';
+
+        setTimeout(function () {
+          localStorage.setItem('nadam_auth_user', JSON.stringify({
+            name: 'Ananya Venkataraman (' + providerLabel + ')',
+            email: isApple ? 'ananya.shishya@privaterelay.appleid.com' : 'ananya.veena@gmail.com',
+            role: 'student',
+            instrument: 'Saraswati Veena',
+            level: 'Madhyama (Varnam & Kriti Level)',
+            sruti: 'D# (2.5 Kattai)'
+          }));
+          window.location.href = 'student-dashboard.html';
+        }, 500);
+      });
+    });
+
     /* Client-Side Form Validation for all [data-validate-form] */
     document.querySelectorAll('form[data-validate-form]').forEach(function (form) {
       form.addEventListener('submit', function (e) {
