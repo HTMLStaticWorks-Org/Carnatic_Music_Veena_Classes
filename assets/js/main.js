@@ -557,7 +557,14 @@
      ------------------------------------------------------------------------ */
   function initRevealAndCounters() {
     var reveals = document.querySelectorAll('.reveal');
-    if ('IntersectionObserver' in window) {
+    var isMobile = window.innerWidth <= 1024;
+
+    if (isMobile) {
+      /* On mobile viewports, immediately make all reveal sections visible to prevent blank screen issues */
+      reveals.forEach(function (el) {
+        el.classList.add('is-visible');
+      });
+    } else if ('IntersectionObserver' in window) {
       var revObserver = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
@@ -565,8 +572,17 @@
             revObserver.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.12 });
-      reveals.forEach(function (el) { revObserver.observe(el); });
+      }, { threshold: [0, 0.05], rootMargin: '0px 0px 60px 0px' });
+
+      reveals.forEach(function (el) {
+        var rect = el.getBoundingClientRect();
+        /* If element is already in or above viewport on load, reveal immediately */
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          el.classList.add('is-visible');
+        } else {
+          revObserver.observe(el);
+        }
+      });
     } else {
       reveals.forEach(function (el) { el.classList.add('is-visible'); });
     }

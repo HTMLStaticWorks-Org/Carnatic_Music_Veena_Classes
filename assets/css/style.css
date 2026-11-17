@@ -1682,6 +1682,24 @@ select option:checked {
   --grid-gap: var(--space-5);
 }
 
+/* Course Detail Page: 2-Column Desktop Grid & Single Column Mobile Stacking */
+.course-detail-layout {
+  display: grid !important;
+  grid-template-columns: 1.6fr 1fr !important;
+  gap: var(--space-5) !important;
+  align-items: start !important;
+}
+
+.course-detail-layout > * {
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
+
+.course-detail__sidebar {
+  position: sticky !important;
+  top: 96px !important;
+}
+
 /* ==========================================================================
    HOME 2 CARDS: GUARANTEED EQUAL SIZES & IDENTICAL COMPONENT HEIGHTS
    ========================================================================== */
@@ -5581,6 +5599,13 @@ textarea.form-control {
    Strict Rule: All tags, headings, sub-headings and buttons are CENTER ALIGNED */
 @media (max-width: 1023.98px) {
 
+  /* Mobile & Tablet Scroll Reveal Safety: Guarantee all content is 100% visible */
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+  }
+
   /* Ensure Sticky Navbar stays permanently fixed while scrolling up & down */
   .site-header {
     position: -webkit-sticky;
@@ -6869,7 +6894,7 @@ textarea.form-control {
   .counter-grid,
   .site-footer__grid,
   .hero-finder-bar {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
 
   .card-grid-4>*,
@@ -7325,6 +7350,26 @@ textarea.form-control {
     white-space: normal !important;
     text-align: center !important;
     margin-inline: auto !important;
+  }
+
+  /* Course Detail Page: Single Column Stacking on Tablet & Mobile */
+  .course-detail-layout {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-4) !important;
+    width: 100% !important;
+  }
+
+  .course-detail-layout > * {
+    min-width: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .course-detail__sidebar {
+    position: static !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
 
   /* Mobile View: Home 2 Single Column Stacking & Equal Element Dimensions */

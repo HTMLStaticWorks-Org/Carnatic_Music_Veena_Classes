@@ -165,9 +165,9 @@
          ====================================================================== -->
     <section class="section reveal" aria-labelledby="syllabus-heading">
       <div class="container">
-        <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:var(--space-5);align-items:start;" class="card-grid-2">
+        <div class="card-grid-2 course-detail-layout">
           <!-- Left Column: Banner, Syllabus Accordion, Outcomes & Batch Schedule -->
-          <div style="display:flex;flex-direction:column;gap:var(--space-5);">
+          <div class="course-detail__main" style="display:flex;flex-direction:column;gap:var(--space-5);min-width:0;max-width:100%;">
             <div class="academy-card">
               <div class="card-media" style="aspect-ratio:16/9;">
                 <img src="../assets/images/course-detail-banner.webp" alt="Carnatic classical recital demonstrating Saraswati Veena and vocal phrasing" width="1280" height="720">
@@ -338,7 +338,7 @@
           </div>
 
           <!-- Right Column: Sticky Tuition & Enrollment Card -->
-          <aside class="tilt-card" data-tilt style="padding:var(--space-4);position:sticky;top:96px;">
+          <aside class="tilt-card course-detail__sidebar" data-tilt style="padding:var(--space-4);min-width:0;max-width:100%;">
             <span class="tag tag--gold">Admissions Open — Nov 2026 Cohort</span>
             <h3 style="font-size:1.65rem;margin-top:0.5rem;">Tuition &amp; Enrollment Summary</h3>
             <div style="margin-block:1rem;padding-block:1rem;border-block:1px solid var(--border-warm);">
